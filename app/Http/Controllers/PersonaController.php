@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Persona;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
 class PersonaController extends Controller
 {
     /**
@@ -20,8 +20,8 @@ class PersonaController extends Controller
 
         //consulta corta
         $persona = Persona::Where('ci',1) -> get(); 
-        return view('persona/index',compact('persona')); // compact se usa pa enviar algo(datos) a la vista xd
-    }
+        return view('persona/index',compact('persona'));
+     } // compact se usa pa enviar algo(datos) a la vista xd
 
     /**
      * Show the form for creating a new resource.
@@ -30,6 +30,7 @@ class PersonaController extends Controller
      */
     public function create()
     {
+
         return view('persona/create');
     }
 
@@ -50,12 +51,12 @@ class PersonaController extends Controller
 
         $persona -> save();
         return redirect() -> route('persona.index'); 
-
     }
 
     /**
      * Display the specified resource.
      *
+
      * @param  \App\Persona  $persona
      * @return \Illuminate\Http\Response
      */
@@ -63,11 +64,13 @@ class PersonaController extends Controller
     {
         $persona = Persona::where('ci',$id) ->get();
         return view('persona/show',compact('persona'));
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
+
      * @param  \App\Persona  $persona
      * @return \Illuminate\Http\Response
      */
@@ -81,6 +84,7 @@ class PersonaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+
      * @param  \App\Persona  $persona
      * @return \Illuminate\Http\Response
      */
@@ -95,6 +99,7 @@ class PersonaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+
      * @param  \App\Persona  $persona
      * @return \Illuminate\Http\Response
      */
@@ -104,6 +109,5 @@ class PersonaController extends Controller
         $persona -> estado = 0; // poner el atributo estado pa ocultar
         $persona -> update();
         return  redirect() -> route('persona.index');
-
     }
 }
