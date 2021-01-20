@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('Layout');
 });
 
-Auth::routes();
+
 
 Route::get('/sidebar', function () {
     return view('Layout');
@@ -31,4 +31,14 @@ Route::get('/prueba', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
 Route::resource('persona','PersonaController');
+//MEDICOS
+//registrar medico
+Route::get('/medicos/create', function () {
+    return view('medico/create');
+});
+//INDEX
+Route::get('medicos/index', function () {
+    return view('medico/index');
+});
