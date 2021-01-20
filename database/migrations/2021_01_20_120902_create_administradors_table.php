@@ -15,6 +15,9 @@ class CreateAdministradorsTable extends Migration
     {
         Schema::create('administradors', function (Blueprint $table) {
             $table->id();
+            $table->date('fechaDeContratacion');
+            $table->date('fechaDeBaja')->nullable();
+            $table->double('sueldo',8,2);
             $table->timestamps();
         });
     }
