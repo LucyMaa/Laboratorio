@@ -27,7 +27,7 @@
             @yield('body')
 
 
-
+                <h1>datos del medico</h1>
 
 
 
