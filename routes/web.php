@@ -14,9 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('Layout');
+    return view('homepage');
 });
-
 
 
 Route::get('/sidebar', function () {
@@ -39,3 +38,7 @@ Route::get('/medicos/create', function () {
 Route::get('medicos/index', function () {
     return view('medico/index');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
