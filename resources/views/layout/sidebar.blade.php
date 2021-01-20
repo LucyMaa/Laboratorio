@@ -145,6 +145,12 @@
                                 <p>Gestionar compra reactivos</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="/" class="nav-link">
+                                <i class="fas fa-user-circle"></i>
+                                <p>Gestionar Administrador</p>
+                            </a>
+                        </li>
                     </ul> 
                 </li> <br>
                 <li class="nav-item menu-open">
