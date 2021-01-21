@@ -150,6 +150,12 @@
                                 <p>Gestionar Medicos</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{route('usuario.index')}}" class="nav-link ">
+                                <i class="fas fa-user-circle"></i>
+                                <p>Gestionar Usuario</p>
+                            </a>
+                        </li>
                     </ul>
                 </li> <br>
                 <li class="nav-item menu-close">

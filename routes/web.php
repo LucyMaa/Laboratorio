@@ -15,9 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('Layout');
+    return view('homepage');
 });
-
 
 
 Route::get('/sidebar', function () {
@@ -40,3 +39,18 @@ route::get('Medico/{id}/edit','MedicoController@edit')->name('Medico.edit');
 route::put('Medico/{id}','MedicoController@update')->name('Medico.update');
 route::delete('Medico/{id}','MedicoController@destroy')->name('Medico.destroy');
 
+
+
+
+//usuarios
+route::get('/usuarios','UserController@index')->name('usuario.index');
+route::get('usuarios/create','UserController@create')->name('usuario.create');
+route::post('usuarios','UserController@store')->name('usuario.store');
+route::get('usuarios/{id}','UserController@show')->name('usuario.show');
+route::get('usuarios/{id}/edit','UserController@edit')->name('usuario.edit');
+route::put('usuarios/{id}','UserController@update')->name('usuario.update');
+route::delete('usuarios/{id}','UserController@destroy')->name('usuario.destroy');
+
+
+
+Route::get('/home', 'HomeController@index')->name('home');
