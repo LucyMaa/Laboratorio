@@ -17,13 +17,12 @@
                 <a href="#" class="d-block">Dr. ENRIQUE EID</a>
             </div>
         </div>
-
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                <li class="nav-item menu-open">
+                <li class="nav-item menu-close">
                     <a href="#" class="nav-link ">
                         <i class="fas fa-users"></i>
                         <p>
@@ -47,7 +46,7 @@
                         <button type="button" class="btn btn-outline-danger btn-block btn-sm"><i class="fas fa-user-circle"></i> CERRAR SESION</button>
                     </ul>
                 </li> <br>
-                <li class="nav-item menu-open">
+                <li class="nav-item menu-close">
                     <a href="#" class="nav-link ">
                         <i class="fas fa-vials"></i>
                         <p>
@@ -88,7 +87,7 @@
                         </li>
 
                     </ul> <br>
-                <li class="nav-item menu-open">
+                <li class="nav-item menu-close">
                     <a href="#" class="nav-link ">
                         <i class="fas fa-handshake"></i>
                         <p>
@@ -118,7 +117,7 @@
                     </ul> <br>
                 </li>
 
-                <li class="nav-item menu-open">
+                <li class="nav-item menu-close">
                     <a href="#" class="nav-link ">
                         <i class="fas fa-address-card"></i>
                         <p>
@@ -146,14 +145,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{url('/medicos/index')}}" class="nav-link ">
+                            <a href="{{url('/Medico')}}" class="nav-link ">
                                 <i class="fas fa-user-circle"></i>
                                 <p>Gestionar Medicos</p>
                             </a>
                         </li>
                     </ul>
                 </li> <br>
-                <li class="nav-item menu-open">
+                <li class="nav-item menu-close">
                     <a href="#" class="nav-link ">
                         <i class="fas fa-user-cog"></i>
                         <p>

@@ -28,10 +28,11 @@
 
 
 
+        </div>
+    </div>
+</body>
 
-
-
-            <script src="/js/app.js"></script>
-            @yield('js')
-            @include('layout.controlsidebar')
-            @include('layout.footer')
+<script src="/js/app.js"></script>
+@yield('js')
+@include('layout.controlsidebar')
+@include('layout.footer')
