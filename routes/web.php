@@ -1,10 +1,9 @@
 <?php
 
-<<<<<<< HEAD
+
 use App\Http\Controllers\PersonaController;
-=======
 use Illuminate\Routing\Route as RoutingRoute;
->>>>>>> 45a4a8f16f490eefd2c5bf21ad559a6ec582a5f1
+
 use Illuminate\Support\Facades\Route;
 
 /*
