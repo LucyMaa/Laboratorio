@@ -4,21 +4,22 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Persona extends Model
+class persona extends Model
 {
-    protected $table ='persona';
-    protected $primaryKey='id';
-    public $timestamps=false;
-
-    protected $fillable=[
-        'id',
-        'ci',
-        'nombre',
-        'apellido',
-        'direccion',
-        'fechaDeNacimiento',
-        'sexo',
-        'telefono'
+    //
+    protected $fillable = [
+            'ci' ,
+            'nombre',
+            'apellido',
+            'direccion',
+            'telefono' ,
+            'fechaNacimiento' ,
+            'sexo',
+            'telefono',
+        
     ];
 
+    public function Persona(){
+        return $this->hasOne('App\Persona');
+    }
 }
