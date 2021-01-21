@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Persona extends Model
 {
-    protected $table ='personas';
+    protected $table ='persona';
     protected $primaryKey='id';
     public $timestamps=false;
 
@@ -16,8 +16,9 @@ class Persona extends Model
         'nombre',
         'apellido',
         'direccion',
-        'fechaNacimiento',
+        'fechaDeNacimiento',
         'sexo',
         'telefono'
     ];
+
 }
