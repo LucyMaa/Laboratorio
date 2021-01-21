@@ -144,7 +144,13 @@
                         <li class="nav-item">
                             <a href="{{url('/Medico')}}" class="nav-link ">
                                 <i class="fas fa-user-circle"></i>
-                                <p>Gestionar Medicos</p>
+                                <p>Registrar Medicos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{url('/empleados')}}" class="nav-link ">
+                                <i class="fas fa-user-circle"></i>
+                                <p>Registrar empleados</p>
                             </a>
                         </li>
                         <li class="nav-item">

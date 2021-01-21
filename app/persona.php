@@ -22,4 +22,13 @@ class persona extends Model
     public function Medico(){
         return $this->hasOne('App\Medico');
     }
+
+    public function user(){
+        return $this->belongsTo(User::class,'id','id');
+    }
+
+    public function administradores()
+    {
+        return $this->hasMany(administrador::class,'idPersona','id');
+    }
 }
