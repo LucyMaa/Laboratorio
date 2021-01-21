@@ -22,7 +22,6 @@ class CreatePersonasTable extends Migration
             $table->date('fechaNacimiento');        
             $table->char('sexo');
             $table->Integer('telefono')->nullable();
-    
             $table->timestamps();
             
             

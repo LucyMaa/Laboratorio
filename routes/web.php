@@ -35,8 +35,8 @@ route::get('/Medico','MedicoController@index')->name('Medico.index');
 route::get('Medico/create','MedicoController@create')->name('Medico.create');
 route::post('Medico/store','MedicoController@store')->name('Medico.store');
 route::get('Medico/{id}','MedicoController@show')->name('Medico.show');
-route::get('Medico/{id}/edit','MedicoController@edit')->name('Medico.edit');
-route::put('Medico/{id}','MedicoController@update')->name('Medico.update');
+route::get('Medico/edit/{id}','MedicoController@edit')->name('Medico.edit');
+route::put('Medico/update/{id}','MedicoController@update')->name('Medico.update');
 route::delete('Medico/{id}','MedicoController@destroy')->name('Medico.destroy');
 
 //empleados

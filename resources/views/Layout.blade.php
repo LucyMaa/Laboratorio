@@ -22,11 +22,15 @@
             <!-- inicio ---------------->
 
 
-
-
             @yield('body')
+        
+        </div>
 
-            @yield('js')
-            @include('layout.controlsidebar')
-            @include('layout.footer')
-            <script src="/js/app.js"></script>
+    </div>
+<script src="/js/app.js"></script>
+@yield('js')
+
+</body>
+
+@include('layout.controlsidebar')
+@include('layout.footer')
