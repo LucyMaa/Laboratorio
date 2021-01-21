@@ -19,8 +19,12 @@ class PersonaController extends Controller
        // -> where('ci', 1) -> get();
 
         //consulta corta
-        $persona = Persona::Where('ci',1) -> get(); 
-        return view('persona/index',compact('persona'));
+        //$persona = Persona::Where('ci',1) -> get(); 
+        //return view('persona/index',compact('persona'));
+
+        $persona = Persona::all();
+        return view('persona.index',compact('persona'));
+
      } // compact se usa pa enviar algo(datos) a la vista xd
 
     /**

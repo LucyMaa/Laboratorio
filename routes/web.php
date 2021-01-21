@@ -31,8 +31,8 @@ Route::get('/prueba', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
 Route::resource('persona','PersonaController');
+
 //MEDICOS
 //registrar medico
 Route::get('/medicos/create', function () {

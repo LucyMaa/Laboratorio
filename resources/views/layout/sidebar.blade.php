@@ -146,7 +146,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/" class="nav-link">
+                            <a href="{{route('persona.index')}}" class="nav-link">
                                 <i class="fas fa-user-circle"></i>
                                 <p>Gestionar Administrador</p>
                             </a>
