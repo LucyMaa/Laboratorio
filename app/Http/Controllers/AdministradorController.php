@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\administrador;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\persona;
+
 
 class AdministradorController extends Controller
 {
@@ -15,6 +18,10 @@ class AdministradorController extends Controller
     public function index()
     {
         //
+        $administrador = DB::table('personas')
+        ->join('administradors', 'personas.id', '=', 'administradors.idPersona')->get();
+        //return $medico;
+        return view('empleados.index',  ['administradors' => $administrador]);
     }
 
     /**
@@ -25,6 +32,7 @@ class AdministradorController extends Controller
     public function create()
     {
         //
+        return view('empleados.create');
     }
 
     /**
@@ -36,6 +44,25 @@ class AdministradorController extends Controller
     public function store(Request $request)
     {
         //
+        $personas = persona::create([
+            'ci' => $request->input('ci'),
+            'nombre' => $request->input('nombre'),
+            'apellido' => $request->input('apellido'),
+            'direccion' => $request->input('dir'),
+            'telefono' => $request->input('telefono'),
+            'fechaNacimiento' => $request->input('nacimiento'),
+            'sexo' => $request->input('sexo'),
+            'telefono' => $request->input('telefono')
+        ]);
+       
+        $administrador = administrador::create([
+         
+            'fechaDeContratacion' => $request->input('fechac'),
+            'fechaDeBaja' => $request->input('fechab'),
+            'sueldo' => $request->input('SUELDO'),
+            'idPersona'=>$personas->id,
+        ]);
+        return redirect()->route('empleados.index');
     }
 
     /**
@@ -47,6 +74,7 @@ class AdministradorController extends Controller
     public function show(administrador $administrador)
     {
         //
+
     }
 
     /**

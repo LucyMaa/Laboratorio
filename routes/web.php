@@ -39,7 +39,14 @@ route::get('Medico/{id}/edit','MedicoController@edit')->name('Medico.edit');
 route::put('Medico/{id}','MedicoController@update')->name('Medico.update');
 route::delete('Medico/{id}','MedicoController@destroy')->name('Medico.destroy');
 
-
+//empleados
+route::get('/empleados','AdministradorController@index')->name('empleados.index');
+route::get('empleados/create','AdministradorController@create')->name('empleados.create');
+route::post('empleados','AdministradorController@store')->name('empleados.store');
+route::get('empleados/{id}','AdministradorController@show')->name('empleados.show');
+route::get('empleados/{id}/edit','AdministradorController@edit')->name('empleados.edit');
+route::put('empleados/{id}','AdministradorController@update')->name('empleados.update');
+route::delete('empleados/{id}','AdministradorController@destroy')->name('empleados.destroy');
 
 
 //usuarios
