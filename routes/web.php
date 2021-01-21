@@ -39,3 +39,14 @@ Route::get('/medicos/create', function () {
 Route::get('medicos/index', function () {
     return view('medico/index');
 });
+
+
+//usuarios
+route::get('/usuarios','UserController@index')->name('usuario.index');
+route::get('usuarios/create','UserController@create')->name('usuario.create');
+route::post('usuarios','UserController@store')->name('usuario.store');
+route::get('usuarios/{id}','UserController@show')->name('usuario.show');
+route::get('usuarios/{id}/edit','UserController@edit')->name('usuario.edit');
+route::put('usuarios/{id}','UserController@update')->name('usuario.update');
+route::delete('usuarios/{id}','UserController@destroy')->name('usuario.destroy');
+
