@@ -49,6 +49,6 @@ route::get('usuarios/{id}/edit','UserController@edit')->name('usuario.edit');
 route::put('usuarios/{id}','UserController@update')->name('usuario.update');
 route::delete('usuarios/{id}','UserController@destroy')->name('usuario.destroy');
 
-Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
