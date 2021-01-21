@@ -145,7 +145,6 @@
                             </a>
                         </li>
                         <li class="nav-item">
-<<<<<<< HEAD
                             <a href="{{route('persona.index')}}" class="nav-link">
                                 <i class="fas fa-user-circle"></i>
                                 <p>Gestionar Administrador</p>
@@ -153,9 +152,7 @@
                         </li>
                     </ul> 
                             <a href="{{url('/medicos/index')}}" class="nav-link ">
-=======
                             <a href="{{url('/Medico')}}" class="nav-link ">
->>>>>>> 45a4a8f16f490eefd2c5bf21ad559a6ec582a5f1
                                 <i class="fas fa-user-circle"></i>
                                 <p>Gestionar Medicos</p>
                             </a>
