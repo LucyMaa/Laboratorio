@@ -1,37 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('Layout')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title','Laboratorio')</title>
+@section('title','Table')
 
-    <link rel="stylesheet" href="/css/app.css">
-    @yield('css')
-
-</head>
-
-<body class="hold-transition sidebar-mini">
-
-    @include('layout.navbar')
-    @include('layout.sidebar')
-
-    <div class="wrapper">
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- inicio ---------------->
+@section('body')
 
 
 
-
-            @yield('body')
-
-
-                <h1>datos del medico</h1>
-
-
-
-            <script src="/js/app.js"></script>
-            @yield('js')
-            @include('layout.controlsidebar')
-            @include('layout.footer')
+@endsection

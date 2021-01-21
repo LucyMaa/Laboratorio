@@ -12,11 +12,10 @@
 
 @section('body')
 <a class="btn btn-outline-secondary btn-lg btn-block" href="{{url('Medico/create')}}" role="button">AGREGAR MEDICO</a>
-<div class="row d-flex justify-content-center" style="text-align:center">
+<div class="row d-flex justify-content-center">
     <table id="example1" class="table table-bordered table-hover">
         <thead>
             <tr>
-
                 <th scope="col">CI</th>
                 <th scope="col">NOMBRE</th>
                 <th scope="col">APELLIDO</th>
@@ -39,15 +38,15 @@
                 <td class="" tabindex="0">{{$medico->sexo}}</td>
                 <td class="" tabindex="0">{{$medico->telefono}}</td>
                 <td>
-                    <a href="">
+                    <!-- <a href="">
                         <i class="fas fa-trash"></i>
-                    </a>
-                    <a href="">
+                    </a> -->
+                    <a href="{{url('Medico/edit',$medico->id)}}">
                         <i class="fas fa-edit"></i>
                     </a>
-                    <a href="">
+                    <!-- <a href="">
                         <i class="fas fa-eye"></i>
-                    </a>
+                    </a> -->
                 </td>
             </tr>
             @endforeach

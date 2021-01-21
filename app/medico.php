@@ -13,7 +13,8 @@ class medico extends Model
         'fechaDeContratacion',
         'fechaDeBaja',
         'sueldo',
-      ];
+        'idPersona'     
+    ];
 
     public function Persona(){
         return $this->belongsTo('App\Persona');

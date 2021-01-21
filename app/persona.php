@@ -19,7 +19,7 @@ class persona extends Model
         
     ];
 
-    public function Persona(){
-        return $this->hasOne('App\Persona');
+    public function Medico(){
+        return $this->hasOne('App\Medico');
     }
 }
