@@ -18,10 +18,7 @@ class CreateAdministradorsTable extends Migration
             $table->date('fechaDeContratacion');
             $table->date('fechaDeBaja')->nullable();
             $table->double('sueldo',8,2);
-            $table->unsignedBigInteger('idPersona');
-            $table->foreign('idPersona')->references('id')->on('personas');
             $table->timestamps();
-            
         });
     }
 
