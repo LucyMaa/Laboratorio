@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,14 +31,15 @@ Route::get('/prueba', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 //MEDICOS
-//registrar medico
-Route::get('/medicos/create', function () {
-    return view('medico/create');
-});
-//INDEX
-Route::get('medicos/index', function () {
-    return view('medico/index');
-});
+route::get('/Medico','MedicoController@index')->name('Medico.index');
+route::get('Medico/create','MedicoController@create')->name('Medico.create');
+route::post('Medico/store','MedicoController@store')->name('Medico.store');
+route::get('Medico/{id}','MedicoController@show')->name('Medico.show');
+route::get('Medico/{id}/edit','MedicoController@edit')->name('Medico.edit');
+route::put('Medico/{id}','MedicoController@update')->name('Medico.update');
+route::delete('Medico/{id}','MedicoController@destroy')->name('Medico.destroy');
+
+
 
 
 //usuarios

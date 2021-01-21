@@ -1,88 +1,88 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('Layout')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title','Laboratorio')</title>
+@section('title','Table')
+@section('css')
 
-    <link rel="stylesheet" href="/css/app.css">
-    @yield('css')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.bootstrap4.min.css">
 
-
-</head>
-
-<body class="hold-transition sidebar-mini">
-
-    @include('layout.navbar')
-    @include('layout.sidebar')
-
-    <br>
-    <div class="wrapper">
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- inicio ---------------->
-            @yield('body')
-            <div class="container">
-                <a class="btn btn-outline-secondary btn-lg btn-block" href="{{url('/medicos/create')}}" role="button">AGREGAR MEDICO</a>
-                <table class="table table-bordered table-dark" style="text-align: center">
-                    <thead>
-                        <tr>
-
-                            <th scope="col">ID</th>
-                            <th scope="col">NOMBRE</th>
-                            <th scope="col">APELLIDO</th>
-                            <th scope="col">ESTADO</th>
-                            <th scope="col">TELEFONO</th>
-                            <th scope="col">SUELDO</th>
-                            <th scope="col">CARNET</th>
-                            <th scope="col" colspan="3">ACCIONES</th>
+@endsection
 
 
-                        </tr>
-                    </thead>
-                    <tbody>
+@section('body')
+<a class="btn btn-outline-secondary btn-lg btn-block" href="{{url('Medico/create')}}" role="button">AGREGAR MEDICO</a>
+<div class="row d-flex justify-content-center" style="text-align:center">
+    <table id="example1" class="table table-bordered table-hover">
+        <thead>
+            <tr>
 
-                        <tr>
-                            <td>
-                                <h5></h5>
-                            </td>
-                            <td>
-                                <h5></h5>
-                            </td>
-                            <td>
-                                <h5></h5>
-                            </td>
-                            <td>
-                                <h5></h5>
-                            </td>
-                            <td>
-                                <h5></h5>
-                            </td>
-                            <td>
-                                <h5></h5>
-                            </td>
-                            <td>
-                                <h5></h5>
-                            </td>
-                            <td>
-                                <a href=" " class="btn btn-outline-secondary" style="margin: 10px">Ver</a>
-                                <a href="" class="btn btn-outline-secondary">Editar</a>
-                                <form action="" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type='submit' class="btn btn-danger">Eliminar</button>
-                                </form>
-                            </td>
+                <th scope="col">CI</th>
+                <th scope="col">NOMBRE</th>
+                <th scope="col">APELLIDO</th>
+                <th scope="col">DIRECCION</th>
+                <th scope="col">FECHA NACIMIENTO</th>
+                <th scope="col">SEXO</th>
+                <th scope="col">TELEFONO</th>
+                <th scope="col">ACCIONES</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($Medicos as $medico)
+            <tr>
+                <td class="" tabindex="0">{{$medico->ci}}</td>
+                <td class="" tabindex="0">{{$medico->nombre}}</td>
+                <td class="" tabindex="0">{{$medico->apellido}}</td>
+                <td class="" tabindex="0">{{$medico->direccion}}</td>
+                <td class="" tabindex="0">{{$medico->fechaNacimiento}}</td>
+                <td class="" tabindex="0">{{$medico->sexo}}</td>
+                <td class="" tabindex="0">{{$medico->telefono}}</td>
+                <td>
+                    <a href="">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                    <a href="">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="">
+                        <i class="fas fa-eye"></i>
+                    </a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+@endsection
+
+@section('js')
+
+<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap4.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#example1').DataTable({
+            responsive: true,
+            autoWith: false,
+            language: {
+                "lengthMenu": "Mostrar _MENU_ registros por página",
+                "zeroRecords": "Nada encontrado - Disculpa",
+                "info": "Mostrando la página _PAGE_ de _PAGES_",
+                "infoEmpty": "No records available",
+                "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                "search": "Buscar:",
+                "paginate": {
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            }
+        });
+    });
+</script>
 
 
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
-
-            <script src="/js/app.js"></script>
-            @yield('js')
-            @include('layout.controlsidebar')
-            @include('layout.footer')
+@endsection

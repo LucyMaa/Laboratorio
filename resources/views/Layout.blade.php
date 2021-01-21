@@ -26,12 +26,6 @@
 
             @yield('body')
 
-
-
-
-
-
-
             @yield('js')
             @include('layout.controlsidebar')
             @include('layout.footer')

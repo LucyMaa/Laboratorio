@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\medico;
+use App\persona;
+use CreateMedicosTable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MedicoController extends Controller
 {
@@ -14,9 +17,11 @@ class MedicoController extends Controller
      */
     public function index()
     {
-        //
+        $medico = DB::table('personas')
+        ->join('medicos', 'personas.id', '=', 'medicos.id')->get();
+        //return $medico;
+        return view('medico.index',  ['Medicos' => $medico]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -24,7 +29,8 @@ class MedicoController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('medico.create');
     }
 
     /**
@@ -34,8 +40,27 @@ class MedicoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {        
+        $personas = persona::create([
+            'ci' => $request->input('ci'),
+            'nombre' => $request->input('nombre'),
+            'apellido' => $request->input('apellido'),
+            'direccion' => $request->input('dir'),
+            'telefono' => $request->input('telefono'),
+            'fechaNacimiento' => $request->input('nacimiento'),
+            'sexo' => $request->input('sexo'),
+            'telefono' => $request->input('telefono')
+        ]);
+        $medicos = medico::create([
+            'cargo' => $request->input('cargo'),
+            'estado' => $request->input('estado'),
+            'fechaDeContratacion' => $request->input('fechac'),
+            'fechaDeBaja' => $request->input('fechab'),
+            'sueldo' => $request->input('SUELDO'),
+            'idPersona'=>$personas->id,
+        ]);
+        return redirect()->route('Medico.index');
+
     }
 
     /**
