@@ -19,7 +19,7 @@
             @yield('body')
             
             <div class="container-sm">
-                <form method="POST" action=""><br>
+                <form method="POST" action="{{route('persona.store')}}"><br>
                     @csrf
                     <div class="form-group">
                         <div class="alert alert-secondary" role="alert">
@@ -55,7 +55,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">FECHA DE NACIMIENTO</span>
                             </div><br>
-                            <input name="fechaDeNacimiento" value="{{old('nacimiento')}}" type="date" class="form-control" aria-label="First name" class="form-control" placeholder="#######">
+                            <input name="FechaDeNacimiento" value="{{old('nacimiento')}}" type="date" class="form-control" aria-label="First name" class="form-control" placeholder="#######">
                             <p class="text-danger"> {{$errors->first("telefono")}}</p>
                         </div><br>
                         <div class="input-group">
@@ -78,8 +78,10 @@
 
 
                         <div class="form-group">
-                            <button id="parte1" type="submit" class="btn btn-outline-success">REGISTRAR!</button> <br><br>
+                            <button type="submit" class="btn btn-outline-success">REGISTRAR!</button> <br><br>
+                            <a href="{{route('persona.index')}}" class="btn btn-outline-success">VOLVER!</a> <br><br>
                         </div>
+                        
                     </div>
 
                 </form>

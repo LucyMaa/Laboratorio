@@ -52,6 +52,7 @@ class PersonaController extends Controller
         
         // forma corta.- No se puede cambiar el id en la interfaz
         $persona = new Persona($request -> all());
+        $persona->fechaNacimiento = date('Y-m-d', strtotime($request->input('FechaDeNacimiento')));
 
         $persona -> save();
         return redirect() -> route('persona.index'); 
@@ -66,7 +67,7 @@ class PersonaController extends Controller
      */
     public function show($id)
     {
-        $persona = Persona::where('ci',$id) ->get();
+        $persona = Persona::findOrFail($id);
         return view('persona/show',compact('persona'));
 
     }
@@ -80,7 +81,7 @@ class PersonaController extends Controller
      */
     public function edit($id)
     {
-        $persona = Persona::where('ci',$id) ->get();
+        $persona = Persona::findOrFail($id);
         return view('persona/edit',compact('persona'));
     }
 
@@ -94,8 +95,12 @@ class PersonaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $persona = Persona::where('ci',$id) -> get();
-        $persona -> nombre = $request -> input('nombre'); // solo poner los que se modifican
+        $persona = Persona::findOrFail($id);
+        $persona -> ci = $request -> input('ci'); // solo poner los que se modifican
+        $persona -> nombre = $request -> input('nombre'); 
+        $persona -> apellido = $request -> input('apellido'); 
+        $persona -> direccion = $request -> input('direccion');  
+        $persona -> telefono = $request -> input('telefono');
         $persona -> update();
         return  redirect() -> route('persona.index');
     }
