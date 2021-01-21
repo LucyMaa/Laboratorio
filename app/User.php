@@ -16,8 +16,18 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','idPersona',
     ];
+
+    public function persona() //es como decir le pertenece a una persona
+    {
+        return $this->hasOne(persona::class,'id','idPersona');
+    }
+    /* Esta es una funcion del proyeco de SI1
+    public function combustibless() //es como decir registra muchos combustibles...
+    {
+        return $this->hasMany(combustibles::class,'id_inventario','id');
+    } */
 
     /**
      * The attributes that should be hidden for arrays.

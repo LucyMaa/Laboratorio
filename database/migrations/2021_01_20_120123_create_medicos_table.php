@@ -20,8 +20,8 @@ class CreateMedicosTable extends Migration
             $table->date('fechaDeContratacion');
             $table->date('fechaDeBaja')->nullable();
             $table->double('sueldo',8,2);
-            $table->unsignedSmallInteger('idTurno');
-            $table->unsignedBigInteger('idPersona');
+            $table->unsignedSmallInteger('idTurno')->nullable();
+            $table->unsignedBigInteger('idPersona')->nullable();
             $table->foreign('idTurno')->references('id')->on('turnos');
             $table->foreign('idPersona')->references('id')->on('personas');
 

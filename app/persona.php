@@ -20,5 +20,4 @@ class Persona extends Model
         'sexo',
         'telefono'
     ];
-
 }

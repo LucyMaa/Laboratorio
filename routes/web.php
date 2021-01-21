@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 use App\Http\Controllers\PersonaController;
+=======
+use Illuminate\Routing\Route as RoutingRoute;
+>>>>>>> 45a4a8f16f490eefd2c5bf21ad559a6ec582a5f1
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,15 +37,26 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('persona','PersonaController');
 
 //MEDICOS
-//registrar medico
-Route::get('/medicos/create', function () {
-    return view('medico/create');
-});
-//INDEX
-Route::get('medicos/index', function () {
-    return view('medico/index');
-});
+route::get('/Medico','MedicoController@index')->name('Medico.index');
+route::get('Medico/create','MedicoController@create')->name('Medico.create');
+route::post('Medico/store','MedicoController@store')->name('Medico.store');
+route::get('Medico/{id}','MedicoController@show')->name('Medico.show');
+route::get('Medico/{id}/edit','MedicoController@edit')->name('Medico.edit');
+route::put('Medico/{id}','MedicoController@update')->name('Medico.update');
+route::delete('Medico/{id}','MedicoController@destroy')->name('Medico.destroy');
 
-Auth::routes();
+
+
+
+//usuarios
+route::get('/usuarios','UserController@index')->name('usuario.index');
+route::get('usuarios/create','UserController@create')->name('usuario.create');
+route::post('usuarios','UserController@store')->name('usuario.store');
+route::get('usuarios/{id}','UserController@show')->name('usuario.show');
+route::get('usuarios/{id}/edit','UserController@edit')->name('usuario.edit');
+route::put('usuarios/{id}','UserController@update')->name('usuario.update');
+route::delete('usuarios/{id}','UserController@destroy')->name('usuario.destroy');
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');
