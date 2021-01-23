@@ -171,7 +171,7 @@
                     </a>
                     <ul class="nav nav-treeview ">
                         <li class="nav-item ">
-                            <a href="#" class="nav-link ">
+                            <a href="{{route('pacientes.index')}}" class="nav-link ">
                                 <i class="fas fa-user-check"></i>
                                 <p>Registrar Cliente</p>
                             </a>
