@@ -16,8 +16,14 @@ class MedicoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        //este join estaba antes (esta bien, solo que encontre otro en google :v
+        /*
         $medico = DB::table('personas')
+        ->join('medicos', 'personas.id', '=', 'medicos.idPersona')->get();
+        */
+
+        $medico = persona::select('personas.*','medicos.*')
         ->join('medicos', 'personas.id', '=', 'medicos.idPersona')->get();
         //return $medico;
         return view('medico.index',  ['Medicos' => $medico]);
@@ -99,16 +105,14 @@ class MedicoController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
+     *@param bigint $id
      * @param  \App\medico  $medico
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $persona = new Persona();
-        $persona = Persona::where('id',$id)->first();
-        $medico = new Medico();
-        $medico = Medico::where('idPersona',$persona->id)->first();
+        $medico = Medico::findOrfail($id);
+        $persona = Persona::findOrfail($medico->idPersona);
         return view('medico.edit',['medico'=>$medico,'persona'=>$persona]);        
     }
 
