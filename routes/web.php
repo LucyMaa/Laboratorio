@@ -49,9 +49,9 @@ route::put('empleados/{id}','AdministradorController@update')->name('empleados.u
 route::delete('empleados/{id}','AdministradorController@destroy')->name('empleados.destroy');
 
 //clientes o pacientes????
-route::get('/clientes','PacienteController@index')->name('pacientes.index');
-route::get('clientes/create','PacienteController@create')->name('pacientes.create');
-route::post('clientes','PacienteController@store')->name('pacientes.store');
+route::get('/pacientes','PacienteController@index')->name('pacientes.index');
+route::get('pacientes/create','PacienteController@create')->name('pacientes.create');
+route::post('pacientes','PacienteController@store')->name('pacientes.store');
 route::get('clientes/{id}','PacienteController@show')->name('pacientes.show');
 route::get('clientes/{id}/edit','PacienteController@edit')->name('pacientes.edit');
 route::put('clientes/{id}','PacienteController@update')->name('pacientes.update');

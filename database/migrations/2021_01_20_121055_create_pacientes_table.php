@@ -15,15 +15,15 @@ class CreatePacientesTable extends Migration
     {
         Schema::create('pacientes', function (Blueprint $table) {
             $table->id();
-            $table->String('alergias',100)->nullable();
+            $table->String('alergias',100)->nullable();                 
             $table->String('antecedentes_traumaticos',150)->nullable();
             $table->String('enfermedades',150)->nullable();
             $table->String('estado_civil',20)->nullable();
             $table->float('estatura');
             $table->String('grupo_sanguineo',8)->nullable();
             $table->String('intolerancias',50)->nullable();
-            $table->String('nombre contacto de emergencia',100);
-            $table->integer('numero contacto de emergencia');
+            $table->String('nombre_contacto_de_emergencia',100);
+            $table->integer('numero_contacto_de_emergencia');
             $table->double('peso',5,2);
             $table->unsignedBigInteger('idPersona');
             $table->foreign('idPersona')->references('id')->on('personas');

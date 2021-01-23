@@ -1,5 +1,5 @@
 @extends('Layout')
-@section('title','REGISTRAR MEDICO')
+@section('title','REGISTRAR PACIENTE')
 @section('body')
 <link rel="stylesheet" href="/css/formularioCTC.css">
 <script>
@@ -29,7 +29,7 @@
     });
 </script>
 <div class="container-sm">
-    <form method="POST" rol="form" action="{{route('Medico.store')}}"><br>
+    <form method="POST" rol="form" action="{{route('pacientes.store')}}"><br>
         @csrf
         <div class="form-group">
             <div class="alert alert-secondary" role="alert">
@@ -89,36 +89,30 @@
 
             <div class="input-group">
 
-                <span class="input-group-text">CARGO</span>
+                <span class="input-group-text">ESTATURA</span>
 
-                <input name="cargo" value="{{old('cargo')}}" type="text" tabindex="8" class="form-control focusNext" aria-label="First name" class="form-control" placeholder="">
+                <input name="estatura"  type="float" tabindex="8" class="form-control focusNext" aria-label="First name" class="form-control" placeholder="">
                 <p class="text-danger">{{$errors->first("cargo")}}</p>
 
-                <span class="input-group-text">ESTADO</span>
+                <span class="input-group-text">NOMBRE CONTACTO DE EMERGENCIA</span>
 
-                <input name="estado" value="{{old('estado')}}" type="text" tabindex="9" class="form-control focusNext" aria-label="First name" class="form-control" placeholder="">
+                <input name="nombre_contacto_de_emergencia"  type="text" tabindex="9" class="form-control focusNext" aria-label="First name" class="form-control" placeholder="">
                 <p class="text-danger">{{$errors->first("estado")}}</p>
             </div><br>
 
             <div class="input-group">
 
-                <span class="input-group-text">FECHA DE CONTRATACION</span>
+                <span class="input-group-text">NUMERO CONTACTO DE EMERGENCIA</span>
 
-                <input name="fechac" value="{{old('fechac')}}" type="date" tabindex="10" class="form-control focusNext" aria-label="First name" class="form-control" placeholder="#######">
+                <input name="numero_contacto_de_emergencia"  type="number" tabindex="10" class="form-control focusNext" aria-label="First name" class="form-control" placeholder="#######">
                 <p class="text-danger"> {{$errors->first("fechac")}}</p>
-                <span class="input-group-text">FECHA DE BAJA</span>
+                <span class="input-group-text">PESO</span>
 
-                <input name="fechab" value="{{old('fechab')}}" type="date" tabindex="11" class="form-control focusNext" aria-label="First name" class="form-control" placeholder="#######">
+                <input name="peso"  type="number" tabindex="11" class="form-control focusNext" aria-label="First name" class="form-control" placeholder="#######">
                 <p class="text-danger"> {{$errors->first("fechab")}}</p>
             </div><br>
 
-            <div class="input-group">
-               
-                    <span class="input-group-text">SUELDO</span>
-                
-                <input name="SUELDO" value="{{old('SUELDO')}}" type="number" tabindex="12" aria-label="First name" class="form-control focusNext" placeholder="#######">
-                <p class="text-danger"> {{$errors->first("SUELDO")}}</p>
-            </div><br>
+           
             <div class="form-group">
                 <button id="parte1" type="submit" tabindex="13" class="btn btn-outline-success">REGISTRAR!</button> <br><br>
             </div>
