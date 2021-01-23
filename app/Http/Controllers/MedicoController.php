@@ -118,24 +118,24 @@ class MedicoController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
+     *@param bigint $id
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\medico  $medico
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, medico $medico)
+    public function update(Request $request, $id)
     {
-        $medico = new Medico();
-        $medico = Medico::FindOrFail($request->id);
-        $medico->cargo = $request->cargo;
+        
+        $medico = Medico::FindOrFail($id);
+        /*$medico->cargo = $request->cargo;
         $medico->estado = $request->estado;
         $medico->fechaDeContratacion = $request->fechac;
         $medico->fechaDeBaja = $request->fechab;
         $medico->sueldo = $request->SUELDO;
         $medico->update();
-
-        $personas=new Persona();
-        $personas=Persona::FindOrFail($request->id);
+        */
+        
+        $personas=Persona::FindOrFail($medico->idPersona);
         $personas->ci=$request->ci;
         $personas->nombre=$request->nombre;
         $personas->apellido=$request->apellido;
@@ -144,6 +144,7 @@ class MedicoController extends Controller
         $personas->sexo=$request->sexo;
         $personas->telefono=$request->telefono;
         $personas->update();
+        return redirect()->route('Medico.index');
 
     }
 

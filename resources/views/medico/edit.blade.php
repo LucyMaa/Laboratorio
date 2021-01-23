@@ -2,8 +2,9 @@
 @section('title','REGISTRAR MEDICO')
 @section('body')
 <div class="container-sm">
-    <form method="POST" rol="form" action="url('Medico/update/'.$persona->id)"><br>
+    <form method="POST" rol="form" action="{{Route('Medico.update',[$medico->id])}}"><br>
         @csrf
+        @method('PUT')
         <div class="form-group">
             <div class="alert alert-secondary" role="alert">
                 EDITAR SUS DATOS :
@@ -46,9 +47,9 @@
                     <span class="input-group-text">GENERO</span>
                 </div>
                 <select name="sexo" class="custom-select custom-select ">
-                    <option value="" selected>{{$persona->sexo}}</option>
-                    <option value="">MASCULINO</option>
-                    <option value="">FEMENINO</option>
+                    <option value="{{$persona->sexo}}" selected>{{$persona->sexo}}</option>
+                    <option >MASCULINO</option>
+                    <option >FEMENINO</option>
                 </select>
             </div><br>
             <div class="input-group">

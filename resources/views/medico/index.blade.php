@@ -11,7 +11,7 @@
 
 
 @section('body')
-<a class="btn btn-outline-secondary btn-lg btn-block" href="{{url('Medico/create')}}" role="button">AGREGAR MEDICO</a>
+<a class="btn btn-outline-secondary btn-lg btn-block" href="{{route('Medico.create')}}" role="button">AGREGAR MEDICO</a>
 <div class="row d-flex justify-content-center">
     <table id="example1" class="table table-bordered table-hover">
         <thead>
@@ -41,7 +41,7 @@
                     <!-- <a href="">
                         <i class="fas fa-trash"></i>
                     </a> -->
-                    <a href="{{url('Medico/edit',$medico->id)}}">
+                    <a href="{{route('Medico.edit',[$medico->id])}}">
                         <i class="fas fa-edit"></i>
                     </a>
                     <!-- <a href="">
