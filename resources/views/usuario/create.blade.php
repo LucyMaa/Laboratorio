@@ -7,6 +7,7 @@
     <title>@yield('title','Laboratorio')</title>
 
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/formularioCTC.css">
     @yield('css')
 
 

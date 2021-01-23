@@ -33,10 +33,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 //MEDICOS
 route::get('/Medico','MedicoController@index')->name('Medico.index');
 route::get('Medico/create','MedicoController@create')->name('Medico.create');
-route::post('Medico/store','MedicoController@store')->name('Medico.store');
+route::post('Medico','MedicoController@store')->name('Medico.store');
 route::get('Medico/{id}','MedicoController@show')->name('Medico.show');
-route::get('Medico/edit/{id}','MedicoController@edit')->name('Medico.edit');
-route::put('Medico/update/{id}','MedicoController@update')->name('Medico.update');
+route::get('Medico/{id}/edit','MedicoController@edit')->name('Medico.edit');
+route::put('Medico/{id}','MedicoController@update')->name('Medico.update');
 route::delete('Medico/{id}','MedicoController@destroy')->name('Medico.destroy');
 
 //empleados
@@ -48,6 +48,14 @@ route::get('empleados/{id}/edit','AdministradorController@edit')->name('empleado
 route::put('empleados/{id}','AdministradorController@update')->name('empleados.update');
 route::delete('empleados/{id}','AdministradorController@destroy')->name('empleados.destroy');
 
+//clientes o pacientes????
+route::get('/clientes','PacienteController@index')->name('pacientes.index');
+route::get('clientes/create','PacienteController@create')->name('pacientes.create');
+route::post('clientes','PacienteController@store')->name('pacientes.store');
+route::get('clientes/{id}','PacienteController@show')->name('pacientes.show');
+route::get('clientes/{id}/edit','PacienteController@edit')->name('pacientes.edit');
+route::put('clientes/{id}','PacienteController@update')->name('pacientes.update');
+route::delete('clientes/{id}','PacienteController@destroy')->name('pacientes.destroy');
 
 //usuarios
 route::get('/usuarios','UserController@index')->name('usuario.index');
