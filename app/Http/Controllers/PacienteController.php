@@ -50,7 +50,6 @@ class PacienteController extends Controller
         $persona->telefono = $request->telefono;
         $persona->fechaNacimiento = $request->nacimiento;
         $persona->sexo = $request->sexo;
-        $persona->telefono = $request->telefono;
         $persona->save();
 
         $paciente=new paciente();
@@ -83,25 +82,52 @@ class PacienteController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
+     *@param bigint $id
      * @param  \App\paciente  $paciente
      * @return \Illuminate\Http\Response
      */
-    public function edit(paciente $paciente)
+    public function edit($id)
     {
         //
+        $paciente=paciente::findOrfail($id);
+        $persona=persona::findOrfail($paciente->idPersona);
+        return view('pacientes.edit',['paciente'=>$paciente,'persona'=>$persona]);   
     }
 
     /**
      * Update the specified resource in storage.
-     *
+     *@param bigint $id
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\paciente  $paciente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, paciente $paciente)
+    public function update(Request $request, $id)
     {
         //
+        $paciente = paciente::FindOrFail($id);
+        $paciente->alergias=$request->alergias;
+        $paciente->antecedentes_traumaticos=$request->antecedentes_traumaticos;
+        $paciente->enfermedades=$request->enfermedades;
+        $paciente->estado_civil=$request->estado_civil;
+        $paciente->estatura=$request->estatura;
+        $paciente->grupo_sanguineo=$request->grupo_sanguineo;
+        $paciente->intolerancias=$request->intolerancias;
+        $paciente->nombre_contacto_de_emergencia=$request->nombre_contacto_de_emergencia;
+        $paciente->numero_contacto_de_emergencia=$request->numero_contacto_de_emergencia;
+        $paciente->peso=$request->peso;
+        $paciente->update();
+        
+        
+        $personas=Persona::FindOrFail($paciente->idPersona);
+        $personas->ci=$request->ci;
+        $personas->nombre=$request->nombre;
+        $personas->apellido=$request->apellido;
+        $personas->direccion=$request->dir;
+        $personas->fechaNacimiento=$request->nacimiento;
+        $personas->sexo=$request->sexo;
+        $personas->telefono=$request->telefono;
+        $personas->update();
+        return redirect()->route('pacientes.index');
     }
 
     /**
