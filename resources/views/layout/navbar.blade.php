@@ -24,7 +24,7 @@
             </div>
         </div>
     </form>
-
+    
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
@@ -33,5 +33,11 @@
             </a>
         </li>
     </ul>
+    <div>
+        <form method="POST" action="{{route('logout')}}">
+            @csrf
+            <button name="CERRAR SESION" class="btn btn-outline-danger mx-2 my-sm-0" type="submit">Cerrar sesion </button>
+        </form>
+    </div>
 </nav>
 <!-- /.navbar -->

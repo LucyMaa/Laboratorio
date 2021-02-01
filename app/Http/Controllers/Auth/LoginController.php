@@ -4,37 +4,44 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
-    use AuthenticatesUsers;
-
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest',['only'=>'showLoginForm']);
+    }
+
+    public function showLoginForm()
+    {
+        return  view('Login.login');
+    }
+    public function login()
+    {   
+        $datos = [
+            'email' => 'email|required|string',
+            'password' => 'required|string'
+        ];
+
+        $mensaje = [
+            'email.email' => 'Inserte un email valido',
+            'email.required' => 'Inserte su email  ',
+            'email.string' => 'Inserte un email valido',
+            'password.required' => 'Inserte su contraseña',
+        ];
+        $credentials = $this->validate(request(), $datos, $mensaje);
+        
+        if (Auth::attempt($credentials)) {
+            return view('home');
+        }
+        return "error";
+    }
+    public function logout()
+    {
+        Auth::logout();  
+        return redirect('/');
     }
 }

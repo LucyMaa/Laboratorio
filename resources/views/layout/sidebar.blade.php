@@ -42,7 +42,6 @@
                                 <p>Gestion De Bitacora</p>
                             </a>
                         </li>
-                        <button type="button" class="btn btn-outline-danger btn-block btn-sm"><i class="fas fa-user-circle"></i> CERRAR SESION</button>
                     </ul>
                 </li> <br>
                 <li class="nav-item menu-close">

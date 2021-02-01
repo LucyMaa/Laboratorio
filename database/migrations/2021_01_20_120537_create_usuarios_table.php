@@ -16,14 +16,10 @@ class CreateUsuariosTable extends Migration
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
             $table->string('email')->unique();
-            $table->string('password',20);
+            $table->string('password');
             $table->unsignedBigInteger('idPersona');
             $table->foreign('idPersona')->references('id')->on('personas');
             $table->timestamps();
-
-
-
-            
         });
     }
 
