@@ -66,6 +66,15 @@ route::get('usuarios/{id}/edit','UserController@edit')->name('usuario.edit');
 route::put('usuarios/{id}','UserController@update')->name('usuario.update');
 route::delete('usuarios/{id}','UserController@destroy')->name('usuario.destroy');
 
+//examenes
+route::get('/examenes','ExamenController@index')->name('examenes.index');
+route::get('examenes/create','ExamenController@create')->name('examenes.create');
+route::post('examenes','ExamenController@store')->name('examenes.store');
+route::get('examenes/{id}','ExamenController@show')->name('examenes.show');
+route::get('examenes/{id}/edit','ExamenController@edit')->name('examenes.edit');
+route::put('examenes/{id}','ExamenController@update')->name('examenes.update');
+route::delete('examenes/{id}','ExamenController@destroy')->name('examenes.destroy');
+
 
 
 Route::get('/home', 'HomeController@index')->name('home');

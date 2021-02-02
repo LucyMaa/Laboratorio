@@ -11,33 +11,27 @@
 
 
 @section('body')
-<a class="btn btn-outline-secondary btn-lg btn-block" href="{{Route('empleados.create')}}" role="button">AGREGAR EMPLEADO</a>
+<a class="btn btn-outline-secondary btn-lg btn-block" href="{{Route('examenes.create')}}" role="button">AGREGAR EMPLEADO</a>
 <div class="row d-flex justify-content-center" style="text-align:center">
-    <table id="example2" class="table table-bordered table-hover">
+    <table id="example1" class="table table-bordered table-hover">
         <thead>
             <tr>
-
-                <th scope="col">CI</th>
+                <th scope="col">ID</th>
                 <th scope="col">NOMBRE</th>
-                <th scope="col">APELLIDO</th>
-                <th scope="col">DIRECCION</th>
-                <th scope="col">FECHA NACIMIENTO</th>
-                <th scope="col">SEXO</th>
-                <th scope="col">TELEFONO</th>
-                <th scope="col">ACCIONES</th>
+                <th scope="col">DESCRIPCION</th>
+                <th scope="col">PRECIO</th>
+                
 
             </tr>
         </thead>
         <tbody>
-            @foreach ($administradors as $administrador)
+            @foreach ($examenes as $examen)
             <tr>
-                <td class="" tabindex="0">{{$administrador->ci}}</td>
-                <td class="" tabindex="0">{{$administrador->nombre}}</td>
-                <td class="" tabindex="0">{{$administrador->apellido}}</td>
-                <td class="" tabindex="0">{{$administrador->direccion}}</td>
-                <td class="" tabindex="0">{{$administrador->fechaNacimiento}}</td>
-                <td class="" tabindex="0">{{$administrador->sexo}}</td>
-                <td class="" tabindex="0">{{$administrador->telefono}}</td>
+                <td class="" tabindex="0">{{$examen->id}}</td>
+                <td class="" tabindex="0">{{$examen->nombre}}</td>
+                <td class="" tabindex="0">{{$examen->descripcion}}</td>
+                <td class="" tabindex="0">{{$examen->precio}}</td>
+                
                 <td>
                     <a href="">
                         <i class="fas fa-trash"></i>
