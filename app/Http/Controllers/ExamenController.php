@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\examen;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ExamenController extends Controller
 {
@@ -15,6 +16,8 @@ class ExamenController extends Controller
     public function index()
     {
         //
+        $examenes=DB::table('examens')->get();
+        return view('examenes.index',['examenes'=>$examenes]);
     }
 
     /**
@@ -25,6 +28,7 @@ class ExamenController extends Controller
     public function create()
     {
         //
+        return view('examenes.create');
     }
 
     /**
@@ -36,6 +40,12 @@ class ExamenController extends Controller
     public function store(Request $request)
     {
         //
+        $examen= new examen();
+        $examen->nombre=$request->nombre;
+        $examen->descripcion=$request->descripcion;
+        $examen->precio=$request->precio;
+        $examen->save();
+        return redirect()->route('examenes.index');
     }
 
     /**

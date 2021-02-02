@@ -61,7 +61,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link ">
+                            <a href="{{route('examenes.index')}}" class="nav-link ">
                                 <i class="fas fa-vial"></i>
                                 <p>Gestion Examenes</p>
                             </a>
