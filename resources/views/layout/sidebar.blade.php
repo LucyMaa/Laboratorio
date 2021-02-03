@@ -159,6 +159,12 @@
                                 <p>Gestionar Usuario</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{route('turnos.index')}}" class="nav-link ">
+                                <i class="fas fa-user-circle"></i>
+                                <p>Gestionar Turnos</p>
+                            </a>
+                        </li>
                     </ul>
                 </li> <br>
                 <li class="nav-item menu-close">
