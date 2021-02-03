@@ -16,6 +16,7 @@ class persona extends Model
             'fechaNacimiento' ,
             'sexo',
             'telefono',
+            
         
     ];
 

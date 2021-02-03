@@ -42,7 +42,6 @@
                                 <p>Gestion De Bitacora</p>
                             </a>
                         </li>
-                        <button type="button" class="btn btn-outline-danger btn-block btn-sm"><i class="fas fa-user-circle"></i> CERRAR SESION</button>
                     </ul>
                 </li> <br>
                 <li class="nav-item menu-close">
@@ -150,7 +149,7 @@
                         <li class="nav-item">
                             <a href="{{url('/empleados')}}" class="nav-link ">
                                 <i class="fas fa-user-circle"></i>
-                                <p>Registrar empleados</p>
+                                <p>Registrar Administrador</p>
                             </a>
                         </li>
                         <li class="nav-item">

@@ -1,5 +1,5 @@
 @extends('Layout')
-@section('title','REGISTRAR EMPLEADO')
+@section('title','REGISTRAR ADMINISTRADOR')
 @section('body')
 <div class="container-sm">
     <form method="POST" rol="form" action="{{Route('empleados.store')}}"><br>
