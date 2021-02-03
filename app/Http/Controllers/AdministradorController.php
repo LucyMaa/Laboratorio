@@ -19,7 +19,7 @@ class AdministradorController extends Controller
     {
         //
         $administrador = DB::table('personas')
-        ->join('administradors', 'personas.id', '=', 'administradors.idPersona')->get();
+            ->join('administradors', 'personas.id', '=', 'administradors.idPersona')->get();
         //return $medico;
         return view('empleados.index',  ['administradors' => $administrador]);
     }
@@ -54,13 +54,13 @@ class AdministradorController extends Controller
             'sexo' => $request->input('sexo'),
             'telefono' => $request->input('telefono')
         ]);
-       
+
         $administrador = administrador::create([
-         
+
             'fechaDeContratacion' => $request->input('fechac'),
             'fechaDeBaja' => $request->input('fechab'),
             'sueldo' => $request->input('SUELDO'),
-            'idPersona'=>$personas->id,
+            'idPersona' => $personas->id,
         ]);
         return redirect()->route('empleados.index');
     }
@@ -71,21 +71,23 @@ class AdministradorController extends Controller
      * @param  \App\administrador  $administrador
      * @return \Illuminate\Http\Response
      */
-    public function show(administrador $administrador)
+    public function show($codigo)
     {
-        //
-
+        $administrador = administrador::where('id', '=', $codigo)->first();
+        $personas=persona::where('id','=',$administrador->idPersona)->first();
+        return view('empleados.show', ['administradores' => $administrador,'personas'=>$personas]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
+    /** Show the form for editing the specified resource.
      *
      * @param  \App\administrador  $administrador
      * @return \Illuminate\Http\Response
      */
-    public function edit(administrador $administrador)
+    public function edit1($id)
     {
-        //
+        $administrador = administrador::findOrfail($id);
+        $persona = Persona::findOrfail($administrador->idPersona);
+        return view('empleados.delete',['administrador'=>$administrador,'persona'=>$persona]); 
     }
 
     /**
@@ -95,9 +97,11 @@ class AdministradorController extends Controller
      * @param  \App\administrador  $administrador
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, administrador $administrador)
+    public function update1(Request $request, $id)
     {
-        //
+        $administrador=administrador::FindOrFail($id);
+        $administrador->fechaDeBaja= $request->input('fechab');
+        $administrador->save();
     }
 
     /**

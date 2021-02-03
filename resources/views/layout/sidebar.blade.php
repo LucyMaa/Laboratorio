@@ -149,7 +149,7 @@
                         <li class="nav-item">
                             <a href="{{url('/empleados')}}" class="nav-link ">
                                 <i class="fas fa-user-circle"></i>
-                                <p>Registrar empleados</p>
+                                <p>Registrar Administrador</p>
                             </a>
                         </li>
                         <li class="nav-item">
