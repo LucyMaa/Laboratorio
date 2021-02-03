@@ -22,7 +22,7 @@
             <!-- inicio ---------------->
             @yield('body')
             <div class="container">
-                <a class="btn btn-outline-success btn-lg btn-block" href="{{route('pacientes.create')}}" role="button">AGREGAR PACIENTE O CLIENTE? NO LO SE XD</a>
+                <a class="btn btn-outline-success btn-lg btn-block" href="{{route('pacientes.create')}}" role="button">AGREGAR PACIENTE </a>
                 <table class="table table-bordered table-dark" style="text-align: center">
                     <thead>
                         <tr>

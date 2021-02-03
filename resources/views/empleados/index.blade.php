@@ -11,7 +11,7 @@
 
 
 @section('body')
-<a class="btn btn-outline-secondary btn-lg btn-block" href="{{Route('empleados.create')}}" role="button">AGREGAR EMPLEADO</a>
+<a class="btn btn-outline-secondary btn-lg btn-block" href="{{Route('empleados.create')}}" role="button">AGREGAR ADMINISTRADOR</a> <br>
 <div class="row d-flex justify-content-center" style="text-align:center">
     <table id="example2" class="table table-bordered table-hover">
         <thead>
@@ -21,7 +21,7 @@
                 <th scope="col">NOMBRE</th>
                 <th scope="col">APELLIDO</th>
                 <th scope="col">DIRECCION</th>
-                <th scope="col">FECHA NACIMIENTO</th>
+                <th scope="col">FECHA DE BAJA</th>
                 <th scope="col">SEXO</th>
                 <th scope="col">TELEFONO</th>
                 <th scope="col">ACCIONES</th>
@@ -35,17 +35,17 @@
                 <td class="" tabindex="0">{{$administrador->nombre}}</td>
                 <td class="" tabindex="0">{{$administrador->apellido}}</td>
                 <td class="" tabindex="0">{{$administrador->direccion}}</td>
-                <td class="" tabindex="0">{{$administrador->fechaNacimiento}}</td>
+                <td class="" tabindex="0">{{$administrador->fechaDeBaja}}</td>
                 <td class="" tabindex="0">{{$administrador->sexo}}</td>
                 <td class="" tabindex="0">{{$administrador->telefono}}</td>
                 <td>
-                    <a href="">
+                    <a href="{{route('empleados.edit',[$administrador->id]) }}">
                         <i class="fas fa-trash"></i>
                     </a>
                     <a href="">
                         <i class="fas fa-edit"></i>
                     </a>
-                    <a href="">
+                    <a href="{{route('empleados.show',[$administrador->id])}}">
                         <i class="fas fa-eye"></i>
                     </a>
                 </td>

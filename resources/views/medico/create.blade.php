@@ -9,7 +9,6 @@
         if (evt.key !== 'Enter') {
             return;
         }
-
         let element = evt.target;
 
         // Si el evento NO fue lanzado por un elemento con class "focusNext"
