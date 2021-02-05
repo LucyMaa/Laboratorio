@@ -78,6 +78,16 @@ route::get('examenes/{id}/edit','ExamenController@edit')->name('examenes.edit');
 route::put('examenes/{id}','ExamenController@update')->name('examenes.update');
 route::delete('examenes/{id}','ExamenController@destroy')->name('examenes.destroy');
 
-
+//turnos
+route::get('/turnos','TurnoController@index')->name('turnos.index');
+route::get('turnos/create','TurnoController@create')->name('turnos.create');
+route::get('turnos/asignar/create','TurnoController@asignar')->name('turnos.asignar');
+route::post('turnos/asignar','TurnoController@asignarStore')->name('turnos.asignarStore');
+route::get('turnos/{id}/registrados','TurnoController@registrados')->name('turnos.registrados');
+route::post('turnos','TurnoController@store')->name('turnos.store');
+route::get('turnos/{id}','TurnoController@show')->name('turnos.show');
+route::get('turnos/{id}/edit','TurnoController@edit')->name('turnos.edit');
+route::put('turnos/{id}','TurnoController@update')->name('turnos.update');
+route::delete('turnos/{id}','TurnoController@destroy')->name('turnos.destroy');
 
 Route::get('/home', 'HomeController@index')->name('home');
