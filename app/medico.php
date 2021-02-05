@@ -13,10 +13,14 @@ class medico extends Model
         'fechaDeContratacion',
         'fechaDeBaja',
         'sueldo',
-        'idPersona'     
+        'idPersona',
+        'idTurno'    
     ];
 
     public function Persona(){
-        return $this->belongsTo('App\Persona');
+        return $this->belongsTo(Persona::class,'idPersona','id');
+    }
+    public function turno(){
+        return $this->belongsTo(turno::class,'idTurno','id');
     }
 }
