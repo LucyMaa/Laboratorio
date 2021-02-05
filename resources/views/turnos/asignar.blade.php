@@ -28,35 +28,33 @@
     });
 </script>
 <div class="container-sm">
-    <form method="POST" rol="form" action="{{route('turnos.update',[$turno->id])}}"><br>
+    <form method="POST" rol="form" action="{{route('turnos.asignarStore')}}"><br>
         @csrf
-        @method('PUT')
         <div class="form-group">
             <div class="alert alert-secondary" role="alert">
                 INTRODUZCA SUS DATOS :
             </div>
             <div class="input-group">
 
-                <span class="input-group-text">NOMBRE</span>
+                <span class="input-group-text">ID MEDICO</span>
 
-                <input name="nombre" type="text" tabindex="1" aria-label="First name" class="form-control focusNext" placeholder="######" value="{{$turno->nombre}}">
+                <input name="idMedico" type="text" tabindex="1" aria-label="First name" class="form-control focusNext" placeholder="######" value="{{old('ci')}}">
                 <p class="text-danger"> {{$errors->first("ci")}}</p>
             </div> <br>
             <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">TURNO</span>
+                </div>
+                <select name="idTurno" class="form-control">
+                    @foreach ($turnos as $turno)
+                    <option value="{{$turno->id}}">{{$turno->horaInicio}} - {{$turno->horaFin}} </option>
+                    @endforeach
+                </select>
+            </div><br>
 
-                <span class="input-group-text">HORA INICIO</span>
 
-                <input name="horaInicio" type="time" tabindex="2" aria-label="First name" class="form-control focusNext" placeholder="INTRODUZCA EL NOMBRE" value="{{$turno->horaInicio}}">
-                <p class="text-danger"> {{$errors->first("nombre")}}</p>
-
-                <span class="input-group-text">HORA FIN</span>
-
-                <input name="horaFin" type="time" tabindex="3" aria-label="First name" class="form-control focusNext" placeholder="INTRODUZCA EL APELLIDO" value="{{$turno->horaFin}}">
-                <p class="text-danger"> {{$errors->first("apellido")}}</p>
-            </div> <br>
-           
             <div class="form-group">
-                <button id="parte1" type="submit" tabindex="4" class="btn btn-outline-success">ACTUALIZAR!</button> <br><br>
+                <button id="parte1" type="submit" tabindex="13" class="btn btn-outline-success">REGISTRAR!</button> <br><br>
             </div>
         </div><br>
 </div>

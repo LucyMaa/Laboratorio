@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class persona extends Model
 {
     //
+    protected $primaryKey = 'id';
     protected $fillable = [
             'ci' ,
             'nombre',
@@ -21,7 +22,7 @@ class persona extends Model
     ];
 
     public function Medico(){
-        return $this->hasOne('App\Medico');
+        return $this->belongsTo(medico::class,'idPersona','id');
     }
 
     public function user(){

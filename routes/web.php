@@ -78,6 +78,9 @@ route::delete('examenes/{id}','ExamenController@destroy')->name('examenes.destro
 //turnos
 route::get('/turnos','TurnoController@index')->name('turnos.index');
 route::get('turnos/create','TurnoController@create')->name('turnos.create');
+route::get('turnos/asignar/create','TurnoController@asignar')->name('turnos.asignar');
+route::post('turnos/asignar','TurnoController@asignarStore')->name('turnos.asignarStore');
+route::get('turnos/{id}/registrados','TurnoController@registrados')->name('turnos.registrados');
 route::post('turnos','TurnoController@store')->name('turnos.store');
 route::get('turnos/{id}','TurnoController@show')->name('turnos.show');
 route::get('turnos/{id}/edit','TurnoController@edit')->name('turnos.edit');
