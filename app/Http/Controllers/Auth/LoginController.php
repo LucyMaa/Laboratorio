@@ -37,7 +37,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             return view('home');
         }
-        return "error";
+        echo '<script language="javascript">alert("Error de autentificacion");window.location.href="/"</script>';
     }
     public function logout()
     {

@@ -48,6 +48,9 @@ route::get('empleados1/{id}', 'AdministradorController@update1')->name('empleado
 route::put('empleados1/{id}', 'AdministradorController@update1')->name('empleados.delete');
 route::delete('empleados/{id}', 'AdministradorController@destroy')->name('empleados.destroy');
 
+route::get('empleados2/{id}/edit', 'AdministradorController@edit')->name('empleados.edit1');
+route::put('empleados2/{id}', 'AdministradorController@update')->name('empleados.update1');
+
 //clientes o pacientes????
 route::get('/pacientes', 'PacienteController@index')->name('pacientes.index');
 route::get('pacientes/create', 'PacienteController@create')->name('pacientes.create');

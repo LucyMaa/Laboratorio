@@ -4,6 +4,6 @@
 
 @section('body')
 
-<h3>PAGINA PRINCIPAL</h3>
+<h1>hola</h1>
 
 @endsection

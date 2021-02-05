@@ -10,10 +10,21 @@
 @endsection
 
 
-@section('body')
+@section('body') <br>
+
+
+
+<div class="flash-message">
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+    @if(Session::has('alert-' . $msg))
+
+    <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+    @endif
+    @endforeach
+</div>
 <a class="btn btn-outline-secondary btn-lg btn-block" href="{{Route('empleados.create')}}" role="button">AGREGAR ADMINISTRADOR</a> <br>
 <div class="row d-flex justify-content-center" style="text-align:center">
-    <table id="example2" class="table table-bordered table-hover">
+    <table id="example1" class="table table-bordered table-hover">
         <thead>
             <tr>
 
@@ -42,7 +53,7 @@
                     <a href="{{route('empleados.edit',[$administrador->id]) }}">
                         <i class="fas fa-trash"></i>
                     </a>
-                    <a href="">
+                    <a href="{{route('empleados.edit1',[$administrador->id]) }}">
                         <i class="fas fa-edit"></i>
                     </a>
                     <a href="{{route('empleados.show',[$administrador->id])}}">
@@ -54,6 +65,7 @@
         </tbody>
     </table>
 </div>
+
 @endsection
 
 @section('js')
