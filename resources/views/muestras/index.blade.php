@@ -11,42 +11,34 @@
 
 
 @section('body')
-<a class="btn btn-outline-secondary btn-lg btn-block" href="{{Route('examenes.create')}}" role="button">AGREGAR EXAMEN</a>
+<a class="btn btn-outline-secondary btn-lg btn-block" href="{{Route('muestras.create')}}" role="button">AGREGAR MUESTRA</a>
 <div class="row d-flex justify-content-center" style="text-align:center">
     <table id="example1" class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">NOMBRE</th>
-                <th scope="col">DESCRIPCION</th>
-                <th scope="col">PRECIO</th>
-
+                <th scope="col">TIPO</th>
 
             </tr>
         </thead>
         <tbody>
-            @foreach ($examenes as $examen)
+            @foreach ($muestras as $muestra)
             <tr>
-                <td class="" tabindex="0">{{$examen->id}}</td>
-                <td class="" tabindex="0">{{$examen->nombre}}</td>
-                <td class="" tabindex="0">{{$examen->descripcion}}</td>
-                <td class="" tabindex="0">{{$examen->precio}}</td>
+                <td class="" tabindex="0">{{$muestra->id}}</td>
+                <td class="" tabindex="0">{{$muestra->tipo}}</td>
+                
 
                 <td>
-                    <form action="{{route('examenes.destroy',[$examen->id]) }}" method="POST" id="myform">
+                    <form action="{{route('muestras.destroy',[$muestra->id]) }}" method="POST" id="myform">
                         @csrf
                         @method('DELETE')
-
-
                         <a href="#" onclick="document.getElementById('myform').submit()">
                             <i class="fas fa-trash"></i>
                         </a>
-
-
-                        <a href="{{route('examenes.edit',[$examen->id])}}">
+                        <a href="{{route('muestras.edit',[$muestra->id])}}">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <a href="{{Route('examenes.show',[$examen->id])}}">
+                        <a href="{{Route('muestras.show',[$muestra->id])}}">
                             <i class="fas fa-eye"></i>
                         </a>
                     </form>
