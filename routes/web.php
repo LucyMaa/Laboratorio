@@ -87,4 +87,13 @@ route::get('turnos/{id}/edit','TurnoController@edit')->name('turnos.edit');
 route::put('turnos/{id}','TurnoController@update')->name('turnos.update');
 route::delete('turnos/{id}','TurnoController@destroy')->name('turnos.destroy');
 
+//Muestras
+route::get('/muestras','MuestraController@index')->name('muestras.index');
+route::get('muestras/create','MuestraController@create')->name('muestras.create');
+route::post('muestras','MuestraController@store')->name('muestras.store');
+route::get('muestras/{id}','MuestraController@show')->name('muestras.show');
+route::get('muestras/{id}/edit','MuestraController@edit')->name('muestras.edit');
+route::put('muestras/{id}','MuestraController@update')->name('muestras.update');
+route::delete('muestras/{id}','MuestraController@destroy')->name('muestras.destroy');
+
 Route::get('/home', 'HomeController@index')->name('home');

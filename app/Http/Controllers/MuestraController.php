@@ -20,6 +20,8 @@ class MuestraController extends Controller
     public function index()
     {
         //
+        $muestras=muestra::all();
+        return view('muestras.index',['muestras'=>$muestras]);
     }
 
     /**
@@ -30,6 +32,7 @@ class MuestraController extends Controller
     public function create()
     {
         //
+        return view('muestras.create');
     }
 
     /**
@@ -41,50 +44,65 @@ class MuestraController extends Controller
     public function store(Request $request)
     {
         //
+        $muestra=new muestra();
+        $muestra->tipo=$request->tipo;
+        $muestra->save();
+        return redirect()->route('muestras.index');
     }
 
     /**
      * Display the specified resource.
-     *
+     * @param bigint $id
      * @param  \App\muestra  $muestra
      * @return \Illuminate\Http\Response
      */
-    public function show(muestra $muestra)
+    public function show($id)
     {
         //
+        $muestra=muestra::findOrfail($id);
+        return view('muestras.show',['muestra'=>$muestra]);
     }
 
     /**
      * Show the form for editing the specified resource.
-     *
+     *@param bigint $id;
      * @param  \App\muestra  $muestra
      * @return \Illuminate\Http\Response
      */
-    public function edit(muestra $muestra)
+    public function edit($id)
     {
         //
+        $muestra=muestra::findOrfail($id);
+        return view('muestras.edit',['muestra'=>$muestra]);
     }
 
     /**
      * Update the specified resource in storage.
-     *
+     * @param bigint $id;
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\muestra  $muestra
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, muestra $muestra)
+    public function update(Request $request,$id)
     {
         //
+        $muestra=muestra::findOrfail($id);
+        $muestra->tipo=$request->tipo;
+        $muestra->update();
+        return redirect()->route('muestras.index');
     }
 
     /**
      * Remove the specified resource from storage.
-     *
+     * @param bigint $id;
      * @param  \App\muestra  $muestra
      * @return \Illuminate\Http\Response
      */
-    public function destroy(muestra $muestra)
+    public function destroy($id)
     {
         //
+        $muestra=muestra::findOrfail($id);
+        $muestra->delete();
+        return view('muestras.index');
     }
 }

@@ -54,7 +54,7 @@
                     </a>
                     <ul class="nav nav-treeview ">
                         <li class="nav-item ">
-                            <a href="#" class="nav-link ">
+                            <a href="{{route('muestras.index')}}" class="nav-link ">
                                 <i class="fas fa-vial"></i>
                                 <p>Gestionar Muestras</p>
                             </a>
