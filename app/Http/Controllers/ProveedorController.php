@@ -15,6 +15,9 @@ class ProveedorController extends Controller
     public function index()
     {
         //
+        $proveedores=proveedor::all();
+        return view('proveedores.index',['proveedores'=>$proveedores]);
+
     }
 
     /**
@@ -25,6 +28,7 @@ class ProveedorController extends Controller
     public function create()
     {
         //
+        return view('proveedores.create');
     }
 
     /**
@@ -36,50 +40,69 @@ class ProveedorController extends Controller
     public function store(Request $request)
     {
         //
+        $proveedor=new proveedor();
+        $proveedor->nombre=$request->nombre;
+        $proveedor->telefono=$request->telefono;
+        $proveedor->descripcion=$request->descripcion;
+        $proveedor->save();
+        return redirect()->route('proveedores.index');
     }
 
     /**
      * Display the specified resource.
-     *
+     * @param bigint $id
      * @param  \App\proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
-    public function show(proveedor $proveedor)
+    public function show($id)
     {
         //
+        $proveedor=proveedor::findOrfail($id);
+        return view('proveedores.show',['proveedor'=>$proveedor]);
     }
 
     /**
      * Show the form for editing the specified resource.
-     *
+     * @param bigint $id
      * @param  \App\proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
-    public function edit(proveedor $proveedor)
+    public function edit($id)
     {
         //
+        $proveedor=proveedor::findOrfail($id);
+        return view('proveedores.edit',['proveedor'=>$proveedor]);
     }
 
     /**
      * Update the specified resource in storage.
-     *
+     * @param bigint $id
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, proveedor $proveedor)
+    public function update(Request $request, $id)
     {
         //
+        $proveedor=proveedor::findOrfail($id);
+        $proveedor->nombre=$request->nombre;
+        $proveedor->telefono=$request->telefono;
+        $proveedor->descripcion=$request->descripcion;
+        $proveedor->update();
+        return redirect()->route('proveedores.index');
     }
 
     /**
      * Remove the specified resource from storage.
-     *
+     * @param bigint $id
      * @param  \App\proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(proveedor $proveedor)
+    public function destroy($id)
     {
         //
+        $proveedor=proveedor::findOrfail($id);
+        $proveedor->delete();
+        return redirect()->route('proveedores.index');
     }
 }
