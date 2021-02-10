@@ -2,7 +2,7 @@
 @section('title','REGISTRAR EMPLEADO')
 @section('body')
 <div class="container-sm">
-    <form method="POST" rol="form" action="{{Route('examenes.store')}}"><br>
+    <form method="POST" rol="form" action="{{Route('inventarios.store')}}"><br>
         @csrf
         <div class="form-group">
             <div class="form-row">
@@ -11,9 +11,17 @@
                     <input name="nombre" type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
 
                 </div>
+           
+            </div>
+            <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="exampleFormControlInput1" class="form-label">PRECIO</label>
-                    <input name="precio" type="money" class="form-control" id="exampleFormControlInput1" placeholder="(Bs.)">
+                    <label for="exampleFormControlInput1" class="form-label">EXISTENCIAS</label>
+                    <input name="existencia" type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleFormControlInput1" class="form-label">MINIMO</label>
+                    <input name="minimo" type="money" class="form-control" id="exampleFormControlInput1" placeholder="">
                 </div>
             </div>
             <div class="form-group">

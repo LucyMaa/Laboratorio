@@ -14,7 +14,9 @@ class InventarioController extends Controller
      */
     public function index()
     {
-        return 'hola';
+        //
+        $inventarios=inventario::all();
+        return view('inventarios.index',['inventarios'=>$inventarios]);
     }
 
     /**
@@ -25,6 +27,7 @@ class InventarioController extends Controller
     public function create()
     {
         //
+        return view('inventarios.create');
     }
 
     /**
@@ -36,50 +39,71 @@ class InventarioController extends Controller
     public function store(Request $request)
     {
         //
+        $inventario=new inventario();
+        $inventario->nombre=$request->nombre;
+        $inventario->descripcion=$request->descripcion;
+        $inventario->existencia=$request->existencia;
+        $inventario->minimo=$request->minimo;
+        $inventario->save();
+        return redirect()->route('inventarios.index');
     }
 
     /**
      * Display the specified resource.
-     *
+     * @param bigint $id
      * @param  \App\inventario  $inventario
      * @return \Illuminate\Http\Response
      */
-    public function show(inventario $inventario)
+    public function show($id)
     {
         //
+        $inventario=inventario::findOrfail($id);
+        return view('inventarios.show',['inventario'=>$inventario]);
     }
 
     /**
      * Show the form for editing the specified resource.
-     *
+     * @param bigint $id
      * @param  \App\inventario  $inventario
      * @return \Illuminate\Http\Response
      */
-    public function edit(inventario $inventario)
+    public function edit($id)
     {
         //
+        $inventario=inventario::findOrfail($id);
+        return view('inventarios.edit',['inventario'=>$inventario]);
     }
 
     /**
      * Update the specified resource in storage.
-     *
+     * @param bigint $id
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\inventario  $inventario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, inventario $inventario)
+    public function update(Request $request, $id)
     {
         //
+        $inventario=inventario::findOrfail($id);
+        $inventario->nombre=$request->nombre;
+        $inventario->descripcion=$request->descripcion;
+        $inventario->existencia=$request->existencia;
+        $inventario->minimo=$request->minimo;
+        $inventario->update();
+        return redirect()->route('inventarios.index');
     }
 
     /**
      * Remove the specified resource from storage.
-     *
+     * @param bigint $id
      * @param  \App\inventario  $inventario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(inventario $inventario)
+    public function destroy($id)
     {
         //
+        $inventario=inventario::findOrfail($id);
+        $inventario->delete();
+        return redirect()->route('inventarios.index');
     }
 }

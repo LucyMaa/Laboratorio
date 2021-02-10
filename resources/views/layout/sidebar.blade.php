@@ -30,10 +30,10 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview ">
-                        <li class="nav-item ">
-                            <a href="#" class="nav-link ">
+                        <li class="nav-item">
+                            <a href="{{route('usuario.index')}}" class="nav-link ">
                                 <i class="fas fa-user-circle"></i>
-                                <p>Gestion De Usuario</p>
+                                <p>Gestionar Usuario</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -54,7 +54,7 @@
                     </a>
                     <ul class="nav nav-treeview ">
                         <li class="nav-item ">
-                            <a href="#" class="nav-link ">
+                            <a href="{{route('muestras.index')}}" class="nav-link ">
                                 <i class="fas fa-vial"></i>
                                 <p>Gestionar Muestras</p>
                             </a>
@@ -94,19 +94,19 @@
                     </a>
                     <ul class="nav nav-treeview ">
                         <li class="nav-item ">
-                            <a href="#" class="nav-link ">
+                            <a href="{{route('inventarios.index')}}" class="nav-link ">
                                 <i class="fas fa-cart-plus"></i>
                                 <p>Reporte de inventarios</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link ">
+                            <a href="{{route('proveedores.index')}}" class="nav-link ">
                                 <i class="fas fa-cart-plus"></i>
                                 <p>Gestionar proveedores</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link ">
+                            <a href="{{route('compras.index')}}" class="nav-link ">
                                 <i class="fas fa-cart-plus"></i>
                                 <p>Gestionar compra reactivos</p>
                             </a>
@@ -122,24 +122,9 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview ">
-                        <li class="nav-item ">
-                            <a href="inventario.index" class="nav-link ">
-                                <i class="fas fa-user-circle"></i>
-                                <p>Reporte de inventarios</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link ">
-                                <i class="fas fa-user-circle"></i>
-                                <p>Gestionar proveedores</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link ">
-                                <i class="fas fa-user-circle"></i>
-                                <p>Gestionar compra reactivos</p>
-                            </a>
-                        </li>
+
+
+
                         <li class="nav-item">
                             <a href="{{url('/Medico')}}" class="nav-link ">
                                 <i class="fas fa-user-circle"></i>
@@ -152,12 +137,7 @@
                                 <p>Registrar Administrador</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{route('usuario.index')}}" class="nav-link ">
-                                <i class="fas fa-user-circle"></i>
-                                <p>Gestionar Usuario</p>
-                            </a>
-                        </li>
+
                         <li class="nav-item">
                             <a href="{{route('turnos.index')}}" class="nav-link ">
                                 <i class="fas fa-user-circle"></i>
