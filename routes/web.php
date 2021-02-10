@@ -91,3 +91,8 @@ route::put('turnos/{id}','TurnoController@update')->name('turnos.update');
 route::delete('turnos/{id}','TurnoController@destroy')->name('turnos.destroy');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//INVENTARIO
+route::get('/inventarios','InventarioController@index')->name('inventario.index');
+//route::get('/inventarios/create','InventarioController@create')->name('inventario.create');
+//route::post('inventarios','InventarioController@store')->name('inventario.store');
