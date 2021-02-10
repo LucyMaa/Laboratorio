@@ -96,4 +96,31 @@ route::get('muestras/{id}/edit','MuestraController@edit')->name('muestras.edit')
 route::put('muestras/{id}','MuestraController@update')->name('muestras.update');
 route::delete('muestras/{id}','MuestraController@destroy')->name('muestras.destroy');
 
+//inventario
+route::get('/inventarios','InventarioController@index')->name('inventarios.index');
+route::get('inventarios/create','InventarioController@create')->name('inventarios.create');
+route::post('inventarios','InventarioController@store')->name('inventarios.store');
+route::get('inventarios/{id}','InventarioController@show')->name('inventarios.show');
+route::get('inventarios/{id}/edit','InventarioController@edit')->name('inventarios.edit');
+route::put('inventarios/{id}','InventarioController@update')->name('inventarios.update');
+route::delete('inventarios/{id}','InventarioController@destroy')->name('inventarios.destroy');
+
+//proveedores
+route::get('/proveedores','ProveedorController@index')->name('proveedores.index');
+route::get('proveedores/create','ProveedorController@create')->name('proveedores.create');
+route::post('proveedores','ProveedorController@store')->name('proveedores.store');
+route::get('proveedores/{id}','ProveedorController@show')->name('proveedores.show');
+route::get('proveedores/{id}/edit','ProveedorController@edit')->name('proveedores.edit');
+route::put('proveedores/{id}','ProveedorController@update')->name('proveedores.update');
+route::delete('proveedores/{id}','ProveedorController@destroy')->name('proveedores.destroy');
+
+//compras
+route::get('/compras','ProveedorInventarioController@index')->name('compras.index');
+route::get('compras/create','ProveedorInventarioController@create')->name('compras.create');
+route::post('compras','ProveedorInventarioController@store')->name('compras.store');
+route::get('compras/{id}','ProveedorInventarioController@show')->name('compras.show');
+route::get('compras/{id}/edit','ProveedorInventarioController@edit')->name('compras.edit');
+route::put('compras/{id}','ProveedorInventarioController@update')->name('compras.update');
+route::delete('compras/{id}','ProveedorInventarioController@destroy')->name('compras.destroy');
+
 Route::get('/home', 'HomeController@index')->name('home');

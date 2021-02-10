@@ -17,8 +17,10 @@ class CreateInventariosTable extends Migration
             $table->id();
             $table->String('nombre',30);
             $table->String('descripcion',150)->nullable();
-            $table->unsignedBigInteger('idExamen');
-            $table->foreign('idExamen')->references('id')->on('examens');
+            $table->double('existencia',8,2);
+            $table->double('minimo',8,2);
+            //$table->unsignedBigInteger('idExamen');
+           // $table->foreign('idExamen')->references('id')->on('examens');
             $table->timestamps();
 
         });
