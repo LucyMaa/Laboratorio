@@ -74,8 +74,8 @@ class AdministradorController extends Controller
     public function show($codigo)
     {
         $administrador = administrador::where('id', '=', $codigo)->first();
-        $personas=persona::where('id','=',$administrador->idPersona)->first();
-        return view('empleados.show', ['administradores' => $administrador,'personas'=>$personas]);
+        $personas = persona::where('id', '=', $administrador->idPersona)->first();
+        return view('empleados.show', ['administradores' => $administrador, 'personas' => $personas]);
     }
 
     /** Show the form for editing the specified resource.
@@ -87,9 +87,8 @@ class AdministradorController extends Controller
     {
         $administrador = administrador::findOrfail($id);
         $persona = Persona::findOrfail($administrador->idPersona);
-        return view('empleados.delete',['administrador'=>$administrador,'persona'=>$persona]); 
+        return view('empleados.delete', ['administrador' => $administrador, 'persona' => $persona]);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -99,10 +98,53 @@ class AdministradorController extends Controller
      */
     public function update1(Request $request, $id)
     {
-        $administrador=administrador::FindOrFail($id);
-        $administrador->fechaDeBaja= $request->input('fechab');
+        $administrador = administrador::FindOrFail($id);
+        $administrador->fechaDeBaja = $request->input('fechab');
         $administrador->save();
     }
+    //-------------------------------------------------------------------------------------------  
+    /** Show the form for editing the specified resource.
+     *
+     * @param  \App\administrador  $administrador
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $administrador = administrador::findOrfail($id);
+        $persona = Persona::findOrfail($administrador->idPersona);
+        return view('empleados.edit', ['administrador' => $administrador, 'persona' => $persona]);
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\administrador  $administrador
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+
+        $persona = persona::FindOrFail($id);
+
+        $persona->ci = $request->input('ci');
+        $persona->nombre=$request->input('nombre');
+        $persona->apellido=$request->input('apellido');
+        $persona->direccion=$request->input('dir');
+        $persona->fechaNacimiento=$request->input('nacimiento');
+        $persona->sexo=$request->input('genero');
+        $persona->telefono=$request->input('telefono');
+        $persona->save();
+
+        $administrador = administrador::FindOrFail($id);
+        $administrador->fechaDeContratacion= $request->input('fechac');
+        $administrador->sueldo= $request->input('SUELDO');
+        $administrador->save();
+        session()->flash('alert-success', 'DATOS ACTUALIZADOS CORRECTAMENTE');
+        return redirect()->route('empleados.index');
+    }
+
+    //-------------------------------------------------------------------------------------------------------------
+
 
     /**
      * Remove the specified resource from storage.

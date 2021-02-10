@@ -48,6 +48,9 @@ route::get('empleados1/{id}', 'AdministradorController@update1')->name('empleado
 route::put('empleados1/{id}', 'AdministradorController@update1')->name('empleados.delete');
 route::delete('empleados/{id}', 'AdministradorController@destroy')->name('empleados.destroy');
 
+route::get('empleados2/{id}/edit', 'AdministradorController@edit')->name('empleados.edit1');
+route::put('empleados2/{id}', 'AdministradorController@update')->name('empleados.update1');
+
 //clientes o pacientes????
 route::get('/pacientes', 'PacienteController@index')->name('pacientes.index');
 route::get('pacientes/create', 'PacienteController@create')->name('pacientes.create');
@@ -124,3 +127,8 @@ route::put('compras/{id}','ProveedorInventarioController@update')->name('compras
 route::delete('compras/{id}','ProveedorInventarioController@destroy')->name('compras.destroy');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//INVENTARIO
+route::get('/inventarios','InventarioController@index')->name('inventario.index');
+//route::get('/inventarios/create','InventarioController@create')->name('inventario.create');
+//route::post('inventarios','InventarioController@store')->name('inventario.store');

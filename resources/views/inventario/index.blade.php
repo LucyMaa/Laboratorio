@@ -10,62 +10,39 @@
 @endsection
 
 
-@section('body') <br>
-
-
-
-<div class="flash-message">
-    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-    @if(Session::has('alert-' . $msg))
-
-    <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-    @endif
-    @endforeach
-</div>
-<a class="btn btn-outline-secondary btn-lg btn-block" href="{{Route('empleados.create')}}" role="button">AGREGAR ADMINISTRADOR</a> <br>
-<div class="row d-flex justify-content-center" style="text-align:center">
+@section('body')
+<a class="btn btn-outline-secondary btn-lg btn-block" href="" role="button">AGREGAR MEDICO</a>
+<div class="row d-flex justify-content-center">
     <table id="example1" class="table table-bordered table-hover">
         <thead>
             <tr>
-
-                <th scope="col">CI</th>
+                <th scope="col">ID</th>
                 <th scope="col">NOMBRE</th>
-                <th scope="col">APELLIDO</th>
-                <th scope="col">DIRECCION</th>
-                <th scope="col">FECHA DE BAJA</th>
-                <th scope="col">SEXO</th>
-                <th scope="col">TELEFONO</th>
-                <th scope="col">ACCIONES</th>
-
+                <th scope="col">DESCRIPCION</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($administradors as $administrador)
+            @foreach ($Medicos as $medico)
             <tr>
-                <td class="" tabindex="0">{{$administrador->ci}}</td>
-                <td class="" tabindex="0">{{$administrador->nombre}}</td>
-                <td class="" tabindex="0">{{$administrador->apellido}}</td>
-                <td class="" tabindex="0">{{$administrador->direccion}}</td>
-                <td class="" tabindex="0">{{$administrador->fechaDeBaja}}</td>
-                <td class="" tabindex="0">{{$administrador->sexo}}</td>
-                <td class="" tabindex="0">{{$administrador->telefono}}</td>
+                <td class="" tabindex="0"></td>
+                <td class="" tabindex="0"></td>
+                <td class="" tabindex="0"></td>
                 <td>
-                    <a href="{{route('empleados.edit',[$administrador->id]) }}">
+                    <a href="">
                         <i class="fas fa-trash"></i>
-                    </a>
-                    <a href="{{route('empleados.edit1',[$administrador->id]) }}">
+                    </a> -->
+                    <a href="">
                         <i class="fas fa-edit"></i>
                     </a>
-                    <a href="{{route('empleados.show',[$administrador->id])}}">
+                    <a href="">
                         <i class="fas fa-eye"></i>
-                    </a>
+                    </a> -->
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
 </div>
-
 @endsection
 
 @section('js')
