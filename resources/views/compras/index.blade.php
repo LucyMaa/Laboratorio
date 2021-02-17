@@ -16,23 +16,25 @@
     <table id="example1" class="table table-bordered table-hover">
         <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">NOMBRE</th>
-                <th scope="col">DESCRIPCION</th>
+                <th scope="col">COMPRA ID</th>
+                <th scope="col">PROVEEDOR</th>
+                <th scope="col">INVENTARIO</th>
                 <th scope="col">CANTIDAD</th>
-
+               
 
             </tr>
         </thead>
         <tbody>
             @foreach ($compras as $compra)
+            @foreach ($compra->inventarios as $inventario)
             <tr>
-                <td class="" tabindex="0">{{$compra->pivot->id}}</td>
+                <td class="" tabindex="0">{{$inventario->pivot->id}}</td>
                 <td class="" tabindex="0">{{$compra->nombre}}</td>
-                <td class="" tabindex="0">{{$compra->inventario->nombre}}</td>
-                <td class="" tabindex="0">{{$compra->pivot->cantidad}}</td>
+                <td class="" tabindex="0">{{$inventario->nombre}}</td>
+                <td class="" tabindex="0">{{$inventario->pivot->cantidad}}</td>
+                <!--
                 <td>
-                    <form action="{{route('compras.destroy',[$compra->pivot->id])}}" method="POST" id="myform">
+                    <form action="{{route('compras.destroy',[$inventario->pivot->id])}}" method="POST" id="myform">
                         @csrf
                         @method('DELETE')
                         <a href="#" onclick="document.getElementById('myform').submit()">
@@ -40,15 +42,17 @@
                         </a>
 
 
-                        <a href="{{route('compras.edit',[$compra->pivot->id])}}">
+                        <a href="{{route('compras.edit',[$inventario->pivot->id])}}">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <a href="{{Route('compras.show',[$compra->pivot->id])}}">
+                        <a href="{{Route('compras.show',[$inventario->pivot->id])}}">
                             <i class="fas fa-eye"></i>
                         </a>
                     </form>
                 </td>
+                -->
             </tr>
+            @endforeach
             @endforeach
         </tbody>
     </table>
