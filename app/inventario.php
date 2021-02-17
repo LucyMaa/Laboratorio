@@ -18,7 +18,7 @@ class inventario extends Model
     ];
     public function proveedores()
     {
-        return $this->belongsToMany(proveedor::class, 'proveedor_inventario', 'id_inventario','id_examen')->withPivot('cantidad');
+        return $this->belongsToMany(proveedor::class, 'proveedor_inventarios', 'id_inventario','id_proveedor')->withPivot('cantidad');
     }
 
 }

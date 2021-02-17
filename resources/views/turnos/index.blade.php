@@ -24,8 +24,7 @@
                     <th scope="col">ID TURNO</th>
                     <th scope="col">TURNO</th>
                     <th scope="col">HORAS</th>
-                    <th scope="col">DIAS</th>
-                    <th scope="col">CANTIDAD DE PERSONAL</th>
+                
                     <th scope="col" colspan="3">ACCIONES</th>
 
                 </tr>
@@ -36,8 +35,8 @@
                     <td class="" tabindex="0">{{$turno->id}}</td>
                     <td class="" tabindex="0">{{$turno->nombre}}</td>
                     <td class="" tabindex="0">{{$turno->horaInicio}} - {{$turno->horaFin}}</td>
-                    <td class="" tabindex="0"></td>
-                    <td class="" tabindex="0"></td>
+                
+               
 
                     <td>
                         <!-- <a href="">

@@ -46,7 +46,7 @@ class ProveedorInventarioController extends Controller
         $compras=new proveedor_inventario();
         $compras->cantidad=$request->cantidad;
         $compras->id_inventario=$request->id_inventario;
-        $compras->id_inventario=$request->id_inventario;
+        $compras->id_proveedor=$request->id_proveedor;
         $compras->save();
         return redirect()->route('compras.index');
     }
@@ -87,12 +87,15 @@ class ProveedorInventarioController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
+     * @param bigint $id
      * @param  \App\proveedor_inventario  $proveedor_inventario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(proveedor_inventario $proveedor_inventario)
+    public function destroy($id)
     {
         //
+        $compra=proveedor_inventario::findOrfail($id);
+        $compra->delete();
+        return redirect()->route('compras.index');
     }
 }

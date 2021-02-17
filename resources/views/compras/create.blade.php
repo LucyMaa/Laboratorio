@@ -10,16 +10,16 @@
                     <label for="exampleFormControlInput1" class="form-label">PROVEEDOR</label>
                     <select name="id_proveedor" id="inputState" class="form-control">
                         @foreach($proveedores as $proveedor)
-                        <option value="{{$proveedor->id}}">{{$proveedor->Nombre}}</option>
+                        <option value="{{$proveedor->id}}">{{$proveedor->nombre}}</option>
                         @endforeach
 
                     </select>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="exampleFormControlInput1" class="form-label">INVENTARIO</label>
-                    <select name="id_proveedor" id="inputState" class="form-control">
+                    <select name="id_inventario" id="inputState" class="form-control">
                         @foreach($inventarios as $inventario)
-                        <option value="{{$inventario->id}}">{{$inventario->Nombre}}</option>
+                        <option value="{{$inventario->id}}">{{$inventario->nombre}}</option>
                         @endforeach
 
                     </select>
@@ -28,7 +28,7 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="exampleFormControlInput1" class="form-label">CANTIDAD</label>
-                    <input name="cantidad" type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                    <input name="cantidad" type="number" class="form-control" id="exampleFormControlInput1" placeholder="">
 
                 </div>
             </div>
