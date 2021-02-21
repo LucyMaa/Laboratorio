@@ -39,7 +39,7 @@
 
             </tr>
         </thead>
-        <tbody>
+        <tbo dy>
             @foreach ($administradors as $administrador)
             <tr>
                 <td class="" tabindex="0">{{$administrador->ci}}</td>
