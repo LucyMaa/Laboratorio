@@ -128,4 +128,7 @@ route::delete('compras/{id}','ProveedorInventarioController@destroy')->name('com
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+//INVENTARIO
+//route::get('/inventarios','InventarioController@index')->name('inventario.index');
+//route::get('/inventarios/create','InventarioController@create')->name('inventario.create');
+//route::post('inventarios','InventarioController@store')->name('inventario.store');

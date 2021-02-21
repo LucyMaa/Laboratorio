@@ -22,16 +22,17 @@
                     <th scope="col">ID TURNO</th>
                     <th scope="col">TURNO</th>
                     <th scope="col">HORAS</th>
-                    <th scope="col">ACCIONES</th>
+                
+                    <th scope="col" colspan="3">ACCIONES</th>
 
                 </tr>
             </thead>
             <tbody>
                 @foreach ($turnos as $turno)
                 <tr>
-                    <td>{{$turno->id}}</td>
-                    <td>{{$turno->nombre}}</td>
-                    <td>{{$turno->horaInicio}} - {{$turno->horaFin}}</td>
+                    <td class="" tabindex="0">{{$turno->id}}</td>
+                    <td class="" tabindex="0">{{$turno->nombre}}</td>
+                    <td class="" tabindex="0">{{$turno->horaInicio}} - {{$turno->horaFin}}</td>
                     <td>
                         <a href="{{route('turnos.edit',[$turno->id])}}">
                             <i class="fas fa-edit"></i>
