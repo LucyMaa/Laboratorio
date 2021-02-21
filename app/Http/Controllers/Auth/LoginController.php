@@ -35,7 +35,7 @@ class LoginController extends Controller
         $credentials = $this->validate(request(), $datos, $mensaje);
         
         if (Auth::attempt($credentials)) {
-            return view('home');
+            return view('HOME');
         }
         echo '<script language="javascript">alert("Error de autentificacion");window.location.href="/"</script>';
     }

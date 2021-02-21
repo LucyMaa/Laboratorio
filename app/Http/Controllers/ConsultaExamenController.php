@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\consulta;
 use App\consulta_examen;
 use Illuminate\Http\Request;
 
-class ConsultaController extends Controller
+class ConsultaExamenController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,8 +25,6 @@ class ConsultaController extends Controller
     public function create()
     {
         //
-        $consultaExamen=new consulta_examen();
-        
     }
 
     /**
@@ -44,10 +41,10 @@ class ConsultaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\consulta  $consulta
+     * @param  \App\consulta_examen  $consulta_examen
      * @return \Illuminate\Http\Response
      */
-    public function show(consulta $consulta)
+    public function show(consulta_examen $consulta_examen)
     {
         //
     }
@@ -55,10 +52,10 @@ class ConsultaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\consulta  $consulta
+     * @param  \App\consulta_examen  $consulta_examen
      * @return \Illuminate\Http\Response
      */
-    public function edit(consulta $consulta)
+    public function edit(consulta_examen $consulta_examen)
     {
         //
     }
@@ -67,10 +64,10 @@ class ConsultaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\consulta  $consulta
+     * @param  \App\consulta_examen  $consulta_examen
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, consulta $consulta)
+    public function update(Request $request, consulta_examen $consulta_examen)
     {
         //
     }
@@ -78,10 +75,10 @@ class ConsultaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\consulta  $consulta
+     * @param  \App\consulta_examen  $consulta_examen
      * @return \Illuminate\Http\Response
      */
-    public function destroy(consulta $consulta)
+    public function destroy(consulta_examen $consulta_examen)
     {
         //
     }
