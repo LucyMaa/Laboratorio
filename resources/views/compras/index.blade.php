@@ -20,7 +20,6 @@
                 <th scope="col">PROVEEDOR</th>
                 <th scope="col">INVENTARIO</th>
                 <th scope="col">CANTIDAD</th>
-               
 
             </tr>
         </thead>
@@ -58,14 +57,11 @@
     </table>
 </div>
 @endsection
-
 @section('js')
-
 <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap4.min.js"></script>
-
 <script>
     $(document).ready(function() {
         $('#example1').DataTable({
@@ -86,6 +82,4 @@
         });
     });
 </script>
-
-
 @endsection

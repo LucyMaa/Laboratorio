@@ -10,8 +10,8 @@
 @endsection
 
 
-@section('body')
-<a class="btn btn-outline-secondary btn-lg btn-block" href="{{route('Medico.create')}}" role="button">AGREGAR MEDICO</a>
+@section('body') <br>
+<a class="btn btn-outline-secondary btn-lg btn-block" href="{{route('Medico.create')}}" role="button">AGREGAR MEDICO</a> <br>
 <div class="row d-flex justify-content-center">
     <table id="example1" class="table table-bordered table-hover">
         <thead>
