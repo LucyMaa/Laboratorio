@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\persona;
 use App\User;
+use App\Acciones;
 use Illuminate\Foundation\Auth\User as AuthUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -36,6 +37,7 @@ class UserController extends Controller
         //
         //return view('inventarios.create');
         return view('usuario.create');
+       
     }
 
     /**
@@ -45,7 +47,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {    
         //
         $usuario=new User();
         $usuario->name=$request->input('name');
@@ -53,7 +55,9 @@ class UserController extends Controller
         $usuario->password=$request->input('password');
         $usuario->idPersona=$request->input('idPersona');
         $usuario->save();
+        Acciones::insertar('CREO UN USUARIO: '.$usuario->name);
         return redirect()->route('usuario.index');
+       
        /* $inventario= new inventarios();
         $inventario->precioCompra=$request->input('precioCompra');
         $inventario->precioVenta=$request->input('precioVenta');
@@ -120,13 +124,13 @@ class UserController extends Controller
     public function update(Request $request,$id)
     {
         //
-
         $user=User::findOrfail($id);
         $user->name=$request->input('name');
         $user->email=$request->input('email');
         $user->password=$request->input('password');
         $user->idPersona=$request->input('idPersona');
         $user->save();
+        Acciones::insertar('MODIFICO UN USUARIO: '.$user->name);
         return redirect()->route('usuario.index');
         /*
         DB::table('tanques')
@@ -158,8 +162,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
         $user=User::findOrfail($id)->first();
+        Acciones::insertar('ELIMINO UN USUARIO: '.$user->name);
         $user->delete();
         return redirect()->route('usuario.index');
         /*DB::table('inventarios')

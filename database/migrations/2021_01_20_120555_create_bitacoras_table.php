@@ -15,9 +15,10 @@ class CreateBitacorasTable extends Migration
     {
         Schema::create('bitacoras', function (Blueprint $table) {
             $table->id();
+            $table->String('email',50);
+            $table->string('acciones',50)->nullable();
+            $table->string('ip',50)->nullable();
             $table->timestamps();
-
-            
         });
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\inventario;
 use App\proveedor;
+use App\Acciones;
 use App\proveedor_inventario;
 use Illuminate\Http\Request;
 
@@ -32,6 +33,7 @@ class ProveedorInventarioController extends Controller
         $proveedores=proveedor::all();
         $inventarios=inventario::all();
         return view('compras.create',['proveedores'=>$proveedores,'inventarios'=>$inventarios]);
+        
     }
 
     /**
@@ -48,6 +50,7 @@ class ProveedorInventarioController extends Controller
         $compras->id_inventario=$request->id_inventario;
         $compras->id_proveedor=$request->id_proveedor;
         $compras->save();
+        Acciones::insertar('nuevo proveedor :'.'stre');
         return redirect()->route('compras.index');
     }
 
@@ -96,6 +99,7 @@ class ProveedorInventarioController extends Controller
         //
         $compra=proveedor_inventario::findOrfail($id);
         $compra->delete();
+        Acciones::insertar('nuevo proveedor : '.'destr');
         return redirect()->route('compras.index');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\muestra;
 use Illuminate\Http\Request;
+use App\Acciones;
 
 class MuestraController extends Controller
 {
@@ -19,7 +20,7 @@ class MuestraController extends Controller
      */
     public function index()
     {
-        //
+        
         $muestras=muestra::all();
         return view('muestras.index',['muestras'=>$muestras]);
     }
@@ -47,6 +48,7 @@ class MuestraController extends Controller
         $muestra=new muestra();
         $muestra->tipo=$request->tipo;
         $muestra->save();
+        Acciones::insertar('nueva muestra :'.$muestra->tipo);
         return redirect()->route('muestras.index');
     }
 
@@ -89,6 +91,7 @@ class MuestraController extends Controller
         $muestra=muestra::findOrfail($id);
         $muestra->tipo=$request->tipo;
         $muestra->update();
+        Acciones::insertar('edito la muestra :'.$muestra->tipo);
         return redirect()->route('muestras.index');
     }
 
@@ -103,6 +106,7 @@ class MuestraController extends Controller
         //
         $muestra=muestra::findOrfail($id);
         $muestra->delete();
+        Acciones::insertar('elimino la muestra :'.$muestra->tipo);
         return view('muestras.index');
     }
 }
