@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\proveedor;
+use App\Acciones;
 use Illuminate\Http\Request;
 
 class ProveedorController extends Controller
@@ -45,6 +46,7 @@ class ProveedorController extends Controller
         $proveedor->telefono=$request->telefono;
         $proveedor->descripcion=$request->descripcion;
         $proveedor->save();
+        Acciones::insertar('creo nuevo proveedor :'.$proveedor->nombre);
         return redirect()->route('proveedores.index');
     }
 
@@ -89,6 +91,7 @@ class ProveedorController extends Controller
         $proveedor->telefono=$request->telefono;
         $proveedor->descripcion=$request->descripcion;
         $proveedor->update();
+        Acciones::insertar('modifico proveedor :'.$proveedor->nombre);
         return redirect()->route('proveedores.index');
     }
 
@@ -103,6 +106,7 @@ class ProveedorController extends Controller
         //
         $proveedor=proveedor::findOrfail($id);
         $proveedor->delete();
+        Acciones::insertar('elimino proveedor :'.$proveedor->nombre);
         return redirect()->route('proveedores.index');
     }
 }

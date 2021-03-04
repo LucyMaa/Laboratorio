@@ -37,7 +37,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link ">
+                            <a href="{{route('bitacoras.index')}}" class="nav-link ">
                                 <i class="fas fa-user-circle"></i>
                                 <p>Gestion De Bitacora</p>
                             </a>
@@ -158,7 +158,7 @@
                         <li class="nav-item ">
                             <a href="{{route('pacientes.index')}}" class="nav-link ">
                                 <i class="fas fa-user-check"></i>
-                                <p>Registrar Cliente</p>
+                                <p>Registrar Paciente</p>
                             </a>
                         </li>
                         <li class="nav-item">

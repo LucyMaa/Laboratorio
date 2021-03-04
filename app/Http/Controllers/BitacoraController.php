@@ -14,7 +14,8 @@ class BitacoraController extends Controller
      */
     public function index()
     {
-        //
+        $bitacora = bitacora::all();
+        return view('bitacoras.index', compact('bitacora'));
     }
 
     /**
@@ -24,7 +25,8 @@ class BitacoraController extends Controller
      */
     public function create()
     {
-        //
+
+        //return view('bitacoras.create');
     }
 
     /**

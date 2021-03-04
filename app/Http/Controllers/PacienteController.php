@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\paciente;
 use App\persona;
+use App\Acciones;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -64,6 +65,7 @@ class PacienteController extends Controller
         $paciente->numero_contacto_de_emergencia=$request->numero_contacto_de_emergencia;
         $paciente->peso=$request->peso;
         $paciente->idPersona=$persona->id;
+        Acciones::insertar('nuevo paciente :'.$persona->nombre);
         $paciente->save();
 
         return redirect()->route('pacientes.index');
@@ -127,6 +129,7 @@ class PacienteController extends Controller
         $personas->sexo=$request->sexo;
         $personas->telefono=$request->telefono;
         $personas->update();
+        Acciones::insertar('Edito un paciente :'.$personas->nombre);
         return redirect()->route('pacientes.index');
     }
 

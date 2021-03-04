@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\medico;
 use App\persona;
+use App\Acciones;
 use CreateMedicosTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -22,15 +23,15 @@ class MedicoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         //este join estaba antes (esta bien, solo que encontre otro en google :v
         /*
         $medico = DB::table('personas')
         ->join('medicos', 'personas.id', '=', 'medicos.idPersona')->get();
         */
 
-        $medico = persona::select('personas.*','medicos.*')
-        ->join('medicos', 'personas.id', '=', 'medicos.idPersona')->get();
+        $medico = persona::select('personas.*', 'medicos.*')
+            ->join('medicos', 'personas.id', '=', 'medicos.idPersona')->get();
         //return $medico;
         return view('medico.index',  ['Medicos' => $medico]);
     }
@@ -52,8 +53,8 @@ class MedicoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {    
-        $persona = new Persona();    
+    {
+        $persona = new Persona();
         $persona->ci = $request->ci;
         $persona->nombre = $request->nombre;
         $persona->apellido = $request->apellido;
@@ -74,8 +75,8 @@ class MedicoController extends Controller
         //     'sexo' => $request->input('sexo'),
         //     'telefono' => $request->input('telefono')
         // ]);
-        
-        $medico = new Medico();    
+
+        $medico = new Medico();
         $medico->cargo = $request->cargo;
         $medico->estado = $request->estado;
         $medico->fechaDeContratacion = $request->fechac;
@@ -83,9 +84,9 @@ class MedicoController extends Controller
         $medico->sueldo = $request->SUELDO;
         $medico->idPersona = $persona->id;
         $medico->save();
+        Acciones::insertar('creo nuevo medico :' . $persona->nombre);
 
-        
-        
+
         // $medico = new Medico();
         // $medicos = medico::create([
         //     'cargo' => $request->input('cargo'),
@@ -119,7 +120,7 @@ class MedicoController extends Controller
     {
         $medico = Medico::findOrfail($id);
         $persona = Persona::findOrfail($medico->idPersona);
-        return view('medico.edit',['medico'=>$medico,'persona'=>$persona]);        
+        return view('medico.edit', ['medico' => $medico, 'persona' => $persona]);
     }
 
     /**
@@ -131,7 +132,7 @@ class MedicoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $medico = Medico::FindOrFail($id);
         /*$medico->cargo = $request->cargo;
         $medico->estado = $request->estado;
@@ -140,18 +141,18 @@ class MedicoController extends Controller
         $medico->sueldo = $request->SUELDO;
         $medico->update();
         */
-        
-        $personas=Persona::FindOrFail($medico->idPersona);
-        $personas->ci=$request->ci;
-        $personas->nombre=$request->nombre;
-        $personas->apellido=$request->apellido;
-        $personas->direccion=$request->dir;
-        $personas->fechaNacimiento=$request->nacimiento;
-        $personas->sexo=$request->sexo;
-        $personas->telefono=$request->telefono;
-        $personas->update();
-        return redirect()->route('Medico.index');
 
+        $personas = Persona::FindOrFail($medico->idPersona);
+        $personas->ci = $request->ci;
+        $personas->nombre = $request->nombre;
+        $personas->apellido = $request->apellido;
+        $personas->direccion = $request->dir;
+        $personas->fechaNacimiento = $request->nacimiento;
+        $personas->sexo = $request->sexo;
+        $personas->telefono = $request->telefono;
+        $personas->update();
+        Acciones::insertar('edito a un medico :'.$personas->nombre);
+        return redirect()->route('Medico.index');
     }
 
     /**
