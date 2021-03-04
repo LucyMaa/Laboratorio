@@ -16,11 +16,11 @@
     <table id="example1" class="table table-bordered table-hover">
         <thead>
             <tr>
-                <th scope="col">CI</th>
+                <th scope="col">ID</th>
                 <th scope="col">NOMBRE</th>
                 <th scope="col">APELLIDO</th>
                 <th scope="col">DIRECCION</th>
-                <th scope="col">FECHA NACIMIENTO</th>
+                <th scope="col">CI</th>
                 <th scope="col">SEXO</th>
                 <th scope="col">TELEFONO</th>
                 <th scope="col">ACCIONES</th>
@@ -30,11 +30,11 @@
         <tbody>
             @foreach ($Medicos as $medico)
             <tr>
-                <td class="" tabindex="0">{{$medico->ci}}</td>
+                <td class="" tabindex="0">{{$medico->id}}</td>
                 <td class="" tabindex="0">{{$medico->nombre}}</td>
                 <td class="" tabindex="0">{{$medico->apellido}}</td>
                 <td class="" tabindex="0">{{$medico->direccion}}</td>
-                <td class="" tabindex="0">{{$medico->fechaNacimiento}}</td>
+                <td class="" tabindex="0">{{$medico->ci}}</td>
                 <td class="" tabindex="0">{{$medico->sexo}}</td>
                 <td class="" tabindex="0">{{$medico->telefono}}</td>
                 <td>

@@ -107,6 +107,6 @@ class MuestraController extends Controller
         $muestra=muestra::findOrfail($id);
         $muestra->delete();
         Acciones::insertar('elimino la muestra :'.$muestra->tipo);
-        return view('muestras.index');
+        return redirect()->route('muestras.index');
     }
 }
