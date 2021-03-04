@@ -54,7 +54,7 @@ class AdministradorController extends Controller
             'sexo' => $request->input('sexo'),
             'telefono' => $request->input('telefono')
         ]);
-
+          
         $administrador = administrador::create([
 
             'fechaDeContratacion' => $request->input('fechac'),
@@ -62,6 +62,7 @@ class AdministradorController extends Controller
             'sueldo' => $request->input('SUELDO'),
             'idPersona' => $personas->id,
         ]);
+       
         return redirect()->route('empleados.index');
     }
 
