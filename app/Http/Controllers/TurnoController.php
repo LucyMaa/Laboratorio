@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\medico;
 use App\persona;
 use App\turno;
+use App\Acciones;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -63,8 +64,9 @@ class TurnoController extends Controller
      */
     public function asignar()
     {
-        //
+        
         $turnos=DB::table('turnos')->select('turnos.*')->get();
+     
         return view('turnos.asignar',['turnos'=>$turnos]);
     }
     /**
@@ -79,6 +81,7 @@ class TurnoController extends Controller
         $medico=medico::findOrfail($request->idMedico);
         $medico->idTurno=$request->idTurno;
         $medico->save();
+        Acciones::insertar('asigno un turno'.'asignarstore');
         return redirect()->route('turnos.index');
     }
     /**
@@ -95,6 +98,7 @@ class TurnoController extends Controller
         $turno->horaInicio= $request->horaInicio;
         $turno->horaFin= $request->horaFin;
         $turno->save();
+        Acciones::insertar('agrego un nuevo  turno : '.$turno->nombre);
         return redirect()->route('turnos.index');
     }
 
@@ -137,6 +141,7 @@ class TurnoController extends Controller
         $turno->horaInicio=$request->horaInicio;
         $turno->horaFin=$request->horaFin;
         $turno->update();
+        Acciones::insertar('Modifico un turno : '. $turno->nombre);
         return redirect()->route('turnos.index');
     }
 

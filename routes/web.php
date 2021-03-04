@@ -132,3 +132,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 //route::get('/inventarios','InventarioController@index')->name('inventario.index');
 //route::get('/inventarios/create','InventarioController@create')->name('inventario.create');
 //route::post('inventarios','InventarioController@store')->name('inventario.store');
+
+//facturas
+Route::get('factura', function () {
+    return view('facturas.create');
+});
+
+//bitacorA
+route::get('/bitacoras','BitacoraController@index')->name('bitacoras.index');
+route::get('bitacoras/create','BitacoraController@create')->name('bitacoras.create');
+route::post('bitacoras','BitacoraController@store')->name('bitacoras.store');

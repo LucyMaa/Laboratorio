@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\inventario;
 use Illuminate\Http\Request;
+use App\Acciones;
 
 class InventarioController extends Controller
 {
@@ -45,6 +46,7 @@ class InventarioController extends Controller
         $inventario->existencia=$request->existencia;
         $inventario->minimo=$request->minimo;
         $inventario->save();
+        Acciones::insertar('guardo en el inventario :'.$inventario->nombre);
         return redirect()->route('inventarios.index');
     }
 
@@ -90,6 +92,7 @@ class InventarioController extends Controller
         $inventario->existencia=$request->existencia;
         $inventario->minimo=$request->minimo;
         $inventario->update();
+        Acciones::insertar('modifico en el inventario :'.$inventario->nombre);
         return redirect()->route('inventarios.index');
     }
 
@@ -104,6 +107,7 @@ class InventarioController extends Controller
         //
         $inventario=inventario::findOrfail($id);
         $inventario->delete();
+        Acciones::insertar('elimino en el inventario :'.$inventario->nombre);
         return redirect()->route('inventarios.index');
     }
 }

@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Acciones;
+use App\bitacora;
 use App\Http\Controllers\Controller;
+use App\paciente;
 use App\Providers\RouteServiceProvider;
+use App\User;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest',['only'=>'showLoginForm']);
+        $this->middleware('guest', ['only' => 'showLoginForm']);
     }
 
     public function showLoginForm()
@@ -20,7 +25,7 @@ class LoginController extends Controller
         return  view('Login.login');
     }
     public function login()
-    {   
+    {
         $datos = [
             'email' => 'email|required|string',
             'password' => 'required|string'
@@ -33,15 +38,16 @@ class LoginController extends Controller
             'password.required' => 'Inserte su contraseña',
         ];
         $credentials = $this->validate(request(), $datos, $mensaje);
-        
+
         if (Auth::attempt($credentials)) {
-            return view('HOME');
+            Acciones::insertar('accedio al sistema');
+            return view('home');
         }
         echo '<script language="javascript">alert("Error de autentificacion");window.location.href="/"</script>';
     }
     public function logout()
     {
-        Auth::logout();  
+        Auth::logout();
         return redirect('/');
     }
 }
