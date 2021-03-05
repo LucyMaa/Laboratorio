@@ -44,7 +44,7 @@ class ExamenController extends Controller
         $examen->nombre=$request->nombre;
         $examen->descripcion=$request->descripcion;
         $examen->precio=$request->precio;
-        $examen->idConsulta=4;  //CORREGIRLOOOOOOO
+       // $examen->idConsulta=4;  //CORREGIRLOOOOOOO
         $examen->save();
         return redirect()->route('examenes.index');
     }

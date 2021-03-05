@@ -18,8 +18,8 @@ class CreateExamensTable extends Migration
             $table->string('nombre',70);
             $table->string('descripcion',100);
             $table->double('precio',6,2);
-            $table->unsignedBigInteger('idConsulta');
-            $table->foreign('idConsulta')->references('id')->on('consultas');
+           // $table->unsignedBigInteger('idConsulta');
+           // $table->foreign('idConsulta')->references('id')->on('consultas');
             $table->timestamps();
 
         });
