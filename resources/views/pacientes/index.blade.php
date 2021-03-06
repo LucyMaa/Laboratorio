@@ -19,7 +19,7 @@
                 <th scope="col">APELLIDO</th>
                 <th scope="col">CI</th>
                 <th scope="col">TELEFONO </th>
-                <th scope="col">CODIFO PERSONA </th>
+                <th scope="col">CODIGO PERSONA </th>
                 <th scope="col" colspan="3">ACCIONES</th>
             </tr>
             </thead>
