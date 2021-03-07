@@ -44,7 +44,7 @@
                 <span class="input-group-text">GENERO</span>
                 <select name="sexo" class="custom-select custom-select focusNext" tabindex="2">
                     <option value="MASCULINO" selected>MASCULINO</option>
-                    <option value="FEMENINO" ">FEMENINO</option>
+                    <option value="FEMENINO">FEMENINO</option>
                 </select>
 
             </div> <br>
