@@ -14,6 +14,12 @@ class usuario extends Authenticatable
      *
      * @var array
      */
+
+
+    public function persona() //es como decir le pertenece a una persona
+    {
+        return $this->hasOne(persona::class,'id','idPersona');
+    }
     protected $fillable = [
          'email', 'password','idPersona'
     ];

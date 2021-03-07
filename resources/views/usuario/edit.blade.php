@@ -24,14 +24,14 @@
             <div class="container">
                 <div class="container-sm">
                     <form method="POST" action="{{Route('usuario.update',[$user->id])}}"><br>
-                                       
+
                         @csrf
                         @method('PUT')
                         <div class="form-group">
                             <div class="alert alert-danger" role="alert">
                                 INTRODUZCA SUS DATOS :
                             </div>
-                           <div class="input-group">
+                            <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">CODIGO ASIGNADO</span>
                                 </div>
@@ -40,10 +40,10 @@
                             </div><br>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">NOMBRE</span>
+                                    <span class="input-group-text">CORREO</span>
                                 </div>
-                                <input name="name" type="text" aria-label="First name" class="form-control" placeholder="INTRODUZCA EL NOMBRE DEL NUEVO USUARIO" value="{{$user->name}}">
-                                <p class="text-danger"> {{$errors->first("name")}}</p>
+                                <input name="email" value="{{$user->email}}" type="email" class="form-control" aria-label="First name" class="form-control" placeholder="nombre@gmail.com">
+                                <p class="text-danger"> {{$errors->first("email")}}</p>
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">CONTRASEÑA</span>
                                 </div>
@@ -51,14 +51,6 @@
                                 <p class="text-danger"> {{$errors->first("password")}}</p>
                             </div> <br>
 
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">CORREO</span>
-                                </div>
-                                <input name="email" value="{{$user->email}}" type="email" class="form-control" aria-label="First name" class="form-control" placeholder="nombre@gmail.com">
-                                <p class="text-danger"> {{$errors->first("email")}}</p>
-                            </div><br>
-                          
 
                             <div class="form-group">
                                 <button id="parte1" type="submit" class="btn btn-outline-success">REGISTRAR!</button> <br><br>
@@ -68,10 +60,10 @@
                 </div>
                 <script src="/js/app.js"></script>
                 @include('layout.controlsidebar')
-                
+
             </div>
         </div>
     </div>
-   
+
 </body>
 @include('layout.footer')
