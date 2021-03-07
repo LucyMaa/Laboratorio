@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\usuario;
 use App\Acciones;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
@@ -43,7 +44,7 @@ class UsuarioController extends Controller
         $usuario=new usuario();
         //$usuario->name=$request->input('name');
         $usuario->email=$request->input('email');
-        $usuario->password=$request->input('password');
+        $usuario->password=Hash::make($request->input('password'));
         $usuario->idPersona=$request->input('idPersona');
         $usuario->save();
         Acciones::insertar('CREO UN USUARIO: '.$usuario->name);
