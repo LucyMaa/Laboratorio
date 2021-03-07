@@ -28,7 +28,7 @@
                         <tr>
 
                             <th scope="col">CODIGO USUARIO</th>
-                            <th scope="col">NOMBRE USUARIO</th>
+                           
                             <th scope="col">EMAIL </th>
                             <th scope="col">NOMBRE</th>
                             <th scope="col">APELLIDO</th>
@@ -46,9 +46,7 @@
                             <td>
                                 <h5>{{$usuario->id}}</h5>
                             </td>
-                            <td>
-                                <h5>{{$usuario->name}}</h5>
-                            </td>
+            
                             <td>
                                 <h5>{{$usuario->email}}</h5>
                             </td>

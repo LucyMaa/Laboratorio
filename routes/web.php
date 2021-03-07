@@ -61,13 +61,13 @@ route::put('clientes/{id}', 'PacienteController@update')->name('pacientes.update
 route::delete('clientes/{id}', 'PacienteController@destroy')->name('pacientes.destroy');
 
 //usuarios
-route::get('/usuarios','UserController@index')->name('usuario.index');
-route::get('usuarios/create','UserController@create')->name('usuario.create');
-route::post('usuarios','UserController@store')->name('usuario.store');
-route::get('usuarios/{id}','UserController@show')->name('usuario.show');
-route::get('usuarios/{id}/edit','UserController@edit')->name('usuario.edit');
-route::put('usuarios/{id}','UserController@update')->name('usuario.update');
-route::delete('usuarios/{id}','UserController@destroy')->name('usuario.destroy');
+route::get('/usuarios','UsuarioController@index')->name('usuario.index');
+route::get('usuarios/create','UsuarioController@create')->name('usuario.create');
+route::post('usuarios','UsuarioController@store')->name('usuario.store');
+route::get('usuarios/{id}','UsuarioController@show')->name('usuario.show');
+route::get('usuarios/{id}/edit','UsuarioController@edit')->name('usuario.edit');
+route::put('usuarios/{id}','UsuarioController@update')->name('usuario.update');
+route::delete('usuarios/{id}','UsuarioController@destroy')->name('usuario.destroy');
 
 //examenes
 route::get('/examenes','ExamenController@index')->name('examenes.index');
