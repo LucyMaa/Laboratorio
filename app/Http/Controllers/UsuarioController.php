@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\usuario;
+use App\Acciones;
 use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
@@ -15,6 +16,8 @@ class UsuarioController extends Controller
     public function index()
     {
         //
+        $usuarios=usuario::with('persona')->get();
+        return view('usuario.index',['usuarios'=>$usuarios]);
     }
 
     /**
@@ -25,6 +28,7 @@ class UsuarioController extends Controller
     public function create()
     {
         //
+        return view('usuario.create');
     }
 
     /**
@@ -36,6 +40,14 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         //
+        $usuario=new usuario();
+        //$usuario->name=$request->input('name');
+        $usuario->email=$request->input('email');
+        $usuario->password=$request->input('password');
+        $usuario->idPersona=$request->input('idPersona');
+        $usuario->save();
+        Acciones::insertar('CREO UN USUARIO: '.$usuario->name);
+        return redirect()->route('usuario.index');
     }
 
     /**
@@ -51,35 +63,49 @@ class UsuarioController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
+     * @param bigint $id
      * @param  \App\usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function edit(usuario $usuario)
+    public function edit($id)
     {
         //
+        $user= usuario::findOrfail($id);
+        return view('usuario.edit',['user'=>$user]);
     }
 
     /**
      * Update the specified resource in storage.
-     *
+     * @param bigint $id
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, usuario $usuario)
+    public function update(Request $request, $id)
     {
         //
+        $user=usuario::findOrfail($id);
+        //$user->name=$request->input('name');
+        $user->email=$request->input('email');
+        $user->password=$request->input('password');
+        $user->idPersona=$request->input('idPersona');
+        $user->save();
+        Acciones::insertar('MODIFICO UN USUARIO: '.$user->name);
+        return redirect()->route('usuario.index');
     }
 
     /**
      * Remove the specified resource from storage.
-     *
+     * @param bigint $id
      * @param  \App\usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(usuario $usuario)
+    public function destroy($id)
     {
         //
+        $user=usuario::findOrfail($id)->first();
+        Acciones::insertar('ELIMINO UN USUARIO: '.$user->name);
+        $user->delete();
+        return redirect()->route('usuario.index');
     }
 }

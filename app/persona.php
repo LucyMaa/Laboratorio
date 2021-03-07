@@ -25,7 +25,7 @@ class persona extends Model
         return $this->belongsTo(medico::class,'idPersona','id');
     }
 
-    public function user(){
+    public function usuario(){
         return $this->belongsTo(User::class,'id','id');
     }
 
