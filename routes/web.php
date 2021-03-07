@@ -126,7 +126,7 @@ route::get('compras/{id}/edit','ProveedorInventarioController@edit')->name('comp
 route::put('compras/{id}','ProveedorInventarioController@update')->name('compras.update');
 route::delete('compras/{id}','ProveedorInventarioController@destroy')->name('compras.destroy');
 
-Route::get('/home', 'HomeController@index')->name('home');
+route::get('/home', 'HomeController@index')->name('HOME');
 
 //INVENTARIO
 //route::get('/inventarios','InventarioController@index')->name('inventario.index');
