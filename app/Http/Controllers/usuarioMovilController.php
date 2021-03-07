@@ -15,13 +15,13 @@ class usuarioMovilController extends Controller
         $email = $request->email; // el input de los formularios
         $password = $request->password;
 
-        $resultado = DB::table('users')->where('email', $email)
+        $resultado = DB::table('usuarios')->where('email', $email)
             ->first();
 
         if (is_null($resultado)) {
             return json_encode("Error");
         } else {
-            if ($request->password == $resultado->password) { // comparamos contresañas
+            if(Hash::check($request->password, $resultado->password)){
                 return response()->json($resultado, 200);
             }
             return json_encode(0);
@@ -35,5 +35,9 @@ class usuarioMovilController extends Controller
                             join('pacientes','personas.id','pacientes.idPersona') ->
                             where('personas.id', $idPersona) ->get();
                             return response()->json($resultadoPersona, 200);                    
+    }
+    public function allUser(){
+        $resultado = DB::table('usuarios')->get();
+        return response()->json($resultado, 200);
     }
 }
