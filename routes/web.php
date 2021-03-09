@@ -134,9 +134,8 @@ route::get('/home', 'HomeController@index')->name('HOME');
 //route::post('inventarios','InventarioController@store')->name('inventario.store');
 
 //facturas
-Route::get('factura', function () {
-    return view('facturas.create');
-});
+route::get('/factura','FacturaController@index')->name('factura.index');
+route::post('/factura/prueba','FacturaController@prueba')->name('factura.prueba');
 
 //bitacorA
 route::get('/bitacoras','BitacoraController@index')->name('bitacoras.index');

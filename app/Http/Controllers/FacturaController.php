@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\factura;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
+
 
 class FacturaController extends Controller
 {
@@ -14,7 +17,8 @@ class FacturaController extends Controller
      */
     public function index()
     {
-        //
+        $examenes = DB::table('examens')->get();
+        return view('facturas.create', ['examenes' => $examenes]);
     }
 
     /**
@@ -81,5 +85,18 @@ class FacturaController extends Controller
     public function destroy(factura $factura)
     {
         //
+    }
+
+    public function prueba(Request $request)
+    {
+        $resp= [];
+        foreach ($request->cantidad as $key => $value) {  
+            $detalle = new Arr();
+            $detalle->cantidad= $request->cantidad[$key];
+            $detalle->descripcion= $request->descripcion[$key];
+            $detalle->subTotal= $request->subTotal[$key];
+            $resp= Arr::add($resp,$key,$detalle);
+        }
+        return $resp;
     }
 }
