@@ -1,18 +1,16 @@
-<!doctype html>
-<html lang="en">
+@extends('Layout')
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+@section('title','Table')
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
-</head>
-
-<body class="bg-light container">
+@section('body')
+<style>
+    .contenedor-boton {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+</style>
+<div class="bg-light container">
     <h1 class="display-4 text-danger">FACTURA</h1>
     <hr />
     <main>
@@ -20,79 +18,211 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title"> cabecera de fac</h3>
+                        <h3 class="card-title">DATOS DE LA FACTURA</h3>
                     </div>
                     <div class="card-body">
                         <form class="row">
                             <div class="form-group col-md-4">
                                 <label for="">NOMBRE</label>
-                                <input type="tex" class="form-control">
+                                <input id="nombre" type="tex" class="form-control">
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="">APELLIDOS</label>
-                                <input type="tex" class="form-control">
+                                <label for="">FECHA</label>
+                                <input id="fecha" type="date" class="form-control">
                             </div>
-                            <div class="form-group col-md-4">FECHA Y HORA<label for=""></label>
-                                <input type="date" class="form-control">
+                            <div class="form-group col-md-4">HORA<label for=""></label>
+                                <input id="hora" type="time" class="form-control">
                             </div>
-                            <div class="form-group col-md-8">DIRECCION<label for=""></label>
-                                <input type="tex" class="form-control">
+                            <div class="form-group col-md-8">NIT<label for=""></label>
+                                <input id="nit" type="number" class="form-control">
                             </div>
                             <div class="form-group col-md-4">TELEFONO<label for=""></label>
-                                <input type="number" class="form-control">
+                                <input id="telefono" type="number" class="form-control">
                             </div>
                             <div class="form-group col-md-4">CI<label for=""></label>
-                                <input type="number" class="form-control">
+                                <input id="ci" type="number" class="form-control">
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="row">
+        <section class="row mt-4">
             <div class="col">
                 <div class="card">
                     <div class="card-body">
                         <form class="row">
                             <div class="form-group col-md-2">
                                 <label for="">CANTIDAD</label>
-                                <input type="text" class="form-control">
+                                <input class="form-control monto" onkeyup="multi();" id="cantidad" type="number">
                             </div>
                             <div class="form-group col-md-5">
-                                <label for="">DESCRIPCION</label>
-                                <input type="text"  class="form-control">
+                                <label for="">T. EXAMEN</label>
+                                <select id="des" class="form-control">
+                                    @foreach($examenes as $examen)
+                                    <option>
+                                        {{$examen->nombre}}
+                                    </option>
+                                    @endforeach
+
+                                </select>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="">P. UNIT.</label>
-                                <input type="text" class="form-control">
+                                <input class="form-control monto" onkeyup="multi();" id="pu" type="number" class="form-control" value="{{$examen->precio}}">
                             </div>
                             <div class="form-group col-md-2">
-                                <label for="">P. TOTAL</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group col-md-1">
-                                <button type="button" class="btn btn-primary" >AGREGAR</button>
+                                <label>SUB-TOTAL</label>
+                                <span name="pt" id="pt" class="form-control monto" onkeyup="multi();" type="text">
                             </div>
                         </form>
+                        <div class="tab tab">
+                            <button class="btn btn-primary" onclick="addHtmlTableRow();">AGREGAR</button>
+                            <button class="btn btn-primary" onclick="editHtmlTbleSelectedRow();">EDITAR</button>
+                            <button class="btn btn-primary" onclick="removeSelectedRow();">ELIMINAR</button>
+                        </div>
                     </div>
+
                 </div>
+                <form METHOD="POST" ACTION="{{Route('factura.prueba')}}">
+                    @csrf
+                    <table name="tabla" id="table" class="table text-center ">
+                        <thead>
+                            <tr>
+                                <th>cantidad</th>
+                                <th>T. Examen </th>
+                                <th>P. unitario</th>
+                                <th>Sub-total</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <button class="btn btn-primary" TYPE="SUBMIT" VALUE="Enviar">enviar</button>
+                    <div class="d-flex flex-row-reverse">
+                        <div class="flex-column col-md-2" style="text-align: right;">
+                            <label>Total</label>
+                            <span name="total" id="total" class="form-control total" type="text">0</span>
+                        </div>
+                    </div>
+                </form>
+
             </div>
 
         </section>
     </main>
-</body>
+</div>
 
-<!-- Optional JavaScript; choose one of the two! -->
+<script>
+    function multi() {
+        var total = 1;
+        var change = false; //
+        $(".monto").each(function() {
+            if (!isNaN(parseFloat($(this).val()))) {
+                change = true;
+                total *= parseFloat($(this).val());
 
-<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+            }
+        });
+        // Si se modifico el valor , retornamos la multiplicación
+        // caso contrario 0
+        total = (change) ? total : 0;
+        document.getElementById('pt').innerHTML = total;
 
-<!-- Option 2: jQuery, Popper.js, and Bootstrap JS
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-    -->
-</body>
+    }
+    var rIndex,
+        table = document.getElementById("table");
 
-</html>
+    // check the empty input
+    function checkEmptyInput() {
+        var isEmpty = false,
+            cantidad = document.getElementById("cantidad").value,
+            des = document.getElementById("des").value,
+            pu = document.getElementById("pu").value;
+        pt = document.getElementById("pt").value;
+        if (cantidad === "") {
+            alert("First Name Connot Be Empty");
+            isEmpty = true;
+        } else if (des === "") {
+            alert("Last Name Connot Be Empty");
+            isEmpty = true;
+        } else if (pu === "") {
+            alert("Age Connot Be Empty");
+            isEmpty = true;
+        }
+        return isEmpty;
+    }
+
+    // add Row
+    function addHtmlTableRow() {
+        // get the table by id
+        // create a new row and cells
+        // get value from input text
+        // set the values into row cell's
+        if (!checkEmptyInput()) {
+            var newRow = table.insertRow(table.length),
+                cantidad = document.getElementById("cantidad").value,
+                des = document.getElementById("des").value,
+                pu = document.getElementById("pu").value,
+                pt = document.getElementById("pt").innerHTML,
+                total = document.getElementById("total").innerHTML;
+
+            var fila = '<tr>' +
+                '<td><input class="form-control" type="text" name="cantidad[]" value="' + cantidad + '" readonly disabled="disabled"></td>' +
+                '<td><input class="form-control" type="text" name="descripcion[]" value="' + des + '" readonly></td>' +
+                '<td><input class="form-control" type="text" name="precioU[]" value="' + pu + '" readonly></td>' +
+                '<td><input class="form-control" type="text" name="subTotal[]" value="' + pt + '" readonly></td>' +
+                '</tr>';
+
+            $('#table').append(fila);
+            document.getElementById('total').innerHTML = (parseFloat(total)+parseFloat(pt));
+
+            selectedRowToInput();
+        }
+    }
+
+    function selectedRowToInput() {
+        for (var i = 1; i < table.rows.length; i++) {
+            table.rows[i].onclick = function() {
+                // get the seected row index
+                rIndex = this.rowIndex;
+                document.getElementById("cantidad").value = this.cells[0].innerHTML;
+                document.getElementById("des").value = this.cells[1].innerHTML;
+                document.getElementById("pu").value = this.cells[2].innerHTML;
+                document.getElementById("pt").value = this.cells[3].innerHTML;
+
+            };
+        }
+    }
+    selectedRowToInput();
+
+    function editHtmlTbleSelectedRow() {
+
+        var i = 0;
+        var cantidad = document.getElementById("cantidad").value,
+            descripcion = document.getElementById("descripcion").value,
+            pu = document.getElementById("pu").value;
+        pt = document.getElementById("pt").value;
+        if (!checkEmptyInput()) {
+            table.rows[rIndex].cells[0].innerHTML = cantidad;
+            table.rows[rIndex].cells[1].innerHTML = descripcion;
+            table.rows[rIndex].cells[2].innerHTML = pu;
+            table.rows[rIndex].cells[3].innerHTML = pt;
+        }
+    }
+
+
+    function removeSelectedRow() {
+        table.deleteRow(rIndex);
+        // clear input text
+        document.getElementById("cantidad").value = "";
+        document.getElementById("descripcion").value = "";
+        document.getElementById("pu").value = "";
+        document.getElementById("pt").value = "";
+    }
+
+    $('#des').change(function() {
+        var val = $("#des option:selected").text();
+        alert(val);
+    });
+</script>
+
+@endsection

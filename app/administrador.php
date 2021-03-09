@@ -9,7 +9,8 @@ class administrador extends Model
     //
     protected $primaryKey = 'id';
     protected $fillable = [
-        'fechaDeContratacion','fechaDeBaja','sueldo','idPersona'
+        'fechaDeContratacion',
+        'fechaDeBaja','sueldo','idPersona'
       ];
 
     public function Persona(){
