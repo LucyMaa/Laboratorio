@@ -52,7 +52,7 @@ class PacienteController extends Controller
         $persona->fechaNacimiento = $request->nacimiento;
         $persona->sexo = $request->sexo;
         $persona->save();
-
+        
         $paciente=new paciente();
         $paciente->alergias=$request->alergias;
         $paciente->antecedentes_traumaticos=$request->antecedentes_traumaticos;
