@@ -141,6 +141,6 @@ class PacienteController extends Controller
      */
     public function destroy(paciente $paciente)
     {
-        //
+        
     }
 }

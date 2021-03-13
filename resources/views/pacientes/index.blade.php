@@ -9,49 +9,37 @@
 
 @endsection
 @section('body')
-<div class="container">
-    <a class="btn btn-outline-success btn-lg btn-block" href="{{route('pacientes.create')}}" role="button">AGREGAR PACIENTE </a>
+<BR></BR>
+<div class="container" style="text-align: center;">
+    <a class="btn btn-outline-success btn-lg btn-block" href="{{route('pacientes.create')}}" role="button">AGREGAR PACIENTE </a> <br>  
     <div class="row d-flex justify-content-center">
         <table id="example1" class="table table-bordered table-hover">
-            <tr>
-                <th scope="col">CODIGO PACIENTE</th>
-                <th scope="col">NOMBRE</th>
-                <th scope="col">APELLIDO</th>
-                <th scope="col">CI</th>
-                <th scope="col">TELEFONO </th>
-                <th scope="col">CODIGO PERSONA </th>
-                <th scope="col" colspan="3">ACCIONES</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th scope="col">NOMBRE</th>
+                    <th scope="col">APELLIDO</th>
+                    <th scope="col">CI</th>
+                    <th scope="col">TELEFONO </th>
+                    <th scope="col">CODIGO PERSONA </th>
+                    
+                    <th scope="col">ACCIONES</th>
+                </tr>
             </thead>
             <tbody>
                 @foreach($pacientes as $paciente)
                 <tr>
+                    <td class="" tabindex="0">{{$paciente->nombre}}</td>
+                    <td class="" tabindex="0">{{$paciente->apellido}}</td>
+                    <td class="" tabindex="0">{{$paciente->ci}}</td>
+                    <td class="" tabindex="0">{{$paciente->telefono}}</td>
+                    <td class="" tabindex="0">{{$paciente->idPersona}}</td>
                     <td>
-                        <h5>{{$paciente->id}}</h5>
-                    </td>
-                    <td>
-                        <h5>{{$paciente->nombre}}</h5>
-                    </td>
-                    <td>
-                        <h5>{{$paciente->apellido}}</h5>
-                    </td>
-                    <td>
-                        <h5>{{$paciente->ci}}</h5>
-                    </td>
-                    <td>
-                        <h5>{{$paciente->telefono}}</h5>
-                    </td>
-                    <td>
-                        <h5>{{$paciente->idPersona}}</h5>
-                    </td>
-                    <td>
-                        <a href="{{route('pacientes.edit',[$paciente->id])}}" class="btn btn-outline-success">Editar</a>
-                        <!-- <a href="{{route('pacientes.show',[$paciente->id]) }}" class="btn btn-outline-success" style="margin: 10px">Ver</a>  -->
-                        <form action="{{route('pacientes.destroy',[$paciente->id]) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type='submit' class="btn btn-danger">Eliminar</button>
-                        </form>
+                        <a  data-toggle="tooltip" data-placement="top" title="EDITAR" href="{{route('pacientes.edit',[$paciente->id])}}">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a  data-toggle="tooltip" data-placement="top" title="HISTORIAL MEDICO" href="{{route('historial.index',[$paciente->id])}}">
+                            <i class="fas fa-file-medical"></i>
+                        </a>
                     </td>
                 </tr>
                 @endforeach
@@ -69,6 +57,11 @@
 <script src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap4.min.js"></script>
 
 <script>
+    $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
+
     $(document).ready(function() {
         $('#example1').DataTable({
             responsive: true,
