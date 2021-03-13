@@ -102,6 +102,7 @@ class ExamenController extends Controller
     public function destroy($id)
     {
         //
+        
         $examen=examen::findOrfail($id);
         $examen->delete();
         return redirect()->route('examenes.index');

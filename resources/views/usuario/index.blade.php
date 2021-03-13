@@ -26,21 +26,15 @@
                 <table class="table table-bordered table-dark" style="text-align: center">
                     <thead>
                         <tr>
-
                             <th scope="col">CODIGO USUARIO</th>
-                           
                             <th scope="col">EMAIL </th>
                             <th scope="col">NOMBRE</th>
                             <th scope="col">APELLIDO</th>
                             <th scope="col">CI</th>
-
                             <th scope="col" colspan="3">ACCIONES</th>
-
-
                         </tr>
                     </thead>
                     <tbody>
-
                         @foreach($usuarios as $usuario)
                         <tr>
                             <td>
@@ -59,11 +53,10 @@
                             <td>
                                 <h5>{{$usuario->persona->ci}}</h5>
                             </td>
-
                             <td>
                                 <a href="{{route('usuario.edit',[$usuario->id])}}" class="btn btn-outline-success">Editar</a>
                                 <!-- <a href="{{route('usuario.show',[$usuario->id]) }}" class="btn btn-outline-success" style="margin: 10px">Ver</a>  -->
-                                <form action="{{route('usuario.destroy',[$usuario->id]) }}" method="POST">
+                                <form action="{{route('usuario.destroy',[$usuario->id])}}" method="POST">
 
 
                                     @csrf

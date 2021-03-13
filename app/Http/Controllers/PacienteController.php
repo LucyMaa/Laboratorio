@@ -135,12 +135,20 @@ class PacienteController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
+     * @param bigint $id
      * @param  \App\paciente  $paciente
      * @return \Illuminate\Http\Response
      */
-    public function destroy(paciente $paciente)
+    public function destroy($id)
     {
-        
+        //
+        $paciente=paciente::findOrfail($id);
+        $persona=persona::findOrfail($paciente->idPersona);
+       
+        $paciente->delete();
+        $persona->delete();
+        Acciones::insertar('ELIMINO UN PACIENTE: '.$persona->nombre);
+        return redirect()->route('pacientes.index');
     }
+    
 }
