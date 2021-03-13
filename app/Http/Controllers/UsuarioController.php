@@ -104,7 +104,7 @@ class UsuarioController extends Controller
     public function destroy($id)
     {
         //
-        $user=usuario::findOrfail($id)->first();
+        $user=usuario::findOrfail($id);
         Acciones::insertar('ELIMINO UN USUARIO: '.$user->name);
         $user->delete();
         return redirect()->route('usuario.index');

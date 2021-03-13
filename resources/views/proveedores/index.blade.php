@@ -38,11 +38,11 @@
                     <form action="{{route('proveedores.destroy',[$proveedor->id])}}" method="POST" id="myform">
                         @csrf
                         @method('DELETE')
-                        <a href="#" onclick="document.getElementById('myform').submit()">
+                       <!-- <a href="#" onclick="document.getElementById('myform').submit()">
                             <i class="fas fa-trash"></i>
-                        </a>
+                        </a>  -->
 
-
+                        <button type='submit'><i class="fas fa-trash"></i></button>
                         <a href="{{route('proveedores.edit',[$proveedor->id])}}">
                             <i class="fas fa-edit"></i>
                         </a>

@@ -33,15 +33,11 @@
                 <td class="" tabindex="0">{{$examen->precio}}</td>
 
                 <td>
-                    <form action="{{route('examenes.destroy',[$examen->id]) }}" method="POST" id="myform">
+                    <form action="{{route('examenes.destroy',[$examen->id])}}" method="POST" id="myform">
                         @csrf
                         @method('DELETE')
 
-
-                        <a href="#" onclick="document.getElementById('myform').submit()">
-                            <i class="fas fa-trash"></i>
-                        </a>
-
+                        <button type='submit'><i class="fas fa-trash"></i></button>
 
                         <a href="{{route('examenes.edit',[$examen->id])}}">
                             <i class="fas fa-edit"></i>
@@ -51,6 +47,7 @@
                         </a>
                     </form>
                 </td>
+
             </tr>
             @endforeach
         </tbody>

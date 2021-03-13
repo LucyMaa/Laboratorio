@@ -47,7 +47,7 @@
                     <td>
                         <a href="{{route('pacientes.edit',[$paciente->id])}}" class="btn btn-outline-success">Editar</a>
                         <!-- <a href="{{route('pacientes.show',[$paciente->id]) }}" class="btn btn-outline-success" style="margin: 10px">Ver</a>  -->
-                        <form action="{{route('pacientes.destroy',[$paciente->id]) }}" method="POST">
+                        <form action="{{route('pacientes.destroy',[$paciente->id])}}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type='submit' class="btn btn-danger">Eliminar</button>

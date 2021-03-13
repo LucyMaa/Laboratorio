@@ -32,9 +32,10 @@
                     <form action="{{route('muestras.destroy',[$muestra->id]) }}" method="POST" id="myform">
                         @csrf
                         @method('DELETE')
-                        <a href="#" onclick="document.getElementById('myform').submit()">
+                       <!-- <a href="#" onclick="document.getElementById('myform').submit()">
                             <i class="fas fa-trash"></i>
-                        </a>
+                        </a> -->
+                        <button type='submit'><i class="fas fa-trash"></i></button>
                         <a href="{{route('muestras.edit',[$muestra->id])}}">
                             <i class="fas fa-edit"></i>
                         </a>

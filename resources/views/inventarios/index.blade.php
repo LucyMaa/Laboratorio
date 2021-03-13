@@ -38,11 +38,9 @@
                     <form action="{{route('inventarios.destroy',[$inventario->id])}}" method="POST" id="myform">
                         @csrf
                         @method('DELETE')
-                        <a href="#" onclick="document.getElementById('myform').submit()">
-                            <i class="fas fa-trash"></i>
-                        </a>
+                        
 
-
+                        <button type='submit'><i class="fas fa-trash"></i></button>
                         <a href="{{route('inventarios.edit',[$inventario->id])}}">
                             <i class="fas fa-edit"></i>
                         </a>
