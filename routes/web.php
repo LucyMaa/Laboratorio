@@ -136,8 +136,15 @@ route::get('/home', 'HomeController@index')->name('HOME');
 //facturas
 route::get('/factura','FacturaController@index')->name('factura.index');
 route::post('/factura/prueba','FacturaController@prueba')->name('factura.prueba');
-
+route::get('/print','FacturaController@print')->name('factura.print');
 //bitacorA
 route::get('/bitacoras','BitacoraController@index')->name('bitacoras.index');
 route::get('bitacoras/create','BitacoraController@create')->name('bitacoras.create');
 route::post('bitacoras','BitacoraController@store')->name('bitacoras.store');
+
+
+//historial
+route::get('/historial','ConsultaController@index')->name('historial.index');
+
+//resultados
+route::get('/resultado','ResultadoController@index')->name('resultado.index');

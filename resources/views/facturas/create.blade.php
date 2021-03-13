@@ -26,21 +26,56 @@
                                 <label for="">NOMBRE</label>
                                 <input id="nombre" type="tex" class="form-control">
                             </div>
+                            <div class="form-group col-md-4">ID FACTURA<label for=""></label>
+                                <input id="id" type="number" class="form-control" disabled="disabled">
+                            </div>
                             <div class="form-group col-md-4">
                                 <label for="">FECHA</label>
-                                <input id="fecha" type="date" class="form-control">
+                                <input id="fecha"  class="form-control" value="{{date('d/m/y')}}" disabled="disabled">
                             </div>
                             <div class="form-group col-md-4">HORA<label for=""></label>
-                                <input id="hora" type="time" class="form-control">
+                                <input id="hora"  class="form-control" value="{{ date('H:i:s') }}" disabled="disabled">
                             </div>
-                            <div class="form-group col-md-8">NIT<label for=""></label>
+                            <div class="form-group col-md-4">NIT/CI<label for=""></label>
                                 <input id="nit" type="number" class="form-control">
                             </div>
                             <div class="form-group col-md-4">TELEFONO<label for=""></label>
                                 <input id="telefono" type="number" class="form-control">
                             </div>
-                            <div class="form-group col-md-4">CI<label for=""></label>
-                                <input id="ci" type="number" class="form-control">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <section class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">DATOS DEL PACIENTE</h3>
+                    </div>
+                    <div class="card-body">
+                        <form class="row">
+                            <div class="form-group col-md-4">
+                                <label for="">NOMBRE</label>
+                                <input id="nombre" type="tex" class="form-control">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="">APELLIDOS</label>
+                                <input id="apellido" type="tex" class="form-control">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="">FECHA  DE NACIMIENTO</label>
+                                <input id="fecha" type="date" class="form-control" value="">
+                            </div>                           
+                            <div class="form-group col-md-4">SEXO<label for=""></label>
+                                <input id="sexo" type="number" class="form-control">
+                            </div>
+                            <div class="form-group col-md-4">DIRECCION<label for=""></label>
+                                <input id="direccion" type="text" class="form-control">
+                            </div>
+                            <div class="form-group col-md-4">TELEFONO<label for=""></label>
+                                <input id="telefono" type="number" class="form-control">
                             </div>
                         </form>
                     </div>
@@ -49,6 +84,7 @@
         </section>
         <section class="row mt-4">
             <div class="col">
+            
                 <div class="card">
                     <div class="card-body">
                         <form class="row">
@@ -61,15 +97,14 @@
                                 <select id="des" class="form-control">
                                     @foreach($examenes as $examen)
                                     <option>
-                                        {{$examen->nombre}}
+                                        {{$examen->nombre}} Bs. {{$examen->precio}}
                                     </option>
                                     @endforeach
-
                                 </select>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="">P. UNIT.</label>
-                                <input class="form-control monto" onkeyup="multi();" id="pu" type="number" class="form-control" value="{{$examen->precio}}">
+                                <input class="form-control monto" onkeyup="multi();" id="pu" type="number" class="form-control" value="">
                             </div>
                             <div class="form-group col-md-2">
                                 <label>SUB-TOTAL</label>
@@ -104,7 +139,6 @@
                         </div>
                     </div>
                 </form>
-
             </div>
 
         </section>
@@ -166,7 +200,7 @@
                 total = document.getElementById("total").innerHTML;
 
             var fila = '<tr>' +
-                '<td><input class="form-control" type="text" name="cantidad[]" value="' + cantidad + '" readonly disabled="disabled"></td>' +
+                '<td><input class="form-control" type="text" name="cantidad[]" value="' + cantidad + '" readonly ></td>' +
                 '<td><input class="form-control" type="text" name="descripcion[]" value="' + des + '" readonly></td>' +
                 '<td><input class="form-control" type="text" name="precioU[]" value="' + pu + '" readonly></td>' +
                 '<td><input class="form-control" type="text" name="subTotal[]" value="' + pt + '" readonly></td>' +
