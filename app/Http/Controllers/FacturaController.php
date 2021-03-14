@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\detalleFactura;
 use App\factura;
 use App\paciente;
 use App\persona;
@@ -22,8 +23,8 @@ class FacturaController extends Controller
         //->join('pacientes', 'personas.id', '=', 'pacientes.idPersona')->get();
         //return view('pacientes.index',['pacientes'=>$paciente]);
 
-        $examenes = DB::table('examens')->get();
-        return view('facturas.create', ['examenes' => $examenes]);
+      //  $examenes = DB::table('examens')->get();
+        //return view('facturas.create', ['examenes' => $examenes]);
     }
     public function print()
     {
@@ -42,13 +43,29 @@ class FacturaController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+     * @param bigint $id
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         //
+        $factura=new factura();
+        $factura->fecha=$request->fecha;
+        $factura->hora=$request->hora;
+        $factura->nit=$request->nit;
+        $factura->total=$request->total;
+        $factura->idPaciente=$request->idPaciente;
+        $factura->save();
+
+        $detalleFactura=new detalleFactura();
+        $detalleFactura->cantidad=$request->cantidad;
+        $detalleFactura->descripcion=$request->descripcion;
+        $detalleFactura->subtotal=$request->subtotal;
+        $detalleFactura->idFactura=$factura->id;
+        $detalleFactura->idExamen=$request->idExamen;
+        $detalleFactura->save();
+        return redirect()->route('examenes.index'); 
     }
 
     /**

@@ -58,24 +58,24 @@
                         <form class="row">
                             <div class="form-group col-md-4">
                                 <label for="">NOMBRE</label>
-                                <input id="nombre" type="tex" class="form-control">
+                                <input id="nombre" type="tex" class="form-control" value="{{$persona->nombre}}">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="">APELLIDOS</label>
-                                <input id="apellido" type="tex" class="form-control">
+                                <input id="apellido" type="tex" class="form-control" value="{{$persona->apellido}}">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="">FECHA  DE NACIMIENTO</label>
-                                <input id="fecha" type="date" class="form-control" value="">
+                                <input id="fecha" type="date" class="form-control" value="{{$persona->fechaNacimiento}}">
                             </div>                           
                             <div class="form-group col-md-4">SEXO<label for=""></label>
-                                <input id="sexo" type="number" class="form-control">
+                                <input id="sexo" type="text" class="form-control" value="{{$persona->sexo}}">
                             </div>
                             <div class="form-group col-md-4">DIRECCION<label for=""></label>
-                                <input id="direccion" type="text" class="form-control">
+                                <input id="direccion" type="text" class="form-control" value="{{$persona->direccion}}">
                             </div>
                             <div class="form-group col-md-4">TELEFONO<label for=""></label>
-                                <input id="telefono" type="number" class="form-control">
+                                <input id="telefono" type="number" class="form-control" value="{{$persona->telefono}}">
                             </div>
                         </form>
                     </div>
