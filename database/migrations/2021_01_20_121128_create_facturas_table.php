@@ -19,6 +19,8 @@ class CreateFacturasTable extends Migration
             $table->time('hora');
             $table->Integer('nit')->nullable();
             $table->double('total',8,2);
+            $table->String('nombre',70);
+            $table->Integer('telefono')->nullable();
             $table->unsignedBigInteger('idPaciente');
             $table->foreign('idPaciente')->references('id')->on('pacientes');
             $table->timestamps();

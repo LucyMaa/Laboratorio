@@ -24,11 +24,9 @@
                         <form class="row">
                             <div class="form-group col-md-4">
                                 <label for="">NOMBRE</label>
-                                <input id="nombre" type="tex" class="form-control">
+                                <input id="nombreFactura" type="tex" class="form-control">
                             </div>
-                            <div class="form-group col-md-4">ID FACTURA<label for=""></label>
-                                <input id="id" type="number" class="form-control" disabled="disabled">
-                            </div>
+                           
                             <div class="form-group col-md-4">
                                 <label for="">FECHA</label>
                                 <input id="fecha"  class="form-control" value="{{date('d/m/y')}}" disabled="disabled">
@@ -40,7 +38,7 @@
                                 <input id="nit" type="number" class="form-control">
                             </div>
                             <div class="form-group col-md-4">TELEFONO<label for=""></label>
-                                <input id="telefono" type="number" class="form-control">
+                                <input id="telefonoFactura" type="number" class="form-control">
                             </div>
                         </form>
                     </div>
@@ -119,7 +117,7 @@
                     </div>
 
                 </div>
-                <form METHOD="POST" ACTION="{{Route('factura.prueba')}}">
+                <form METHOD="POST" ACTION="{{Route('factura.store',[$paciente->id])}}">
                     @csrf
                     <table name="tabla" id="table" class="table text-center ">
                         <thead>

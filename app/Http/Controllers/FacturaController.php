@@ -47,7 +47,7 @@ class FacturaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$idPaciente)
     {
         //
         $factura=new factura();
@@ -55,7 +55,9 @@ class FacturaController extends Controller
         $factura->hora=$request->hora;
         $factura->nit=$request->nit;
         $factura->total=$request->total;
-        $factura->idPaciente=$request->idPaciente;
+        $factura->nombre=$request->nombreFactura;
+        $factura->telefono=$request->telefono;
+        $factura->idPaciente=$idPaciente;
         $factura->save();
 
         $detalleFactura=new detalleFactura();
