@@ -22,8 +22,8 @@ class FacturaController extends Controller
         //->join('pacientes', 'personas.id', '=', 'pacientes.idPersona')->get();
         //return view('pacientes.index',['pacientes'=>$paciente]);
 
-        $examenes = DB::table('examens')->get();
-        return view('facturas.create', ['examenes' => $examenes]);
+      //  $examenes = DB::table('examens')->get();
+        //return view('facturas.create', ['examenes' => $examenes]);
     }
     public function print()
     {
