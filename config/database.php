@@ -62,7 +62,7 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
-
+/*
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
@@ -76,8 +76,8 @@ return [
             'prefix_indexes' => true,
             'schema' => 'public',
             'sslmode' => 'prefer',
-        ],
-        /*'pgsql' => [
+        ], */
+        'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
@@ -90,7 +90,14 @@ return [
             'prefix_indexes' => true,
             'schema' => 'public',
             'sslmode' => 'prefer',
-        ],*/
+            'dump' => [
+                'dump_binary_path' => 'D:\Programas CTC\PostgreSQL\12\bin', // only the path, so without `mysqldump` or `pg_dump`
+                'use_single_transaction',
+                'timeout' => 60 * 5, // 5 minute timeout
+               // 'exclude_tables' => ['table1', 'table2'],
+                //'add_extra_option' => '--optionname=optionvalue',
+             ] ,
+        ],
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',

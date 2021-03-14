@@ -149,5 +149,14 @@ class PacienteController extends Controller
         Acciones::insertar('ELIMINO UN PACIENTE: '.$persona->nombre);
         return redirect()->route('pacientes.index');
     }
+
+
+
+    
+
+    
+
+
+  
     
 }
