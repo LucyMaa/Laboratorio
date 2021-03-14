@@ -8,7 +8,7 @@ use App\persona;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\ViewErrorBag;
 
 class FacturaController extends Controller
 {
@@ -18,11 +18,18 @@ class FacturaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   // $paciente = DB::table('personas')
+        //->join('pacientes', 'personas.id', '=', 'pacientes.idPersona')->get();
+        //return view('pacientes.index',['pacientes'=>$paciente]);
+
         $examenes = DB::table('examens')->get();
         return view('facturas.create', ['examenes' => $examenes]);
     }
-
+    public function print()
+    {
+        return  view('facturas.print');
+        
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -117,13 +124,15 @@ class FacturaController extends Controller
     public function prueba(Request $request)
     {
         $resp = [];
+        $suma = 0;
         foreach ($request->cantidad as $key => $value) {
             $detalle = new Arr();
             $detalle->cantidad = $request->cantidad[$key];
             $detalle->descripcion = $request->descripcion[$key];
             $detalle->subTotal = $request->subTotal[$key];
             $resp = Arr::add($resp, $key, $detalle);
+            $suma = $suma + $request->subTotal[$key];
         }
-        return $resp;
+        return $suma;
     }
 }

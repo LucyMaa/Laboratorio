@@ -143,8 +143,7 @@ class PacienteController extends Controller
     {
         //
         $paciente=paciente::findOrfail($id);
-        $persona=persona::findOrfail($paciente->idPersona);
-       
+        $persona=persona::findOrfail($paciente->idPersona); 
         $paciente->delete();
         $persona->delete();
         Acciones::insertar('ELIMINO UN PACIENTE: '.$persona->nombre);
