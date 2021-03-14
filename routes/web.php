@@ -138,6 +138,7 @@ route::get('/home', 'HomeController@index')->name('HOME');
 route::get('/factura','FacturaController@index')->name('factura.index');
 route::post('/factura/prueba','FacturaController@prueba')->name('factura.prueba');
 route::get('buscador','FacturaController@buscador')->name('factura.buscador');
+route::post('facturas','FacturaController@store')->name('factura.store');
 
 route::get('/print','FacturaController@print')->name('factura.print');
 //bitacorA
