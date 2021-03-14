@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\factura;
+use App\paciente;
+use App\persona;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
@@ -86,16 +88,41 @@ class FacturaController extends Controller
     {
         //
     }
-
+    public function buscador(Request $request)
+    {
+        $paciente = paciente::findOrfail($request->codigo);
+        if ($paciente) {
+            $persona = persona::findOrfail($paciente->idPersona);
+            $examenes = DB::table('examens')->get();
+            return view('facturas.create', ['examenes' => $examenes,'paciente'=>$paciente,'persona'=>$persona]);
+            
+        }
+        if (!$paciente) {
+            //return view('clientes/create');
+            return 'No existe el paciente';
+        }
+    }
+    /*public function buscador(Request $request)
+    {
+        $vehiculos = vehiculos::where('placa', $request->nroplaca)->first();
+        if ($vehiculos) {
+            $clientes = clientes::where('ci', $vehiculos->ci_cliente)->first();
+            $combustibles=DB::table('combustibles')->select('combustibles.*')->get();
+            return view('facturas.create', compact('vehiculos', 'clientes','combustibles'));
+        }
+        if (!$vehiculos) {
+            return view('clientes/create');
+        }
+    }*/
     public function prueba(Request $request)
     {
-        $resp= [];
-        foreach ($request->cantidad as $key => $value) {  
+        $resp = [];
+        foreach ($request->cantidad as $key => $value) {
             $detalle = new Arr();
-            $detalle->cantidad= $request->cantidad[$key];
-            $detalle->descripcion= $request->descripcion[$key];
-            $detalle->subTotal= $request->subTotal[$key];
-            $resp= Arr::add($resp,$key,$detalle);
+            $detalle->cantidad = $request->cantidad[$key];
+            $detalle->descripcion = $request->descripcion[$key];
+            $detalle->subTotal = $request->subTotal[$key];
+            $resp = Arr::add($resp, $key, $detalle);
         }
         return $resp;
     }

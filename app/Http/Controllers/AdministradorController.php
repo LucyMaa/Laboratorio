@@ -34,7 +34,14 @@ class AdministradorController extends Controller
         //
         return view('empleados.create');
     }
-
+    public function backup()  //no sirve :c
+    {
+        //
+        $this->command('backup:run');
+        return 'hecho';
+    }
+    
+    
     /**
      * Store a newly created resource in storage.
      *

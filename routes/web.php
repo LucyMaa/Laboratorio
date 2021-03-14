@@ -48,6 +48,7 @@ route::get('empleados1/{id}', 'AdministradorController@update1')->name('empleado
 route::put('empleados1/{id}', 'AdministradorController@update1')->name('empleados.delete');
 route::delete('empleados/{id}', 'AdministradorController@destroy')->name('empleados.destroy');
 
+
 route::get('empleados2/{id}/edit', 'AdministradorController@edit')->name('empleados.edit1');
 route::put('empleados2/{id}', 'AdministradorController@update')->name('empleados.update1');
 
@@ -136,8 +137,10 @@ route::get('/home', 'HomeController@index')->name('HOME');
 //facturas
 route::get('/factura','FacturaController@index')->name('factura.index');
 route::post('/factura/prueba','FacturaController@prueba')->name('factura.prueba');
+route::get('buscador','FacturaController@buscador')->name('factura.buscador');
 
 //bitacorA
 route::get('/bitacoras','BitacoraController@index')->name('bitacoras.index');
 route::get('bitacoras/create','BitacoraController@create')->name('bitacoras.create');
 route::post('bitacoras','BitacoraController@store')->name('bitacoras.store');
+
