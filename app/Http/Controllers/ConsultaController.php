@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\consulta;
 use App\consulta_examen;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ConsultaController extends Controller
 {
@@ -14,8 +15,12 @@ class ConsultaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return  view('historial.index');
+    {   
+        $paciente = DB::table('personas')
+        ->join('pacientes', 'personas.id', '=', 'pacientes.idPersona')->get();
+        return  view('historial.index',['paciente'=>$paciente[0]]);
+  
+        
     }
 
     /**

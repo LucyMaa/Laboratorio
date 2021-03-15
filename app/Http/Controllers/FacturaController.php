@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\detalleFactura;
 use App\factura;
 use App\paciente;
+use App\Acciones;
+use App\examen;
 use App\persona;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -23,13 +25,12 @@ class FacturaController extends Controller
         //->join('pacientes', 'personas.id', '=', 'pacientes.idPersona')->get();
         //return view('pacientes.index',['pacientes'=>$paciente]);
 
-      //  $examenes = DB::table('examens')->get();
+        //  $examenes = DB::table('examens')->get();
         //return view('facturas.create', ['examenes' => $examenes]);
     }
-    public function print()
+    public function print(Request $request)
     {
         return  view('facturas.print');
-        
     }
     /**
      * Show the form for creating a new resource.
@@ -47,27 +48,27 @@ class FacturaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$idPaciente)
+    public function store(Request $request, $idPaciente)
     {
         //
-        $factura=new factura();
-        $factura->fecha=$request->fecha;
-        $factura->hora=$request->hora;
-        $factura->nit=$request->nit;
-        $factura->total=$request->total;
-        $factura->nombre=$request->nombreFactura;
-        $factura->telefono=$request->telefono;
-        $factura->idPaciente=$idPaciente;
+        $factura = new factura();
+        $factura->fecha = $request->fecha;
+        $factura->hora = $request->hora;
+        $factura->nit = $request->nit;
+        $factura->total = $request->total;
+        $factura->nombre = $request->nombreFactura;
+        $factura->telefono = $request->telefono;
+        $factura->idPaciente = $idPaciente;
         $factura->save();
 
-        $detalleFactura=new detalleFactura();
-        $detalleFactura->cantidad=$request->cantidad;
-        $detalleFactura->descripcion=$request->descripcion;
-        $detalleFactura->subtotal=$request->subtotal;
-        $detalleFactura->idFactura=$factura->id;
-        $detalleFactura->idExamen=$request->idExamen;
+        $detalleFactura = new detalleFactura();
+        $detalleFactura->cantidad = $request->cantidad;
+        $detalleFactura->descripcion = $request->descripcion;
+        $detalleFactura->subtotal = $request->subtotal;
+        $detalleFactura->idFactura = $factura->id;
+        $detalleFactura->idExamen = $request->idExamen;
         $detalleFactura->save();
-        return redirect()->route('examenes.index'); 
+        return redirect()->route('examenes.index');
     }
 
     /**
@@ -120,8 +121,7 @@ class FacturaController extends Controller
         if ($paciente) {
             $persona = persona::findOrfail($paciente->idPersona);
             $examenes = DB::table('examens')->get();
-            return view('facturas.create', ['examenes' => $examenes,'paciente'=>$paciente,'persona'=>$persona]);
-            
+            return view('facturas.create', ['examenes' => $examenes, 'paciente' => $paciente, 'persona' => $persona]);
         }
         if (!$paciente) {
             //return view('clientes/create');
@@ -144,14 +144,35 @@ class FacturaController extends Controller
     {
         $resp = [];
         $suma = 0;
+        $factura = new factura();
+        $factura->idPaciente = $request->id[0];
+        $factura->nombre = $request->nombre[0];
+        $factura->fechahora = date(DATE_RSS);
+        $factura->nit =  $request->nit[0];
+        $factura->total = 0;
+        $factura->save();
+
         foreach ($request->cantidad as $key => $value) {
-            $detalle = new Arr();
+            $examenes = examen::where('nombre', '=', $request->descripcion[$key])->first();
+            $detalle = new detalleFactura();
             $detalle->cantidad = $request->cantidad[$key];
             $detalle->descripcion = $request->descripcion[$key];
             $detalle->subTotal = $request->subTotal[$key];
-            $resp = Arr::add($resp, $key, $detalle);
+            $detalle->idFactura = $factura->id;
+            $detalle->idExamen = $examenes->id;
             $suma = $suma + $request->subTotal[$key];
+
+            $detalle->save();
         }
-        return $suma;
+        $factura->total = $suma;
+        $factura->update();
+
+        $x = detalleFactura::where('idFactura', '=', $factura->id)->get();
+
+
+
+
+        Acciones::insertar('facturo : ' . $suma);
+        return view('facturas.print', ['detalles'=> $x,'factura'=>$factura]);
     }
 }
