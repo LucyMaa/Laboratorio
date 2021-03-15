@@ -24,21 +24,20 @@
                         <form class="row">
                             <div class="form-group col-md-4">
                                 <label for="">NOMBRE</label>
-                                <input id="nombreFactura" type="tex" class="form-control">
+                                <input class="form-control monto" name="nombre" id="nombre" type="text">
                             </div>
-                           
                             <div class="form-group col-md-4">
                                 <label for="">FECHA</label>
-                                <input id="fecha"  class="form-control" value="{{date('d/m/y')}}" disabled="disabled">
+                                <input id="fecha" class="form-control" value="{{date('d/m/y')}}" disabled="disabled">
                             </div>
                             <div class="form-group col-md-4">HORA<label for=""></label>
-                                <input id="hora"  class="form-control" value="{{ date('H:i:s') }}" disabled="disabled">
+                                <input id="hora" class="form-control" value="{{ date('H:i:s') }}" disabled="disabled">
                             </div>
                             <div class="form-group col-md-4">NIT/CI<label for=""></label>
-                                <input id="nit" type="number" class="form-control">
+                                <input id="nit" name="nit" type="number" class="form-control">
                             </div>
-                            <div class="form-group col-md-4">TELEFONO<label for=""></label>
-                                <input id="telefonoFactura" type="number" class="form-control">
+                            <div class="form-group col-md-4">ID<label for=""></label>
+                                <input id="id" name="id" type="number" class="form-control" value="{{$persona->id}}" disabled="disabled">
                             </div>
                         </form>
                     </div>
@@ -56,16 +55,16 @@
                         <form class="row">
                             <div class="form-group col-md-4">
                                 <label for="">NOMBRE</label>
-                                <input id="nombre" type="tex" class="form-control" value="{{$persona->nombre}}">
+                                <span class="form-control " type="text">{{$persona->nombre}} </span>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="">APELLIDOS</label>
                                 <input id="apellido" type="tex" class="form-control" value="{{$persona->apellido}}">
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="">FECHA  DE NACIMIENTO</label>
+                                <label for="">FECHA DE NACIMIENTO</label>
                                 <input id="fecha" type="date" class="form-control" value="{{$persona->fechaNacimiento}}">
-                            </div>                           
+                            </div>
                             <div class="form-group col-md-4">SEXO<label for=""></label>
                                 <input id="sexo" type="text" class="form-control" value="{{$persona->sexo}}">
                             </div>
@@ -82,7 +81,7 @@
         </section>
         <section class="row mt-4">
             <div class="col">
-            
+
                 <div class="card">
                     <div class="card-body">
                         <form class="row">
@@ -95,8 +94,9 @@
                                 <select id="des" class="form-control">
                                     @foreach($examenes as $examen)
                                     <option>
-                                        {{$examen->nombre}} Bs. {{$examen->precio}}
-                                    </option>
+                                    {{$examen->nombre}}
+        
+                                    </option>         
                                     @endforeach
                                 </select>
                             </div>
@@ -113,11 +113,11 @@
                             <button class="btn btn-primary" onclick="addHtmlTableRow();">AGREGAR</button>
                             <button class="btn btn-primary" onclick="editHtmlTbleSelectedRow();">EDITAR</button>
                             <button class="btn btn-primary" onclick="removeSelectedRow();">ELIMINAR</button>
+
                         </div>
                     </div>
-
                 </div>
-                <form METHOD="POST" ACTION="{{Route('factura.store',[$paciente->id])}}">
+                <form METHOD="POST" ACTION="{{Route('factura.prueba')}}">
                     @csrf
                     <table name="tabla" id="table" class="table text-center ">
                         <thead>
@@ -125,7 +125,7 @@
                                 <th>cantidad</th>
                                 <th>T. Examen </th>
                                 <th>P. unitario</th>
-                                <th>Sub-total</th>
+                                <th>Sub-total</th>                        
                             </tr>
                         </thead>
                     </table>
@@ -195,6 +195,9 @@
                 des = document.getElementById("des").value,
                 pu = document.getElementById("pu").value,
                 pt = document.getElementById("pt").innerHTML,
+                nombre = document.getElementById("nombre").value,
+                nit = document.getElementById("nit").value,
+                id= document.getElementById("id").value,
                 total = document.getElementById("total").innerHTML;
 
             var fila = '<tr>' +
@@ -202,10 +205,13 @@
                 '<td><input class="form-control" type="text" name="descripcion[]" value="' + des + '" readonly></td>' +
                 '<td><input class="form-control" type="text" name="precioU[]" value="' + pu + '" readonly></td>' +
                 '<td><input class="form-control" type="text" name="subTotal[]" value="' + pt + '" readonly></td>' +
+                '<td><input class="form-control d-none" type="text" name="nombre[]" value="' + nombre + '" readonly></td>' +
+                '<td><input class="form-control d-none" type="text" name="nit[]" value="' + nit + '" readonly></td>' +
+                '<td><input class="form-control d-none" type="text" name="id[]" value="' + id + '" readonly></td>' +
                 '</tr>';
 
             $('#table').append(fila);
-            document.getElementById('total').innerHTML = (parseFloat(total)+parseFloat(pt));
+            document.getElementById('total').innerHTML = (parseFloat(total) + parseFloat(pt));
 
             selectedRowToInput();
         }

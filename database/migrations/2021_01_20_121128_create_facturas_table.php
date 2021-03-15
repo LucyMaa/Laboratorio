@@ -15,12 +15,10 @@ class CreateFacturasTable extends Migration
     {
         Schema::create('facturas', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha');
-            $table->time('hora');
+            $table->string('fechahora',50)->nullable();
             $table->Integer('nit')->nullable();
             $table->double('total',8,2);
             $table->String('nombre',70);
-            $table->Integer('telefono')->nullable();
             $table->unsignedBigInteger('idPaciente');
             $table->foreign('idPaciente')->references('id')->on('pacientes');
             $table->timestamps();
