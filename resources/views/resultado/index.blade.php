@@ -1,65 +1,76 @@
 @extends('Layout')
 
 @section('title','Table')
+@section('css')
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.bootstrap4.min.css">
+
+@endsection
+
 
 @section('body') <br>
+<div class="container">
+    <div class="row d-flex justify-content-center" style="text-align:center">
+        <table id="example1" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">NOMBRE</th>
+                    <th scope="col">DESCRIPCION</th>
+                    <th scope="col">PRECIO</th>
+                    <th scope="col">ACCION</th>
 
-<div style="text-align: center;" class="container">
-    <h1 class="display-4 text">RESULTADO</h1>
-    <hr />
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th style="width: 10px">#</th>
-                <th>PARAMETRO</th>
-                <th>VALOR</th>
-                <th>UNIDAD</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1.</td>
-                <td>Update software</td>
-                <td>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                    </div>
-                </td>
-                <td><span class="badge bg-danger">55%</span></td>
-            </tr>
-            <tr>
-                <td>2.</td>
-                <td>Clean database</td>
-                <td>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar bg-warning" style="width: 70%"></div>
-                    </div>
-                </td>
-                <td><span class="badge bg-warning">70%</span></td>
-            </tr>
-            <tr>
-                <td>3.</td>
-                <td>Cron job running</td>
-                <td>
-                    <div class="progress progress-xs progress-striped active">
-                        <div class="progress-bar bg-primary" style="width: 30%"></div>
-                    </div>
-                </td>
-                <td><span class="badge bg-primary">30%</span></td>
-            </tr>
-            <tr>
-                <td>4.</td>
-                <td>Fix and squish bugs</td>
-                <td>
-                    <div class="progress progress-xs progress-striped active">
-                        <div class="progress-bar bg-success" style="width: 90%"></div>
-                    </div>
-                </td>
-                <td><span class="badge bg-success">90%</span></td>
-            </tr>
-        </tbody>
-    </table>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($examenes as $examen)
+                <tr>
+                    <td class="" tabindex="0">{{$examen->id}}</td>
+                    <td class="" tabindex="0">{{$examen->nombre}}</td>
+                    <td class="" tabindex="0">{{$examen->descripcion}}</td>
+                    <td class="" tabindex="0">{{$examen->precio}}</td>
+                    <td>
+                            <a href="{{Route('analisis.index',[$examen->id])}}">
+                                <i class="fas fa-eye"></i>
+                            </a>                  
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>
+@endsection
+
+@section('js')
+
+<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap4.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#example1').DataTable({
+            responsive: true,
+            autoWith: false,
+            language: {
+                "lengthMenu": "Mostrar _MENU_ registros por página",
+                "zeroRecords": "Nada encontrado - Disculpa",
+                "info": "Mostrando la página _PAGE_ de _PAGES_",
+                "infoEmpty": "No records available",
+                "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                "search": "Buscar:",
+                "paginate": {
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            }
+        });
+    });
+</script>
 
 
 @endsection

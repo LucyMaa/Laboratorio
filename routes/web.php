@@ -148,7 +148,7 @@ route::post('bitacoras','BitacoraController@store')->name('bitacoras.store');
 
 
 //historial
-route::get('/historial','ConsultaController@index')->name('historial.index');
+route::get('/historial/{id}','ConsultaController@index')->name('historial.index');
 
 //resultados
 route::get('/resultado','ResultadoController@index')->name('resultado.index');
@@ -156,3 +156,6 @@ route::get('/resultado','ResultadoController@index')->name('resultado.index');
 //CONSULTA
 route::get('/consulta/{id}','ConsultaExamenController@index')->name('consulta.index');
 route::POST('/consultas','ConsultaExamenController@store')->name('consultas.store');
+
+//analisis
+route::get('/analisis/{id}','AnalisisController@index')->name('analisis.index');

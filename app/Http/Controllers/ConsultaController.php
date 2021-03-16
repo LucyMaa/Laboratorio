@@ -15,14 +15,12 @@ class ConsultaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-
-
         $paciente = DB::table('personas')
             ->join('pacientes', 'personas.id', '=', 'pacientes.idPersona')->get();
         $p = consulta::where('idPaciente', "=", $paciente[0]->id)->get();
-        return  view('historial.index', ['paciente' => $paciente[0], 'p' => $p]);
+        return  view('historial.index', ['paciente' => $paciente[$id-1], 'p' => $p]);
     }
 
     /**

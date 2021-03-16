@@ -3,7 +3,7 @@
 @section('title','Table')
 
 @section('body')
-
+           
 
 
 @endsection
