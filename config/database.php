@@ -62,11 +62,7 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
-        /*
-        'pgsql' => [
-            'driver' => 'pgsql',
-            'url' => env('DATABASE_URL'),
-            'host' => $DATABASE_URL["host"],
+     /*   'pgsql' => [
             'port' => $DATABASE_URL["port"],
             'database' => ltrim($DATABASE_URL["path"],"/"),
             'username' => $DATABASE_URL["user"],
@@ -77,7 +73,8 @@ return [
             'schema' => 'public',
             'sslmode' => 'prefer',
         ], 
-        /*
+    */
+        
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
@@ -99,7 +96,7 @@ return [
                 //'add_extra_option' => '--optionname=optionvalue',
             ],
         ],
-
+        
         'sqlsrv' => [
             'driver' => 'sqlsrv',
             'url' => env('DATABASE_URL'),
