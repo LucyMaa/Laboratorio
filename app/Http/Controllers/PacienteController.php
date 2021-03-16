@@ -64,6 +64,7 @@ class PacienteController extends Controller
         $paciente->nombre_contacto_de_emergencia=$request->nombre_contacto_de_emergencia;
         $paciente->numero_contacto_de_emergencia=$request->numero_contacto_de_emergencia;
         $paciente->peso=$request->peso;
+        $paciente->estado=$request->es;
         $paciente->idPersona=$persona->id;
         Acciones::insertar('nuevo paciente :'.$persona->nombre);
         $paciente->save();
@@ -117,6 +118,7 @@ class PacienteController extends Controller
         $paciente->nombre_contacto_de_emergencia=$request->nombre_contacto_de_emergencia;
         $paciente->numero_contacto_de_emergencia=$request->numero_contacto_de_emergencia;
         $paciente->peso=$request->peso;
+        $paciente->estado=$request->es;
         $paciente->update();
         
         

@@ -15,15 +15,15 @@ class CreateConsultasTable extends Migration
     {
         Schema::create('consultas', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha ultimo viaje')->nullable();
-            $table->string('lugar ultimo viaje',30)->nullable();
-            $table->string('diagnostico',50);
-            $table->string('medicamentos en uso',100)->nullable();
+            $table->date('f_ultimo_viaje')->nullable();
+            $table->string('lugar_viaje',30)->nullable();
+            $table->string('diagnostico',50)->nullable();;
+            $table->string('medicamentos',100)->nullable();
             $table->string('motivo',50)->nullable();
-            $table->char('tratamiento psicologico');
+            $table->string('tratamientop',50)->nullable();
+            $table->unsignedBigInteger('idPaciente');
+            $table->foreign('idPaciente')->references('id')->on('pacientes');
             $table->timestamps();
-
-
         });
     }
 

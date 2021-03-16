@@ -10,48 +10,52 @@
 @endsection
 
 
-@section('body')
-<a class="btn btn-outline-secondary btn-lg btn-block" href="{{Route('examenes.create')}}" role="button">AGREGAR EXAMEN</a>
-<div class="row d-flex justify-content-center" style="text-align:center">
-    <table id="example1" class="table table-bordered table-hover">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">NOMBRE</th>
-                <th scope="col">DESCRIPCION</th>
-                <th scope="col">PRECIO</th>
+@section('body') <br>
+<div class="container">
 
 
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($examenes as $examen)
-            <tr>
-                <td class="" tabindex="0">{{$examen->id}}</td>
-                <td class="" tabindex="0">{{$examen->nombre}}</td>
-                <td class="" tabindex="0">{{$examen->descripcion}}</td>
-                <td class="" tabindex="0">{{$examen->precio}}</td>
+    <a class="btn btn-outline-secondary btn-lg btn-block" href="{{Route('examenes.create')}}" role="button">AGREGAR EXAMEN</a>
+    <div class="row d-flex justify-content-center" style="text-align:center">
+        <table id="example1" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">NOMBRE</th>
+                    <th scope="col">DESCRIPCION</th>
+                    <th scope="col">PRECIO</th>
 
-                <td>
-                    <form action="{{route('examenes.destroy',[$examen->id])}}" method="POST" id="myform">
-                        @csrf
-                        @method('DELETE')
 
-                        <button type='submit'><i class="fas fa-trash"></i></button>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($examenes as $examen)
+                <tr>
+                    <td class="" tabindex="0">{{$examen->id}}</td>
+                    <td class="" tabindex="0">{{$examen->nombre}}</td>
+                    <td class="" tabindex="0">{{$examen->descripcion}}</td>
+                    <td class="" tabindex="0">{{$examen->precio}}</td>
 
-                        <a href="{{route('examenes.edit',[$examen->id])}}">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <a href="{{Route('examenes.show',[$examen->id])}}">
-                            <i class="fas fa-eye"></i>
-                        </a>
-                    </form>
-                </td>
+                    <td>
+                        <form action="{{route('examenes.destroy',[$examen->id])}}" method="POST" id="myform">
+                            @csrf
+                            @method('DELETE')
 
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+                            <button type='submit'><i class="fas fa-trash"></i></button>
+
+                            <a href="{{route('examenes.edit',[$examen->id])}}">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a href="{{Route('examenes.show',[$examen->id])}}">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        </form>
+                    </td>
+
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>
 @endsection
 

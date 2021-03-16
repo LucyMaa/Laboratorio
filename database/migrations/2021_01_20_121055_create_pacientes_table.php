@@ -19,6 +19,7 @@ class CreatePacientesTable extends Migration
             $table->String('antecedentes_traumaticos',150)->nullable();
             $table->String('enfermedades',150)->nullable();
             $table->String('estado_civil',20)->nullable();
+            $table->String('estado',50)->nullable();
             $table->float('estatura');
             $table->String('grupo_sanguineo',8)->nullable();
             $table->String('intolerancias',50)->nullable();
