@@ -13,6 +13,8 @@
 @section('body') <br>
 <div class="container">
     <a class="btn btn-outline-secondary btn-lg btn-block" href="{{Route('examenes.create')}}" role="button">AGREGAR EXAMEN</a>
+    <a type="button" class="btn btn-danger" href="{{ route('Examenes.pdf') }}">Descargar PDF</a>
+<a type="button" class="btn btn-success" href="{{ route('Examenes.excel') }}">Descargar EXCEL</a>
     <div class="row d-flex justify-content-center" style="text-align:center">
         <table id="example1" class="table table-bordered table-hover">
             <thead>

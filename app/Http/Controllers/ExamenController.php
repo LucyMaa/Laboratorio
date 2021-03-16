@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\examen;
+use App\Exports\ExamenesExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ExamenController extends Controller
 {
@@ -20,6 +23,17 @@ class ExamenController extends Controller
         return view('examenes.index',['examenes'=>$examenes]);
     }
 
+    public function exportPdf(){
+        $examenes=DB::table('examens')->get();
+        $pdf= PDF::loadview('pdf.examenes', ['examenes'=>$examenes]);
+            return $pdf->download('examenes-list.pdf');    
+
+    }
+    public function exportExcel(){
+        
+            return Excel::download(new ExamenesExport, 'examenes-list.xlsx');
+
+    }
     /**
      * Show the form for creating a new resource.
      *

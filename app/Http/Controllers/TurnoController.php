@@ -6,8 +6,11 @@ use App\medico;
 use App\persona;
 use App\turno;
 use App\Acciones;
+use App\Exports\TurnosExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TurnoController extends Controller
 {
@@ -24,6 +27,19 @@ class TurnoController extends Controller
       //  ->join('medicos', 'personas.id', '=', 'medicos.idPersona')->get();
         return view('turnos.index',['turnos'=>$turno]);
         
+    }
+
+
+    public function exportPdf(){
+        $turno=DB::table('turnos')->select('turnos.*')->orderBy('id','ASC')->get();
+        $pdf= PDF::loadview('pdf.turnos',['turnos'=>$turno]);
+            return $pdf->download('turnos-list.pdf');    
+
+    }
+    public function exportExcel(){
+        
+            return Excel::download(new TurnosExport, 'turnos-list.xlsx');
+
     }
      /**
      * Display a listing of the resource.

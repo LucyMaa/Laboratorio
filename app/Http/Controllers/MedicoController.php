@@ -8,6 +8,10 @@ use App\Acciones;
 use CreateMedicosTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+
+use App\Exports\MedicosExport;
 
 class MedicoController extends Controller
 {
@@ -164,5 +168,17 @@ class MedicoController extends Controller
     public function destroy(medico $medico)
     {
         //
+    }
+    public function exportPdf(){
+        $medico = persona::select('personas.*', 'medicos.*')
+            ->join('medicos', 'personas.id', '=', 'medicos.idPersona')->get();
+        $pdf= PDF::loadview('pdf.medicos',  ['Medicos' => $medico]);
+            return $pdf->download('medicos-list.pdf');    
+
+    }
+    public function exportExcel(){
+        
+            return Excel::download(new MedicosExport, 'user-list.xlsx');
+
     }
 }
