@@ -170,7 +170,7 @@ route::get('Bitacoras-list-excel', 'BitacoraController@exportExcel')->name('Bita
 
 
 //historial
-route::get('/historial','ConsultaController@index')->name('historial.index');
+route::get('/historial/{id}','ConsultaController@index')->name('historial.index');
 route::get('Historiales-list-pdf', 'ConsultaController@exportPdf')->name('Historiales.pdf');
 route::get('Historiales-list-excel', 'ConsultaController@exportExcel')->name('Historiales.excel');
 

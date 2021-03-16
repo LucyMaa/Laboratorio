@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Str;
-$DATABASE_URL=parse_url('postgres://myklekztirhkps:ea7621e23333c91a4ae341f7b8ec0af580e2867f271f4caf2299164a1a845686@ec2-52-7-168-69.compute-1.amazonaws.com:5432/d214ir3h5lo8ui');
+
+$DATABASE_URL = parse_url('postgres://myklekztirhkps:ea7621e23333c91a4ae341f7b8ec0af580e2867f271f4caf2299164a1a845686@ec2-52-7-168-69.compute-1.amazonaws.com:5432/d214ir3h5lo8ui');
 return [
 
     /*
@@ -34,7 +35,6 @@ return [
     */
 
     'connections' => [
-
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DATABASE_URL'),
@@ -62,7 +62,7 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
-/*
+        /*
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
@@ -94,9 +94,9 @@ return [
                 'dump_binary_path' => 'D:\Programas CTC\PostgreSQL\12\bin', // only the path, so without `mysqldump` or `pg_dump`
                 'use_single_transaction',
                 'timeout' => 60 * 5, // 5 minute timeout
-               // 'exclude_tables' => ['table1', 'table2'],
+                // 'exclude_tables' => ['table1', 'table2'],
                 //'add_extra_option' => '--optionname=optionvalue',
-             ] ,
+            ],
         ],
 
         'sqlsrv' => [
@@ -144,7 +144,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [
