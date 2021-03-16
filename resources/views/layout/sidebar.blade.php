@@ -71,18 +71,7 @@
                                 <p>Entrega de Resultado</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link ">
-                                <i class="fas fa-vial"></i>
-                                <p>Control de Agenda</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link ">
-                                <i class="fas fa-vial"></i>
-                                <p>Gestinar Factura</p>
-                            </a>
-                        </li>
+                       
                     </ul> <br>
                 <li class="nav-item menu-close">
                     <a href="#" class="nav-link ">
