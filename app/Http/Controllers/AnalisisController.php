@@ -16,9 +16,11 @@ class AnalisisController extends Controller
     public function index($id)
     {
         $analisis = analisis::where('idExamen', '=', $id)->get();
-        //$p = consulta::where('idPaciente', "=", $paciente[0]->id)->get();
+        
         return  view('analisis.index', ['analisis' => $analisis]);
-         
+     
+      
+        
     }
 
     /**

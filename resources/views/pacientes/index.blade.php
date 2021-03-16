@@ -53,7 +53,7 @@
                         <a data-toggle="tooltip" data-placement="top" title="HISTORIAL MEDICO" href="{{route('historial.index',[$paciente->id])}}">
                             <i class="fas fa-file-medical"></i>
                         </a>
-                        <a data-toggle="tooltip" data-placement="top" title="CONSULTA" href="{{route('consulta.index',[$paciente->id])}}">
+                        <a data-toggle="tooltip" data-placement="top" title="CONSULTA" href="{{route('consulta.index',[$paciente->idPersona])}}">
                             <i class="fas fa-address-book"></i>
                         </a>
                         <a data-toggle="tooltip" data-placement="top" title="RESULTADOS" href="{{route('resultado.index',[$paciente->id])}}">
