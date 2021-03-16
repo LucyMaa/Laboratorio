@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\consulta;
 use App\consulta_examen;
+use App\paciente;
 use Illuminate\Http\Request;
 
 class ConsultaExamenController extends Controller
@@ -12,11 +14,11 @@ class ConsultaExamenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $paciente = paciente::where('id', "=", $id)->first();
+        return view('Consulta.registrar', ['pacientes' => $paciente]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -35,7 +37,16 @@ class ConsultaExamenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $consulta = new consulta();
+        $consulta->diagnostico = $request->di;
+        $consulta->f_ultimo_viaje = $request->fecha;
+        $consulta->lugar_viaje = $request->viaje;
+        $consulta->motivo = $request->motivo;
+        $consulta->tratamientop = $request->tratamiento;
+        $consulta->medicamentos = $request->medicamentos;
+        $consulta->idPaciente = $request->idp;
+        $consulta->save();
+        return   ;
     }
 
     /**

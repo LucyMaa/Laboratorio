@@ -11,7 +11,7 @@
 @section('body')
 <BR></BR>
 <div class="container" style="text-align: center;">
-    <a class="btn btn-outline-success btn-lg btn-block" href="{{route('pacientes.create')}}" role="button">AGREGAR PACIENTE </a> <br>  
+    <a class="btn btn-outline-success btn-lg btn-block" href="{{route('pacientes.create')}}" role="button">AGREGAR PACIENTE </a> <br>
     <div class="row d-flex justify-content-center">
         <table id="example1" class="table table-bordered table-hover">
             <thead>
@@ -21,7 +21,7 @@
                     <th scope="col">CI</th>
                     <th scope="col">TELEFONO </th>
                     <th scope="col">CODIGO PERSONA </th>
-                    
+                    <th scope="col">ESTADO </th>
                     <th scope="col">ACCIONES</th>
                 </tr>
             </thead>
@@ -33,12 +33,22 @@
                     <td class="" tabindex="0">{{$paciente->ci}}</td>
                     <td class="" tabindex="0">{{$paciente->telefono}}</td>
                     <td class="" tabindex="0">{{$paciente->idPersona}}</td>
+                    <td class="" tabindex="0">
+                        @if ($paciente->estado =='ACTIVO')
+                        <span class="badge badge-pill badge-success">ACTIVO</span>
+                        @else
+                        <span class="badge badge-pill badge-danger">DESACTIVADA</span>
+                        @endif
+                    </td>
                     <td>
-                        <a  data-toggle="tooltip" data-placement="top" title="EDITAR" href="{{route('pacientes.edit',[$paciente->id])}}">
+                        <a data-toggle="tooltip" data-placement="top" title="EDITAR" href="{{route('pacientes.edit',[$paciente->id])}}">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <a  data-toggle="tooltip" data-placement="top" title="HISTORIAL MEDICO" href="{{route('historial.index',[$paciente->id])}}">
+                        <a data-toggle="tooltip" data-placement="top" title="HISTORIAL MEDICO" href="{{route('historial.index',[$paciente->id])}}">
                             <i class="fas fa-file-medical"></i>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="CONSULTA" href="{{route('consulta.index',[$paciente->id])}}">
+                            <i class="fas fa-address-book"></i>
                         </a>
                     </td>
                 </tr>
@@ -57,9 +67,9 @@
 <script src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap4.min.js"></script>
 
 <script>
-    $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 
 
     $(document).ready(function() {

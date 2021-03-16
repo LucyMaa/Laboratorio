@@ -21,10 +21,10 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="">APELLIDOS</label>
-                            <input id="apellido" type="text" class="form-control"  value="{{$paciente->apellido}}">
+                            <input id="apellido" type="text" class="form-control" value="{{$paciente->apellido}}">
                         </div>
                         <div class="form-group col-md-4">FECHA DE NACIMIENTO<label for=""></label>
-                            <input id="FECHA" type="DATE" class="form-control"  value="{{$paciente->fechaNacimiento}}">
+                            <input id="FECHA" type="DATE" class="form-control" value="{{$paciente->fechaNacimiento}}">
                         </div>
                         <div class="form-group col-md-8">DIRECCION<label for=""></label>
                             <input id="dir" type="text" class="form-control" value="{{$paciente->direccion}}">
@@ -100,21 +100,23 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">FECHA</th>
-                    <th scope="col">HORA</th>
-                    <th scope="col">EXAMEN</th>
+                    <th scope="col">MEDICAMENTO</th>
                     <th scope="col">MOTIVO</th>
+                    <th scope="col">TRATAMIENTO</th>
                     <th scope="col">DIAGNOSTICO</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
+                    @foreach($p as $p)
                     <th scope="row">1</th>
-                    <td>ALERGIA</td>
-                    <td>Otto</td>
-                    <td>Otto</td>
-                    <td>Otto</td>
-                    <td>Otto</td>
+                    <td>{{$p->created_at}}</td>
+                    <td>{{$p->medicamentos}}</td>
+                    <td>{{$p->motivo}}</td>
+                    <td>{{$p->tratamientop}}</td>
+                    <td>{{$p->diagnostico }}</td>
                 </tr>
+                @endforeach
             </Tbody>
         </table>
     </section>
