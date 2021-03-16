@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\resultado;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ResultadoController extends Controller
 {
@@ -13,8 +14,9 @@ class ResultadoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('resultado.index');
+    {   
+         $examenes=DB::table('examens')->get();
+        return view('resultado.index',['examenes'=>$examenes]);
     }
 
     /**

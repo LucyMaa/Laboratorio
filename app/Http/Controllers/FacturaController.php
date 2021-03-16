@@ -151,7 +151,6 @@ class FacturaController extends Controller
         $factura->nit =  $request->nit[0];
         $factura->total = 0;
         $factura->save();
-
         foreach ($request->cantidad as $key => $value) {
             $examenes = examen::where('nombre', '=', $request->descripcion[$key])->first();
             $detalle = new detalleFactura();
@@ -161,7 +160,6 @@ class FacturaController extends Controller
             $detalle->idFactura = $factura->id;
             $detalle->idExamen = $examenes->id;
             $suma = $suma + $request->subTotal[$key];
-
             $detalle->save();
         }
         $factura->total = $suma;
