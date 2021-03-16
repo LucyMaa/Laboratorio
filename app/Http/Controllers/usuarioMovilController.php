@@ -51,7 +51,7 @@ class usuarioMovilController extends Controller
                         //join('facturas','pacientes.id','facturas.idPaciente') ->
                         //join('detalle_facturas','facturas.id','detalle_facturas.idFactura') ->
                         join('consultas','pacientes.id','consultas.idPaciente') ->
-                        where('pacientes.id',$idPaciente)->get();
+                        where('pacientes.idPersona',$idPaciente)->get();
         return response()->json($paciente, 200);
     }
     public function getResultadoDeExamen($idExamen){
