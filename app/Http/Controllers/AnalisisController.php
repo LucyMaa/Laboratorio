@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\analisis;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AnalisisController extends Controller
 {
@@ -12,9 +13,12 @@ class AnalisisController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $analisis = analisis::where('idExamen', '=', $id)->get();
+        //$p = consulta::where('idPaciente', "=", $paciente[0]->id)->get();
+        return  view('analisis.index', ['analisis' => $analisis]);
+         
     }
 
     /**
@@ -69,7 +73,6 @@ class AnalisisController extends Controller
      */
     public function update(Request $request, analisis $analisis)
     {
-        //
     }
 
     /**

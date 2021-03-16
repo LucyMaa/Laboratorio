@@ -56,7 +56,9 @@
                         <a data-toggle="tooltip" data-placement="top" title="CONSULTA" href="{{route('consulta.index',[$paciente->id])}}">
                             <i class="fas fa-address-book"></i>
                         </a>
-                    </form>
+                        <a data-toggle="tooltip" data-placement="top" title="RESULTADOS" href="{{route('resultado.index',[$paciente->id])}}">
+                        <i class="fas fa-file"></i>
+                        </a>
                     </td>
                 </tr>
                 @endforeach
