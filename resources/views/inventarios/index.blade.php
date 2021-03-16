@@ -12,6 +12,8 @@
 
 @section('body')
 <a class="btn btn-outline-secondary btn-lg btn-block" href="{{Route('inventarios.create')}}" role="button">AGREGAR AL INVENTARIO</a>
+<a type="button" class="btn btn-danger" href="{{ route('Inventarios.pdf') }}">Descargar PDF</a>
+<a type="button" class="btn btn-success" href="{{ route('Inventarios.excel') }}">Descargar EXCEL</a>
 <div class="row d-flex justify-content-center" style="text-align:center">
     <table id="example1" class="table table-bordered table-hover">
         <thead>

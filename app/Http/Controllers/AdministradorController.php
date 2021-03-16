@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\administrador;
+use App\Exports\EmpleadosExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\persona;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class AdministradorController extends Controller
@@ -22,6 +25,19 @@ class AdministradorController extends Controller
             ->join('administradors', 'personas.id', '=', 'administradors.idPersona')->get();
         //return $medico;
         return view('empleados.index',  ['administradors' => $administrador]);
+    }
+
+    public function exportPdf(){
+        $administrador = DB::table('personas')
+            ->join('administradors', 'personas.id', '=', 'administradors.idPersona')->get();
+        $pdf= PDF::loadview('pdf.empleados',  ['administradors' => $administrador]);
+            return $pdf->download('empleados-list.pdf');    
+
+    }
+    public function exportExcel(){
+        
+            return Excel::download(new EmpleadosExport, 'compras-list.xlsx');
+
     }
 
     /**

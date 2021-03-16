@@ -9,35 +9,50 @@
 </head>
 
 <body>
-    <table >
-        <thead>
+<table id="example1" class="table table-bordered table-hover" border="1">
+    
+             
+           
+       
+    <thead>
+   
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NOMBRE</th>
+            <th scope="col">APELLIDO</th>
+            <th scope="col">DIRECCION</th>
+            <th scope="col">CI</th>
+            <th scope="col">SEXO</th>
+            <th scope="col">TELEFONO</th>
+            
 
-            <tr>
-                <th >ID</th>
-                <th >NOMBRE</th>
-                <th >APELLIDO</th>
-                <th >DIRECCION</th>
-                <th >CI</th>
-                <th >SEXO</th>
-                <th >TELEFONO</th>
-                <th >ACCIONES</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($Medicos as $medico)
-            <tr>
-                <td >{{$medico->id}}</td>
-                <td >{{$medico->nombre}}</td>
-                <td >{{$medico->apellido}}</td>
-                <td >{{$medico->direccion}}</td>
-                <td >{{$medico->ci}}</td>
-                <td >{{$medico->sexo}}</td>
-                <td >{{$medico->telefono}}</td>
-               
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($Medicos as $medico)
+        <tr>
+            <td class="" tabindex="0">{{$medico->id}}</td>
+            <td class="" tabindex="0">{{$medico->nombre}}</td>
+            <td class="" tabindex="0">{{$medico->apellido}}</td>
+            <td class="" tabindex="0">{{$medico->direccion}}</td>
+            <td class="" tabindex="0">{{$medico->ci}}</td>
+            <td class="" tabindex="0">{{$medico->sexo}}</td>
+            <td class="" tabindex="0">{{$medico->telefono}}</td>
+            <td>
+                <!-- <a href="">
+                    <i class="fas fa-trash"></i>
+                </a> -->
+                <a href="{{route('Medico.edit',[$medico->id])}}">
+                    <i class="fas fa-edit"></i>
+                </a>
+                <!-- <a href="">
+                    <i class="fas fa-eye"></i>
+                </a> -->
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
 </body>
 
 </html>

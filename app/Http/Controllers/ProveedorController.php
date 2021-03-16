@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\proveedor;
 use App\Acciones;
+use App\Exports\ProveedoresExport;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProveedorController extends Controller
 {
@@ -18,6 +21,18 @@ class ProveedorController extends Controller
         //
         $proveedores=proveedor::all();
         return view('proveedores.index',['proveedores'=>$proveedores]);
+
+    }
+
+    public function exportPdf(){
+        $proveedores=proveedor::all();
+        $pdf= PDF::loadview('pdf.proveedores',['proveedores'=>$proveedores]);
+            return $pdf->download('proveedores-list.pdf');    
+
+    }
+    public function exportExcel(){
+        
+            return Excel::download(new ProveedoresExport, 'proveedores-list.xlsx');
 
     }
 

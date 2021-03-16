@@ -12,7 +12,8 @@
 
 @section('body') <br>
 <a class="btn btn-outline-secondary btn-lg btn-block" href="{{route('Medico.create')}}" role="button">AGREGAR MEDICO</a> <br>
-<a type="button" class="btn btn-warning" href="{{ route('Medico.pdf') }}">Descargar reporte</a>
+<a type="button" class="btn btn-danger" href="{{ route('Medico.pdf') }}">Descargar PDF</a>
+<a type="button" class="btn btn-success" href="{{ route('Medico.excel') }}">Descargar EXCEL</a>
 <div class="row d-flex justify-content-center">
     <table id="example1" class="table table-bordered table-hover">
     

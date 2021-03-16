@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\paciente;
 use App\persona;
 use App\Acciones;
+use App\Exports\PacientesExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PacienteController extends Controller
 {
@@ -23,6 +26,18 @@ class PacienteController extends Controller
         return view('pacientes.index',['pacientes'=>$paciente]);
     }
 
+    public function exportPdf(){
+        $paciente = DB::table('personas')
+        ->join('pacientes', 'personas.id', '=', 'pacientes.idPersona')->get();
+        $pdf= PDF::loadview('pdf.pacientes',['pacientes'=>$paciente]);
+            return $pdf->download('pacientes-list.pdf');    
+
+    }
+    public function exportExcel(){
+        
+            return Excel::download(new PacientesExport, 'pacientes-list.xlsx');
+
+    }
     /**
      * Show the form for creating a new resource.
      *
