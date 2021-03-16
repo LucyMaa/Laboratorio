@@ -20,7 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('login','usuarioMovilController@esUsuario');
 Route::get('perfilPaciente/{idPersona}','usuarioMovilController@getPaciente');
-Route::get('listaDeExamenes/{idPaciente}','usuarioMovilController@getListaDeExamenes');
+Route::get('examenes','usuarioMovilController@examen');
+Route::get('consultas/{idPaciente}','usuarioMovilController@miConsulta');
 Route::get('resultadoDeExamen/{idExamen}','usuarioMovilController@getResultadoDeExamen');
 
 

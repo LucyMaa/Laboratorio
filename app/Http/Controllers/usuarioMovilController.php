@@ -40,13 +40,17 @@ class usuarioMovilController extends Controller
         $resultado = DB::table('usuarios')->get();
         return response()->json($resultado, 200);
     }
+    public function examen(){
+        $examen = DB::table('examens')-> get();
+        return response()->json($examen, 200);
+    }
 
     //lista de examnes
-    public function getListaDeExamenes($idPaciente){
+    public function miConsulta($idPaciente){
         $paciente = DB::table('pacientes')->
-                        join('facturas','pacientes.id','facturas.idPaciente') ->
-                        join('detalle_facturas','facturas.id','detalle_facturas.idFactura') ->
-                        join('examens','detalle_facturas.idExamen','examens.id') ->
+                        //join('facturas','pacientes.id','facturas.idPaciente') ->
+                        //join('detalle_facturas','facturas.id','detalle_facturas.idFactura') ->
+                        join('consultas','pacientes.id','consultas.idPaciente') ->
                         where('pacientes.id',$idPaciente)->get();
         return response()->json($paciente, 200);
     }
