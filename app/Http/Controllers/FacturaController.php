@@ -166,12 +166,7 @@ class FacturaController extends Controller
         }
         $factura->total = $suma;
         $factura->update();
-
         $x = detalleFactura::where('idFactura', '=', $factura->id)->get();
-
-
-
-
         Acciones::insertar('facturo : ' . $suma);
         return view('facturas.print', ['detalles'=> $x,'factura'=>$factura]);
     }

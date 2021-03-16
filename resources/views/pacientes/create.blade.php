@@ -77,8 +77,15 @@
                 <p class="text-danger">{{$errors->first("dir")}}</p>
 
             </div><br>
+            <div class="input-group">
+
+                <span class="input-group-text">ESTADO</span>
+                <input name="es" value="{{old('es')}}" type="text" tabindex="7" class="form-control focusNext" aria-label="First name" class="form-control" placeholder="">
+                <p class="text-danger">{{$errors->first("es")}}</p>
+
+            </div><br>
             <div class="alert alert-secondary" role="alert">
-                INTRODUZCA SUS DATOS CLINICOS :
+              <h3>INTRODUZCA SUS DATOS CLINICOS :</h3>  
             </div>
 
             <div class="input-group">
