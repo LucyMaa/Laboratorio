@@ -95,6 +95,11 @@ class UsuarioController extends Controller
         return redirect()->route('usuario.index');
     }
 
+    public function backup()
+    {
+        
+    }
+
     /**
      * Remove the specified resource from storage.
      * @param bigint $id

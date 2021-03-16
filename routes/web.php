@@ -37,6 +37,8 @@ route::get('Medico/{id}', 'MedicoController@show')->name('Medico.show');
 route::get('Medico/{id}/edit', 'MedicoController@edit')->name('Medico.edit');
 route::put('Medico/{id}', 'MedicoController@update')->name('Medico.update');
 route::delete('Medico/{id}', 'MedicoController@destroy')->name('Medico.destroy');
+route::get('Medico-list-pdf', 'MedicoController@exportPdf')->name('Medico.pdf');
+
 
 //ADMINISTRADOR
 route::get('/empleados', 'AdministradorController@index')->name('empleados.index');

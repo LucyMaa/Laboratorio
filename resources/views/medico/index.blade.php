@@ -12,9 +12,15 @@
 
 @section('body') <br>
 <a class="btn btn-outline-secondary btn-lg btn-block" href="{{route('Medico.create')}}" role="button">AGREGAR MEDICO</a> <br>
+<a type="button" class="btn btn-warning" href="{{ route('Medico.pdf') }}">Descargar reporte</a>
 <div class="row d-flex justify-content-center">
     <table id="example1" class="table table-bordered table-hover">
+    
+             
+           
+       
         <thead>
+       
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">NOMBRE</th>
