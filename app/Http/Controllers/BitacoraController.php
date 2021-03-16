@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\bitacora;
+use App\Exports\BitacorasExport;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BitacoraController extends Controller
 {
@@ -18,6 +21,17 @@ class BitacoraController extends Controller
         return view('bitacoras.index', compact('bitacora'));
     }
 
+    public function exportPdf(){
+        $bitacora = bitacora::all();
+        $pdf= PDF::loadview('pdf.bitacoras',  compact('bitacora'));
+            return $pdf->download('bitacoras-list.pdf');    
+
+    }
+    public function exportExcel(){
+        
+            return Excel::download(new BitacorasExport, 'bitacoras-list.xlsx');
+
+    }
     /**
      * Show the form for creating a new resource.
      *

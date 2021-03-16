@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\inventario;
 use App\proveedor;
 use App\Acciones;
+use App\Exports\ComprasExport;
 use App\proveedor_inventario;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProveedorInventarioController extends Controller
 {
@@ -22,6 +25,17 @@ class ProveedorInventarioController extends Controller
         return view('compras.index',['compras'=>$compras]);
     }
 
+    public function exportPdf(){
+        $compras=proveedor::with('inventarios')->get();
+        $pdf= PDF::loadview('pdf.compras',  ['compras'=>$compras]);
+            return $pdf->download('compras-list.pdf');    
+
+    }
+    public function exportExcel(){
+        
+            return Excel::download(new ComprasExport, 'compras-list.xlsx');
+
+    }
     /**
      * Show the form for creating a new resource.
      *

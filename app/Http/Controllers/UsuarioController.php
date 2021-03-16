@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\usuario;
 use App\Acciones;
+use App\Exports\UsuariosExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UsuarioController extends Controller
 {
@@ -19,6 +22,18 @@ class UsuarioController extends Controller
         //
         $usuarios=usuario::with('persona')->get();
         return view('usuario.index',['usuarios'=>$usuarios]);
+    }
+
+    public function exportPdf(){
+        $usuarios=usuario::with('persona')->get();
+        $pdf= PDF::loadview('pdf.usuarios',['usuarios'=>$usuarios]);
+            return $pdf->download('usuarios-list.pdf');    
+
+    }
+    public function exportExcel(){
+        
+            return Excel::download(new UsuariosExport, 'usuarios-list.xlsx');
+
     }
 
     /**
@@ -93,6 +108,11 @@ class UsuarioController extends Controller
         $user->save();
         Acciones::insertar('MODIFICO UN USUARIO: '.$user->name);
         return redirect()->route('usuario.index');
+    }
+
+    public function backup()
+    {
+        
     }
 
     /**

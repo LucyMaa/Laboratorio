@@ -4,6 +4,8 @@
 
 @section('body')
 <br>
+<a type="button" class="btn btn-danger" href="{{ route('Bitacoras.pdf') }}">Descargar PDF</a>
+<a type="button" class="btn btn-success" href="{{ route('Bitacoras.excel') }}">Descargar EXCEL</a>
 <div class="container-sm">
     <div class="row d-flex justify-content-center">
         <table id="example1" class="table table-bordered table-hover">

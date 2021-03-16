@@ -12,6 +12,8 @@
 <BR></BR>
 <div class="container" style="text-align: center;">
     <a class="btn btn-outline-success btn-lg btn-block" href="{{route('pacientes.create')}}" role="button">AGREGAR PACIENTE </a> <br>
+    <a type="button" class="btn btn-danger" href="{{ route('Pacientes.pdf') }}">Descargar PDF</a>
+<a type="button" class="btn btn-success" href="{{ route('Pacientes.excel') }}">Descargar EXCEL</a>
     <div class="row d-flex justify-content-center">
         <table id="example1" class="table table-bordered table-hover">
             <thead>
@@ -41,6 +43,10 @@
                         @endif
                     </td>
                     <td>
+                    <form action="{{route('pacientes.destroy',[$paciente->id])}}" method="POST" id="myform">
+                        @csrf
+                        @method('DELETE')
+                        <button type='submit'><i class="fas fa-trash"></i></button>
                         <a data-toggle="tooltip" data-placement="top" title="EDITAR" href="{{route('pacientes.edit',[$paciente->id])}}">
                             <i class="fas fa-edit"></i>
                         </a>
@@ -50,6 +56,7 @@
                         <a data-toggle="tooltip" data-placement="top" title="CONSULTA" href="{{route('consulta.index',[$paciente->id])}}">
                             <i class="fas fa-address-book"></i>
                         </a>
+                    </form>
                     </td>
                 </tr>
                 @endforeach

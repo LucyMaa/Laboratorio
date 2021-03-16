@@ -15,6 +15,8 @@
 <div class="container">
     <a class="btn btn-outline-secondary btn-lg btn-block" href="{{route('turnos.create')}}" role="button">AGREGAR NUEVO TURNO</a>
     <a class="btn btn-outline-secondary btn-lg btn-block" href="{{route('turnos.asignar')}}" role="button">ASIGNAR TURNO</a> <br>
+    <a type="button" class="btn btn-danger" href="{{ route('Turnos.pdf') }}">Descargar PDF</a>
+<a type="button" class="btn btn-success" href="{{ route('Turnos.excel') }}">Descargar EXCEL</a>
     <div class="row d-flex justify-content-center">
         <table id="example1" class="table table-bordered table-hover">
             <thead>

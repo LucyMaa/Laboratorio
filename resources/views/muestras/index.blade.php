@@ -12,6 +12,8 @@
 
 @section('body')
 <a class="btn btn-outline-secondary btn-lg btn-block" href="{{Route('muestras.create')}}" role="button">AGREGAR MUESTRA</a>
+<a type="button" class="btn btn-danger" href="{{ route('Muestras.pdf') }}">Descargar PDF</a>
+<a type="button" class="btn btn-success" href="{{ route('Muestras.excel') }}">Descargar EXCEL</a>
 <div class="row d-flex justify-content-center" style="text-align:center">
     <table id="example1" class="table table-bordered table-hover">
         <thead>

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\muestra;
 use Illuminate\Http\Request;
 use App\Acciones;
+use App\Exports\MuestrasExport;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MuestraController extends Controller
 {
@@ -25,6 +28,17 @@ class MuestraController extends Controller
         return view('muestras.index',['muestras'=>$muestras]);
     }
 
+    public function exportPdf(){
+        $muestras=muestra::all();
+        $pdf= PDF::loadview('pdf.muestras',['muestras'=>$muestras]);
+            return $pdf->download('muestras-list.pdf');    
+
+    }
+    public function exportExcel(){
+        
+            return Excel::download(new MuestrasExport, 'muestras-list.xlsx');
+
+    }
     /**
      * Show the form for creating a new resource.
      *

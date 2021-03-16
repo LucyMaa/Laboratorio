@@ -23,6 +23,8 @@
             @yield('body')
             <div class="container">
                 <a class="btn btn-outline-success btn-lg btn-block" href="{{route('usuario.create')}}" role="button">AGREGAR USUARIO</a>
+                <a type="button" class="btn btn-danger" href="{{ route('Usuarios.pdf') }}">Descargar PDF</a>
+<a type="button" class="btn btn-success" href="{{ route('Usuarios.excel') }}">Descargar EXCEL</a>
                 <table class="table table-bordered table-dark" style="text-align: center">
                     <thead>
                         <tr>

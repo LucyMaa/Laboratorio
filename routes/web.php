@@ -37,6 +37,9 @@ route::get('Medico/{id}', 'MedicoController@show')->name('Medico.show');
 route::get('Medico/{id}/edit', 'MedicoController@edit')->name('Medico.edit');
 route::put('Medico/{id}', 'MedicoController@update')->name('Medico.update');
 route::delete('Medico/{id}', 'MedicoController@destroy')->name('Medico.destroy');
+route::get('Medico-list-pdf', 'MedicoController@exportPdf')->name('Medico.pdf');
+route::get('Medico-list-excel', 'MedicoController@exportExcel')->name('Medico.excel');
+
 
 //ADMINISTRADOR
 route::get('/empleados', 'AdministradorController@index')->name('empleados.index');
@@ -47,7 +50,8 @@ route::get('empleados/{id}/edit', 'AdministradorController@edit1')->name('emplea
 route::get('empleados1/{id}', 'AdministradorController@update1')->name('empleados.update');
 route::put('empleados1/{id}', 'AdministradorController@update1')->name('empleados.delete');
 route::delete('empleados/{id}', 'AdministradorController@destroy')->name('empleados.destroy');
-
+route::get('Empleados-list-pdf', 'AdministradorController@exportPdf')->name('Empleados.pdf');
+route::get('Empleados-list-excel', 'AdministradorController@exportExcel')->name('Empleados.excel');
 
 route::get('empleados2/{id}/edit', 'AdministradorController@edit')->name('empleados.edit1');
 route::put('empleados2/{id}', 'AdministradorController@update')->name('empleados.update1');
@@ -60,6 +64,8 @@ route::get('clientes/{id}', 'PacienteController@show')->name('pacientes.show');
 route::get('clientes/{id}/edit', 'PacienteController@edit')->name('pacientes.edit');
 route::put('clientes/{id}', 'PacienteController@update')->name('pacientes.update');
 route::delete('clientes/{id}', 'PacienteController@destroy')->name('pacientes.destroy');
+route::get('Clientes-list-pdf', 'PacienteController@exportPdf')->name('Pacientes.pdf');
+route::get('Clientes-list-excel', 'PacienteController@exportExcel')->name('Pacientes.excel');
 
 //usuarios
 route::get('/usuarios','UsuarioController@index')->name('usuario.index');
@@ -69,6 +75,8 @@ route::get('usuarios/{id}','UsuarioController@show')->name('usuario.show');
 route::get('usuarios/{id}/edit','UsuarioController@edit')->name('usuario.edit');
 route::put('usuarios/{id}','UsuarioController@update')->name('usuario.update');
 route::delete('usuarios/{id}','UsuarioController@destroy')->name('usuario.destroy');
+route::get('Usuarios-list-pdf', 'UsuarioController@exportPdf')->name('Usuarios.pdf');
+route::get('Usuarios-list-excel', 'UsuarioController@exportExcel')->name('Usuarios.excel');
 
 //examenes
 route::get('/examenes','ExamenController@index')->name('examenes.index');
@@ -78,6 +86,8 @@ route::get('examenes/{id}','ExamenController@show')->name('examenes.show');
 route::get('examenes/{id}/edit','ExamenController@edit')->name('examenes.edit');
 route::put('examenes/{id}','ExamenController@update')->name('examenes.update');
 route::delete('examenes/{id}','ExamenController@destroy')->name('examenes.destroy');
+route::get('Examenes-list-pdf', 'ExamenController@exportPdf')->name('Examenes.pdf');
+route::get('Examenes-list-excel', 'ExamenController@exportExcel')->name('Examenes.excel');
 
 //turnos
 route::get('/turnos','TurnoController@index')->name('turnos.index');
@@ -90,6 +100,8 @@ route::get('turnos/{id}','TurnoController@show')->name('turnos.show');
 route::get('turnos/{id}/edit','TurnoController@edit')->name('turnos.edit');
 route::put('turnos/{id}','TurnoController@update')->name('turnos.update');
 route::delete('turnos/{id}','TurnoController@destroy')->name('turnos.destroy');
+route::get('Turnos-list-pdf', 'TurnoController@exportPdf')->name('Turnos.pdf');
+route::get('Turnos-list-excel', 'TurnoController@exportExcel')->name('Turnos.excel');
 
 //Muestras
 route::get('/muestras','MuestraController@index')->name('muestras.index');
@@ -99,6 +111,8 @@ route::get('muestras/{id}','MuestraController@show')->name('muestras.show');
 route::get('muestras/{id}/edit','MuestraController@edit')->name('muestras.edit');
 route::put('muestras/{id}','MuestraController@update')->name('muestras.update');
 route::delete('muestras/{id}','MuestraController@destroy')->name('muestras.destroy');
+route::get('Muestras-list-pdf', 'MuestraController@exportPdf')->name('Muestras.pdf');
+route::get('Muestras-list-excel', 'MuestraController@exportExcel')->name('Muestras.excel');
 
 //inventario
 route::get('/inventarios','InventarioController@index')->name('inventarios.index');
@@ -108,6 +122,8 @@ route::get('inventarios/{id}','InventarioController@show')->name('inventarios.sh
 route::get('inventarios/{id}/edit','InventarioController@edit')->name('inventarios.edit');
 route::put('inventarios/{id}','InventarioController@update')->name('inventarios.update');
 route::delete('inventarios/{id}','InventarioController@destroy')->name('inventarios.destroy');
+route::get('Inventarios-list-pdf', 'InventarioController@exportPdf')->name('Inventarios.pdf');
+route::get('Inventarios-list-excel', 'InventarioController@exportExcel')->name('Inventarios.excel');
 
 //proveedores
 route::get('/proveedores','ProveedorController@index')->name('proveedores.index');
@@ -117,6 +133,8 @@ route::get('proveedores/{id}','ProveedorController@show')->name('proveedores.sho
 route::get('proveedores/{id}/edit','ProveedorController@edit')->name('proveedores.edit');
 route::put('proveedores/{id}','ProveedorController@update')->name('proveedores.update');
 route::delete('proveedores/{id}','ProveedorController@destroy')->name('proveedores.destroy');
+route::get('Proveedores-list-pdf', 'ProveedorController@exportPdf')->name('Proveedores.pdf');
+route::get('Proveedores-list-excel', 'ProveedorController@exportExcel')->name('Proveedores.excel');
 
 //compras
 route::get('/compras','ProveedorInventarioController@index')->name('compras.index');
@@ -126,6 +144,8 @@ route::get('compras/{id}','ProveedorInventarioController@show')->name('compras.s
 route::get('compras/{id}/edit','ProveedorInventarioController@edit')->name('compras.edit');
 route::put('compras/{id}','ProveedorInventarioController@update')->name('compras.update');
 route::delete('compras/{id}','ProveedorInventarioController@destroy')->name('compras.destroy');
+route::get('Compras-list-pdf', 'ProveedorInventarioController@exportPdf')->name('Compras.pdf');
+route::get('Compras-list-excel', 'ProveedorInventarioController@exportExcel')->name('Compras.excel');
 
 route::get('/home', 'HomeController@index')->name('HOME');
 
@@ -145,10 +165,14 @@ route::get('/print','FacturaController@print')->name('factura.print');
 route::get('/bitacoras','BitacoraController@index')->name('bitacoras.index');
 route::get('bitacoras/create','BitacoraController@create')->name('bitacoras.create');
 route::post('bitacoras','BitacoraController@store')->name('bitacoras.store');
+route::get('Bitacoras-list-pdf', 'BitacoraController@exportPdf')->name('Bitacoras.pdf');
+route::get('Bitacoras-list-excel', 'BitacoraController@exportExcel')->name('Bitacoras.excel');
 
 
 //historial
 route::get('/historial','ConsultaController@index')->name('historial.index');
+route::get('Historiales-list-pdf', 'ConsultaController@exportPdf')->name('Historiales.pdf');
+route::get('Historiales-list-excel', 'ConsultaController@exportExcel')->name('Historiales.excel');
 
 //resultados
 route::get('/resultado','ResultadoController@index')->name('resultado.index');

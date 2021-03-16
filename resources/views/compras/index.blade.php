@@ -12,6 +12,8 @@
 
 @section('body')
 <a class="btn btn-outline-secondary btn-lg btn-block" href="{{Route('compras.create')}}" role="button">REGISTRAR COMPRA</a>
+<a type="button" class="btn btn-danger" href="{{ route('Compras.pdf') }}">Descargar PDF</a>
+<a type="button" class="btn btn-success" href="{{ route('Compras.excel') }}">Descargar EXCEL</a>
 <div class="row d-flex justify-content-center" style="text-align:center">
     <table id="example1" class="table table-bordered table-hover">
         <thead>
