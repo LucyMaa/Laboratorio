@@ -36,7 +36,6 @@
                 INTRODUZCA SUS DATOS PERSONALES :
             </div>
             <div class="input-group">
-
                 <span class="input-group-text">CARNET</span>
                 <input name="ci" type="number" tabindex="1" aria-label="First name" class="form-control focusNext" placeholder="######" value="{{old('ci')}}">
                 <p class="text-danger"> {{$errors->first("ci")}}</p>
